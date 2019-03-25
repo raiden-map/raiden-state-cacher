@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event",
+    "type": "record",
+    "name": "AddressRegistered",
+    "fields": [
+        {
+            "name": "metadata",
+            "type": "io.raidenmap.event.Metadata"
+        },
+        {
+            "name": "ethAddress",
+            "type": "string"
+        },
+        {
+            "name": "endpointAddress",
+            "type": "string"
+        }
+    ]
+}
