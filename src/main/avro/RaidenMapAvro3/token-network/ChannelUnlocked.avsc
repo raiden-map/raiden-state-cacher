@@ -1,0 +1,23 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "ChannelUnlocked",
+    "fields": [
+        {
+            "name": "channelEvent",
+            "type": "io.raidenmap.event.channel.ChannelEvent"
+        },
+        {
+            "name": "participant",
+            "type": "string"
+        },
+        {
+            "name": "unlockedAmount",
+            "type": "int"
+        },
+        {
+            "name": "returnedTokens",
+            "type": "int"
+        }
+    ]
+}

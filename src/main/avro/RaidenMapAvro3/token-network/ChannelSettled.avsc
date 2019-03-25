@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "ChannelSettled",
+    "fields": [
+        {
+            "name": "channelEvent",
+            "type": "io.raidenmap.event.channel.ChannelEvent"
+        },
+        {
+            "name": "participant1Amount",
+            "type": "long"
+        },
+        {
+            "name": "participant2Amount",
+            "type": "long"
+        }
+    ]
+}

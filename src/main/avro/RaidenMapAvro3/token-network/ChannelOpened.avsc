@@ -1,0 +1,23 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "ChannelOpened",
+    "fields": [
+        {
+            "name": "channelEvent",
+            "type": "io.raidenmap.event.channel.ChannelEvent"
+        },
+        {
+            "name": "participant1",
+            "type": "string"
+        },
+        {
+            "name": "participant2",
+            "type": "string"
+        },
+        {
+            "name": "settleTimeout",
+            "type": "long"
+        }
+    ]
+}

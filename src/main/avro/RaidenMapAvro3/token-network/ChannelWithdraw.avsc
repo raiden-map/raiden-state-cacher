@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "ChannelWithdraw",
+    "fields": [
+        {
+            "name": "channelEvent",
+            "type": "io.raidenmap.event.channel.ChannelEvent"
+        },
+        {
+            "name": "participant",
+            "type": "long"
+        },
+        {
+            "name": "totalWithdraw",
+            "type": "int"
+        }
+    ]
+}

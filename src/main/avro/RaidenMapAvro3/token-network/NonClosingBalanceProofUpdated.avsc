@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "NonClosingBalanceProofUpdated",
+    "fields": [
+        {
+            "name": "channelEvent",
+            "type": "io.raidenmap.event.channel.ChannelEvent"
+        },
+        {
+            "name": "closingParticipant",
+            "type": "string"
+        },
+        {
+            "name": "nonce",
+            "type": "int"
+        }
+    ]
+}
