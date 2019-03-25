@@ -1,0 +1,19 @@
+{
+    "type": "record",
+    "name": "Metadata",
+    "namespace": "io.raidenmap.event",
+    "fields": [
+        {
+            "name": "blockNumber",
+            "type": "long"
+        },
+        {
+            "name": "blockTimestamp",
+            "type": "long"
+        },
+        {
+            "name": "eventTimestamp",
+            "type": "long"
+        }
+    ]
+}
