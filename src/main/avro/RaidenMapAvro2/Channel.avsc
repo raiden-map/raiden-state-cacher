@@ -1,0 +1,31 @@
+{
+    "name": "Channel",
+    "type": "record",
+    "namespace": "io.raidenmap.statecacher",
+    "fields": [
+        {
+            "name": "channelId",
+            "type": "int"
+        },
+        {
+            "name": "state",
+            "type": "string"
+        },
+        {
+            "name": "lastStateChangeBlock",
+            "type": "long"
+        },
+        {
+            "name": "settleTimeout",
+            "type": "long"
+        },
+        {
+            "name": "firstParticipant",
+            "type": "io.raidenmap.statecacher.Participant"
+        },
+        {
+            "name": "secondParticipant",
+            "type": "io.raidenmap.statecacher.Participant"
+        }
+    ]
+}
