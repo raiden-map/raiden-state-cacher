@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event.tokenNetwork",
+    "type": "record",
+    "name": "TokenNetworkCreated",
+    "fields": [
+        {
+            "name": "metadata",
+            "type": "io.raidenmap.event.Metadata"
+        },
+        {
+            "name": "tokenNetworkAddress",
+            "type": "string"
+        },
+        {
+            "name": "tokenAddress",
+            "type": "string"
+        }
+    ]
+}
