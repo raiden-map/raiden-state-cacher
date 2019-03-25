@@ -1,0 +1,58 @@
+{
+    "name": "TokenNetworkAggregate",
+    "type": "record",
+    "namespace": "io.raidenmap.statecacher",
+    "fields": [
+        {
+            "name": "token",
+            "type": "io.raidenmap.statecacher.Token"
+        },
+        {
+            "name": "channels",
+            "type": {
+                "type": "array",
+                "items": "io.raidenmap.statecacher.Channel"
+            }
+        },
+        {
+            "name": "tokenNetworkAddress",
+            "type": "string"
+        },
+        {
+            "name": "timestamp",
+            "type": "long"
+        },
+        {
+            "name": "channelsCount",
+            "type": "int"
+        },
+        {
+            "name": "openChannels",
+            "type": "int"
+        },
+        {
+            "name": "closedChannels",
+            "type": "int"
+        },
+        {
+            "name": "settledChannels",
+            "type": "int"
+        },
+        {
+            "name": "avgChannelDeposit",
+            "type": "int"
+        },
+        {
+            "name": "totalDeposit",
+            "type": "long"
+        },
+        {
+            "name": "users",
+            "type": "int"
+        },
+        {
+            "name": "blockNumber",
+            "type": "long"
+        }
+    ]
+}
