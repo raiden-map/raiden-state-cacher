@@ -1,0 +1,38 @@
+{
+    "namespace": "io.raidenmap.statecacher",
+    "type": "record",
+    "name": "RaidenAggregate",
+    "fields": [
+        {
+            "name": "tokenNetworksCount",
+            "type": "int"
+        },
+        {
+            "name": "userCount",
+            "type": "int"
+        },
+        {
+            "name": "timestamp",
+            "type": "long"
+        },
+        {
+            "name": "blockNumber",
+            "type": "long"
+        },
+        {
+            "name": "btcValue",
+            "type": "int"
+        },
+        {
+            "name": "ethValue",
+            "type": "int"
+        },
+        {
+            "name": "tokenNetworksChanges",
+            "type": {
+                "type": "array",
+                "items": "io.raidenmap.statecacher.TokenNetworkAggregate"
+            }
+        }
+    ]
+}
