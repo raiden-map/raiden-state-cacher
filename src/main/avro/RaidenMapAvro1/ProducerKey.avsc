@@ -1,0 +1,11 @@
+{
+    "namespace": "io.raidenmap.producerKey",
+    "type": "record",
+    "name": "ProducerKey",
+    "fields": [
+        {
+            "name": "txHash",
+            "type": "string"
+        }
+    ]
+}
