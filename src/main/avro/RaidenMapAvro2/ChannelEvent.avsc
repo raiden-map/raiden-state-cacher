@@ -1,0 +1,19 @@
+{
+    "namespace": "io.raidenmap.event.channel",
+    "type": "record",
+    "name": "ChannelEvent",
+    "fields": [
+        {
+            "name": "metadata",
+            "type": "io.raidenmap.event.Metadata"
+        },
+        {
+            "name": "tokenNetworkAddress",
+            "type": "string"
+        },
+        {
+            "name": "id",
+            "type": "int"
+        }
+    ]
+}
