@@ -1,0 +1,23 @@
+{
+    "name": "Participant",
+    "type": "record",
+    "namespace": "io.raidenmap.statecacher",
+    "fields": [
+        {
+            "name": "ethAddress",
+            "type": "string"
+        },
+        {
+            "name": "deposit",
+            "type": "long"
+        },
+        {
+            "name": "withdrawnAmount",
+            "type": "long"
+        },
+        {
+            "name": "wantsToClose",
+            "type": "boolean"
+        }
+    ]
+}
