@@ -1,0 +1,67 @@
+{
+    "name": "Token",
+    "type": "record",
+    "namespace": "io.raidenmap.statecacher",
+    "fields": [
+      {
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "name": "tag",
+        "type": "string"
+      },
+      {
+        "name": "imageUrl",
+        "type": "string"
+      },
+      {
+        "name": "valueUsd",
+        "type": "double"
+      },
+      {
+        "name": "valueEth",
+        "type": "double"
+      },
+      {
+        "name": "valueBtc",
+        "type": "double"
+      },
+      {
+        "name": "priceChangeDayUsd",
+        "type": "float"
+      },
+      {
+        "name": "priceChangeWeekUsd",
+        "type": "float"
+      },
+      {
+        "name": "priceChangeDayEth",
+        "type": "float"
+      },
+      {
+        "name": "priceChangeWeekEth",
+        "type": "float"
+      },
+      {
+        "name": "priceChangeDayBtc",
+        "type": "float"
+      },
+      {
+        "name": "priceChangeWeekBtc",
+        "type": "float"
+      },
+      {
+        "name": "marketCap",
+        "type": "double"
+      },
+      {
+        "name": "volume",
+        "type": "double"
+      },
+      {
+        "name": "timestamp",
+        "type": "long"
+      }
+    ]
+  }
