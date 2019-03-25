@@ -1,0 +1,40 @@
+{
+    "namespace": "io.raidenmap.statecacher",
+    "type": "record",
+    "name": "RaidenState",
+    "fields": [
+        {
+            "name": "states",
+            "type": {
+                "type": "array",
+                "items": "io.raidenmap.statecacher.RaidenAggregate"
+            }
+        },
+        {
+            "name": "tokenNetworks",
+            "type": {
+                "type": "array",
+                "items": "io.raidenmap.statecacher.TokenNetworkAggregate"
+            }
+        },
+        {
+            "name": "endpoints",
+            "type": {
+                "type": "array",
+                "items": "io.raidenmap.Endpoint"
+            }
+        },
+        {
+            "name": "blockNumber",
+            "type": "long"
+        },
+        {
+            "name": "timestamp",
+            "type": "long"
+        },
+        {
+            "name": "twitter",
+            "type": "string"
+        }
+    ]
+}
