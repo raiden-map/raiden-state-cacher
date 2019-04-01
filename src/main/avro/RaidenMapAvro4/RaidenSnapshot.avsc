@@ -1,20 +1,20 @@
 {
-    "namespace": "io.raidenmap.statecacher",
+    "name": "RaidenSnapshot",
     "type": "record",
-    "name": "RaidenState",
+    "namespace": "io.raidenmap.statecacher",
     "fields": [
         {
             "name": "states",
             "type": {
                 "type": "array",
-                "items": "io.raidenmap.statecacher.RaidenAggregate"
+                "items": "io.raidenmap.statecacher.RaidenDelta"
             }
         },
         {
             "name": "tokenNetworks",
             "type": {
                 "type": "array",
-                "items": "io.raidenmap.statecacher.TokenNetworkAggregate"
+                "items": "io.raidenmap.statecacher.TokenNetworkDelta"
             }
         },
         {

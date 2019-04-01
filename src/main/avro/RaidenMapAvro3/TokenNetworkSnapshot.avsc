@@ -1,5 +1,5 @@
 {
-    "name": "TokenNetworkState",
+    "name": "TokenNetworkSnapshot",
     "type": "record",
     "namespace": "io.raidenmap.statecacher",
     "fields": [
@@ -8,10 +8,10 @@
             "type": "string"
         },
         {
-            "name": "tokenNetworkStates",
+            "name": "tokenNetworkDeltas",
             "type": {
                 "type": "array",
-                "items": "io.raidenmap.statecacher.TokenNetworkAggregate"
+                "items": "io.raidenmap.statecacher.TokenNetworkDelta"
             }
         },
         {

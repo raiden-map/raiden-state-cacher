@@ -1,5 +1,5 @@
 {
-    "name": "TokenNetworkAggregate",
+    "name": "TokenNetworkDelta",
     "type": "record",
     "namespace": "io.raidenmap.statecacher",
     "fields": [

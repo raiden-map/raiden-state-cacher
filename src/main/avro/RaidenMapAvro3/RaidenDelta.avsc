@@ -1,7 +1,7 @@
 {
     "namespace": "io.raidenmap.statecacher",
     "type": "record",
-    "name": "RaidenAggregate",
+    "name": "RaidenDelta",
     "fields": [
         {
             "name": "tokenNetworksCount",
@@ -31,7 +31,7 @@
             "name": "tokenNetworksChanges",
             "type": {
                 "type": "array",
-                "items": "io.raidenmap.statecacher.TokenNetworkAggregate"
+                "items": "io.raidenmap.statecacher.TokenNetworkDelta"
             }
         }
     ]
