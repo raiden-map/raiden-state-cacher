@@ -14,18 +14,19 @@ import java.util.Map;
 
 public class KStreamSpecificAvroSerde {
 
-    public KStreamSpecificAvroSerde(String schemaRegistryURL) {
+    public KStreamSpecificAvroSerde(StreamsBuilder builder, String schemaRegistryURL) {
+        this.builder = builder;
         serdeConfig = Collections.singletonMap("schema.registry.url", schemaRegistryURL);
         savedSerde = new HashMap<>();
     }
-
-    public KStream<?, ?> createKStream(StreamsBuilder builder, String topicName, Class<?> keyType, Class<?> valueType) {
+    //FROM Class<?> keyType, Class<?> valueType TO Pair<Class<?>, Class<?> >
+    public KStream<?, ?> createKStream(String topicName, Class<?> keyType, Class<?> valueType) {
         Serde<?> keySerde = createSerde(keyType, true);
         Serde<?> valueSerde = createSerde(valueType, false);
         return builder.stream(topicName, Consumed.with(keySerde, valueSerde));
     }
 
-    public KTable<?, ?> createKTable(StreamsBuilder builder, String topicName, Class<?> keyType, Class<?> valueType) {
+    public KTable<?, ?> createKTable( String topicName, Class<?> keyType, Class<?> valueType) {
         Serde<?> keySerde = createSerde(keyType, true);
         Serde<?> valueSerde = createSerde(valueType, false);
         return builder.table(topicName, Consumed.with(keySerde, valueSerde));
@@ -38,10 +39,11 @@ public class KStreamSpecificAvroSerde {
         return specificSerde;
     }
 
-    public Serde<?> getSerde( Class<?> serdeType){
+    public Serde<?> getSerde(Class<?> serdeType) {
         return savedSerde.get(serdeType);
     }
 
     private Map<String, String> serdeConfig;
-    private Map< Class, Serde> savedSerde;
+    private Map<Class, Serde<?>> savedSerde;
+    private StreamsBuilder builder;
 }
