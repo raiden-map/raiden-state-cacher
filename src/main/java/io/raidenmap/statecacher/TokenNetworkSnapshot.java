@@ -12,23 +12,23 @@ import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 3438960006955601949L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkState\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"tokenNetworkStates\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkAggregate\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]}}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"int\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}},{\"name\":\"creationBlockNumber\",\"type\":\"long\"},{\"name\":\"creationTimestamp\",\"type\":\"long\"},{\"name\":\"stateBlockNumber\",\"type\":\"long\"},{\"name\":\"stateTimestamp\",\"type\":\"long\"},{\"name\":\"token\",\"type\":\"Token\"},{\"name\":\"avgChannelDeposit\",\"type\":\"long\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":\"Channel\"}}]}");
+public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -6465652065163054074L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkSnapshot\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"tokenNetworkDeltas\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]}}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"int\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}},{\"name\":\"creationBlockNumber\",\"type\":\"long\"},{\"name\":\"creationTimestamp\",\"type\":\"long\"},{\"name\":\"stateBlockNumber\",\"type\":\"long\"},{\"name\":\"stateTimestamp\",\"type\":\"long\"},{\"name\":\"token\",\"type\":\"Token\"},{\"name\":\"avgChannelDeposit\",\"type\":\"long\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":\"Channel\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<TokenNetworkState> ENCODER =
-      new BinaryMessageEncoder<TokenNetworkState>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<TokenNetworkSnapshot> ENCODER =
+      new BinaryMessageEncoder<TokenNetworkSnapshot>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<TokenNetworkState> DECODER =
-      new BinaryMessageDecoder<TokenNetworkState>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<TokenNetworkSnapshot> DECODER =
+      new BinaryMessageDecoder<TokenNetworkSnapshot>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<TokenNetworkState> getDecoder() {
+  public static BinaryMessageDecoder<TokenNetworkSnapshot> getDecoder() {
     return DECODER;
   }
 
@@ -36,23 +36,23 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<TokenNetworkState> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<TokenNetworkState>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<TokenNetworkSnapshot> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<TokenNetworkSnapshot>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this TokenNetworkState to a ByteBuffer. */
+  /** Serializes this TokenNetworkSnapshot to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a TokenNetworkState from a ByteBuffer. */
-  public static TokenNetworkState fromByteBuffer(
+  /** Deserializes a TokenNetworkSnapshot from a ByteBuffer. */
+  public static TokenNetworkSnapshot fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
 
   @Deprecated public java.lang.CharSequence tokenNetworkAddress;
-  @Deprecated public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworkStates;
+  @Deprecated public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworkDeltas;
   @Deprecated public long creationBlockNumber;
   @Deprecated public long creationTimestamp;
   @Deprecated public long stateBlockNumber;
@@ -69,12 +69,12 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public TokenNetworkState() {}
+  public TokenNetworkSnapshot() {}
 
   /**
    * All-args constructor.
    * @param tokenNetworkAddress The new value for tokenNetworkAddress
-   * @param tokenNetworkStates The new value for tokenNetworkStates
+   * @param tokenNetworkDeltas The new value for tokenNetworkDeltas
    * @param creationBlockNumber The new value for creationBlockNumber
    * @param creationTimestamp The new value for creationTimestamp
    * @param stateBlockNumber The new value for stateBlockNumber
@@ -86,9 +86,9 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
    * @param blockNumber The new value for blockNumber
    * @param channels The new value for channels
    */
-  public TokenNetworkState(java.lang.CharSequence tokenNetworkAddress, java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworkStates, java.lang.Long creationBlockNumber, java.lang.Long creationTimestamp, java.lang.Long stateBlockNumber, java.lang.Long stateTimestamp, io.raidenmap.statecacher.Token token, java.lang.Long avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber, java.util.List<io.raidenmap.statecacher.Channel> channels) {
+  public TokenNetworkSnapshot(java.lang.CharSequence tokenNetworkAddress, java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworkDeltas, java.lang.Long creationBlockNumber, java.lang.Long creationTimestamp, java.lang.Long stateBlockNumber, java.lang.Long stateTimestamp, io.raidenmap.statecacher.Token token, java.lang.Long avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber, java.util.List<io.raidenmap.statecacher.Channel> channels) {
     this.tokenNetworkAddress = tokenNetworkAddress;
-    this.tokenNetworkStates = tokenNetworkStates;
+    this.tokenNetworkDeltas = tokenNetworkDeltas;
     this.creationBlockNumber = creationBlockNumber;
     this.creationTimestamp = creationTimestamp;
     this.stateBlockNumber = stateBlockNumber;
@@ -106,7 +106,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return tokenNetworkAddress;
-    case 1: return tokenNetworkStates;
+    case 1: return tokenNetworkDeltas;
     case 2: return creationBlockNumber;
     case 3: return creationTimestamp;
     case 4: return stateBlockNumber;
@@ -126,7 +126,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: tokenNetworkAddress = (java.lang.CharSequence)value$; break;
-    case 1: tokenNetworkStates = (java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate>)value$; break;
+    case 1: tokenNetworkDeltas = (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>)value$; break;
     case 2: creationBlockNumber = (java.lang.Long)value$; break;
     case 3: creationTimestamp = (java.lang.Long)value$; break;
     case 4: stateBlockNumber = (java.lang.Long)value$; break;
@@ -158,19 +158,19 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   }
 
   /**
-   * Gets the value of the 'tokenNetworkStates' field.
-   * @return The value of the 'tokenNetworkStates' field.
+   * Gets the value of the 'tokenNetworkDeltas' field.
+   * @return The value of the 'tokenNetworkDeltas' field.
    */
-  public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> getTokenNetworkStates() {
-    return tokenNetworkStates;
+  public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworkDeltas() {
+    return tokenNetworkDeltas;
   }
 
   /**
-   * Sets the value of the 'tokenNetworkStates' field.
+   * Sets the value of the 'tokenNetworkDeltas' field.
    * @param value the value to set.
    */
-  public void setTokenNetworkStates(java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> value) {
-    this.tokenNetworkStates = value;
+  public void setTokenNetworkDeltas(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
+    this.tokenNetworkDeltas = value;
   }
 
   /**
@@ -334,39 +334,39 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   }
 
   /**
-   * Creates a new TokenNetworkState RecordBuilder.
-   * @return A new TokenNetworkState RecordBuilder
+   * Creates a new TokenNetworkSnapshot RecordBuilder.
+   * @return A new TokenNetworkSnapshot RecordBuilder
    */
-  public static io.raidenmap.statecacher.TokenNetworkState.Builder newBuilder() {
-    return new io.raidenmap.statecacher.TokenNetworkState.Builder();
+  public static io.raidenmap.statecacher.TokenNetworkSnapshot.Builder newBuilder() {
+    return new io.raidenmap.statecacher.TokenNetworkSnapshot.Builder();
   }
 
   /**
-   * Creates a new TokenNetworkState RecordBuilder by copying an existing Builder.
+   * Creates a new TokenNetworkSnapshot RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new TokenNetworkState RecordBuilder
+   * @return A new TokenNetworkSnapshot RecordBuilder
    */
-  public static io.raidenmap.statecacher.TokenNetworkState.Builder newBuilder(io.raidenmap.statecacher.TokenNetworkState.Builder other) {
-    return new io.raidenmap.statecacher.TokenNetworkState.Builder(other);
+  public static io.raidenmap.statecacher.TokenNetworkSnapshot.Builder newBuilder(io.raidenmap.statecacher.TokenNetworkSnapshot.Builder other) {
+    return new io.raidenmap.statecacher.TokenNetworkSnapshot.Builder(other);
   }
 
   /**
-   * Creates a new TokenNetworkState RecordBuilder by copying an existing TokenNetworkState instance.
+   * Creates a new TokenNetworkSnapshot RecordBuilder by copying an existing TokenNetworkSnapshot instance.
    * @param other The existing instance to copy.
-   * @return A new TokenNetworkState RecordBuilder
+   * @return A new TokenNetworkSnapshot RecordBuilder
    */
-  public static io.raidenmap.statecacher.TokenNetworkState.Builder newBuilder(io.raidenmap.statecacher.TokenNetworkState other) {
-    return new io.raidenmap.statecacher.TokenNetworkState.Builder(other);
+  public static io.raidenmap.statecacher.TokenNetworkSnapshot.Builder newBuilder(io.raidenmap.statecacher.TokenNetworkSnapshot other) {
+    return new io.raidenmap.statecacher.TokenNetworkSnapshot.Builder(other);
   }
 
   /**
-   * RecordBuilder for TokenNetworkState instances.
+   * RecordBuilder for TokenNetworkSnapshot instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TokenNetworkState>
-    implements org.apache.avro.data.RecordBuilder<TokenNetworkState> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<TokenNetworkSnapshot>
+    implements org.apache.avro.data.RecordBuilder<TokenNetworkSnapshot> {
 
     private java.lang.CharSequence tokenNetworkAddress;
-    private java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworkStates;
+    private java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworkDeltas;
     private long creationBlockNumber;
     private long creationTimestamp;
     private long stateBlockNumber;
@@ -388,14 +388,14 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(io.raidenmap.statecacher.TokenNetworkState.Builder other) {
+    private Builder(io.raidenmap.statecacher.TokenNetworkSnapshot.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.tokenNetworkAddress)) {
         this.tokenNetworkAddress = data().deepCopy(fields()[0].schema(), other.tokenNetworkAddress);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.tokenNetworkStates)) {
-        this.tokenNetworkStates = data().deepCopy(fields()[1].schema(), other.tokenNetworkStates);
+      if (isValidValue(fields()[1], other.tokenNetworkDeltas)) {
+        this.tokenNetworkDeltas = data().deepCopy(fields()[1].schema(), other.tokenNetworkDeltas);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.creationBlockNumber)) {
@@ -444,17 +444,17 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
     }
 
     /**
-     * Creates a Builder by copying an existing TokenNetworkState instance
+     * Creates a Builder by copying an existing TokenNetworkSnapshot instance
      * @param other The existing instance to copy.
      */
-    private Builder(io.raidenmap.statecacher.TokenNetworkState other) {
+    private Builder(io.raidenmap.statecacher.TokenNetworkSnapshot other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.tokenNetworkAddress)) {
         this.tokenNetworkAddress = data().deepCopy(fields()[0].schema(), other.tokenNetworkAddress);
         fieldSetFlags()[0] = true;
       }
-      if (isValidValue(fields()[1], other.tokenNetworkStates)) {
-        this.tokenNetworkStates = data().deepCopy(fields()[1].schema(), other.tokenNetworkStates);
+      if (isValidValue(fields()[1], other.tokenNetworkDeltas)) {
+        this.tokenNetworkDeltas = data().deepCopy(fields()[1].schema(), other.tokenNetworkDeltas);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.creationBlockNumber)) {
@@ -513,7 +513,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'tokenNetworkAddress'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setTokenNetworkAddress(java.lang.CharSequence value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setTokenNetworkAddress(java.lang.CharSequence value) {
       validate(fields()[0], value);
       this.tokenNetworkAddress = value;
       fieldSetFlags()[0] = true;
@@ -533,47 +533,47 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'tokenNetworkAddress' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearTokenNetworkAddress() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearTokenNetworkAddress() {
       tokenNetworkAddress = null;
       fieldSetFlags()[0] = false;
       return this;
     }
 
     /**
-      * Gets the value of the 'tokenNetworkStates' field.
+      * Gets the value of the 'tokenNetworkDeltas' field.
       * @return The value.
       */
-    public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> getTokenNetworkStates() {
-      return tokenNetworkStates;
+    public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworkDeltas() {
+      return tokenNetworkDeltas;
     }
 
     /**
-      * Sets the value of the 'tokenNetworkStates' field.
-      * @param value The value of 'tokenNetworkStates'.
+      * Sets the value of the 'tokenNetworkDeltas' field.
+      * @param value The value of 'tokenNetworkDeltas'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setTokenNetworkStates(java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setTokenNetworkDeltas(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
       validate(fields()[1], value);
-      this.tokenNetworkStates = value;
+      this.tokenNetworkDeltas = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'tokenNetworkStates' field has been set.
-      * @return True if the 'tokenNetworkStates' field has been set, false otherwise.
+      * Checks whether the 'tokenNetworkDeltas' field has been set.
+      * @return True if the 'tokenNetworkDeltas' field has been set, false otherwise.
       */
-    public boolean hasTokenNetworkStates() {
+    public boolean hasTokenNetworkDeltas() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'tokenNetworkStates' field.
+      * Clears the value of the 'tokenNetworkDeltas' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearTokenNetworkStates() {
-      tokenNetworkStates = null;
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearTokenNetworkDeltas() {
+      tokenNetworkDeltas = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -591,7 +591,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'creationBlockNumber'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setCreationBlockNumber(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setCreationBlockNumber(long value) {
       validate(fields()[2], value);
       this.creationBlockNumber = value;
       fieldSetFlags()[2] = true;
@@ -611,7 +611,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'creationBlockNumber' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearCreationBlockNumber() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearCreationBlockNumber() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -629,7 +629,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'creationTimestamp'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setCreationTimestamp(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setCreationTimestamp(long value) {
       validate(fields()[3], value);
       this.creationTimestamp = value;
       fieldSetFlags()[3] = true;
@@ -649,7 +649,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'creationTimestamp' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearCreationTimestamp() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearCreationTimestamp() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -667,7 +667,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'stateBlockNumber'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setStateBlockNumber(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setStateBlockNumber(long value) {
       validate(fields()[4], value);
       this.stateBlockNumber = value;
       fieldSetFlags()[4] = true;
@@ -687,7 +687,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'stateBlockNumber' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearStateBlockNumber() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearStateBlockNumber() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -705,7 +705,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'stateTimestamp'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setStateTimestamp(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setStateTimestamp(long value) {
       validate(fields()[5], value);
       this.stateTimestamp = value;
       fieldSetFlags()[5] = true;
@@ -725,7 +725,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'stateTimestamp' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearStateTimestamp() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearStateTimestamp() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -743,7 +743,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'token'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setToken(io.raidenmap.statecacher.Token value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setToken(io.raidenmap.statecacher.Token value) {
       validate(fields()[6], value);
       this.tokenBuilder = null;
       this.token = value;
@@ -779,7 +779,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setTokenBuilder(io.raidenmap.statecacher.Token.Builder value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setTokenBuilder(io.raidenmap.statecacher.Token.Builder value) {
       clearToken();
       tokenBuilder = value;
       return this;
@@ -797,7 +797,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'token' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearToken() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearToken() {
       token = null;
       tokenBuilder = null;
       fieldSetFlags()[6] = false;
@@ -817,7 +817,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'avgChannelDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setAvgChannelDeposit(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setAvgChannelDeposit(long value) {
       validate(fields()[7], value);
       this.avgChannelDeposit = value;
       fieldSetFlags()[7] = true;
@@ -837,7 +837,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'avgChannelDeposit' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearAvgChannelDeposit() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearAvgChannelDeposit() {
       fieldSetFlags()[7] = false;
       return this;
     }
@@ -855,7 +855,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'totalDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setTotalDeposit(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setTotalDeposit(long value) {
       validate(fields()[8], value);
       this.totalDeposit = value;
       fieldSetFlags()[8] = true;
@@ -875,7 +875,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'totalDeposit' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearTotalDeposit() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearTotalDeposit() {
       fieldSetFlags()[8] = false;
       return this;
     }
@@ -893,7 +893,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'users'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setUsers(int value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setUsers(int value) {
       validate(fields()[9], value);
       this.users = value;
       fieldSetFlags()[9] = true;
@@ -913,7 +913,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'users' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearUsers() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearUsers() {
       fieldSetFlags()[9] = false;
       return this;
     }
@@ -931,7 +931,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'blockNumber'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setBlockNumber(long value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setBlockNumber(long value) {
       validate(fields()[10], value);
       this.blockNumber = value;
       fieldSetFlags()[10] = true;
@@ -951,7 +951,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'blockNumber' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearBlockNumber() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearBlockNumber() {
       fieldSetFlags()[10] = false;
       return this;
     }
@@ -969,7 +969,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'channels'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
       validate(fields()[11], value);
       this.channels = value;
       fieldSetFlags()[11] = true;
@@ -989,7 +989,7 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'channels' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkState.Builder clearChannels() {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder clearChannels() {
       channels = null;
       fieldSetFlags()[11] = false;
       return this;
@@ -997,11 +997,11 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
 
     @Override
     @SuppressWarnings("unchecked")
-    public TokenNetworkState build() {
+    public TokenNetworkSnapshot build() {
       try {
-        TokenNetworkState record = new TokenNetworkState();
+        TokenNetworkSnapshot record = new TokenNetworkSnapshot();
         record.tokenNetworkAddress = fieldSetFlags()[0] ? this.tokenNetworkAddress : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.tokenNetworkStates = fieldSetFlags()[1] ? this.tokenNetworkStates : (java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate>) defaultValue(fields()[1]);
+        record.tokenNetworkDeltas = fieldSetFlags()[1] ? this.tokenNetworkDeltas : (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>) defaultValue(fields()[1]);
         record.creationBlockNumber = fieldSetFlags()[2] ? this.creationBlockNumber : (java.lang.Long) defaultValue(fields()[2]);
         record.creationTimestamp = fieldSetFlags()[3] ? this.creationTimestamp : (java.lang.Long) defaultValue(fields()[3]);
         record.stateBlockNumber = fieldSetFlags()[4] ? this.stateBlockNumber : (java.lang.Long) defaultValue(fields()[4]);
@@ -1024,8 +1024,8 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<TokenNetworkState>
-    WRITER$ = (org.apache.avro.io.DatumWriter<TokenNetworkState>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<TokenNetworkSnapshot>
+    WRITER$ = (org.apache.avro.io.DatumWriter<TokenNetworkSnapshot>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -1033,8 +1033,8 @@ public class TokenNetworkState extends org.apache.avro.specific.SpecificRecordBa
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<TokenNetworkState>
-    READER$ = (org.apache.avro.io.DatumReader<TokenNetworkState>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<TokenNetworkSnapshot>
+    READER$ = (org.apache.avro.io.DatumReader<TokenNetworkSnapshot>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {

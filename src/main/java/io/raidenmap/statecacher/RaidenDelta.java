@@ -12,23 +12,23 @@ import org.apache.avro.message.SchemaStore;
 
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
-public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -4444679281379259953L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RaidenAggregate\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworksCount\",\"type\":\"int\"},{\"name\":\"userCount\",\"type\":\"int\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"btcValue\",\"type\":\"int\"},{\"name\":\"ethValue\",\"type\":\"int\"},{\"name\":\"tokenNetworksChanges\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkAggregate\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]}}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"int\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}}]}");
+public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
+  private static final long serialVersionUID = -5624903804620818816L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RaidenDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworksCount\",\"type\":\"int\"},{\"name\":\"userCount\",\"type\":\"int\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"btcValue\",\"type\":\"int\"},{\"name\":\"ethValue\",\"type\":\"int\"},{\"name\":\"tokenNetworksChanges\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]}}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"int\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
 
-  private static final BinaryMessageEncoder<RaidenAggregate> ENCODER =
-      new BinaryMessageEncoder<RaidenAggregate>(MODEL$, SCHEMA$);
+  private static final BinaryMessageEncoder<RaidenDelta> ENCODER =
+      new BinaryMessageEncoder<RaidenDelta>(MODEL$, SCHEMA$);
 
-  private static final BinaryMessageDecoder<RaidenAggregate> DECODER =
-      new BinaryMessageDecoder<RaidenAggregate>(MODEL$, SCHEMA$);
+  private static final BinaryMessageDecoder<RaidenDelta> DECODER =
+      new BinaryMessageDecoder<RaidenDelta>(MODEL$, SCHEMA$);
 
   /**
    * Return the BinaryMessageDecoder instance used by this class.
    */
-  public static BinaryMessageDecoder<RaidenAggregate> getDecoder() {
+  public static BinaryMessageDecoder<RaidenDelta> getDecoder() {
     return DECODER;
   }
 
@@ -36,17 +36,17 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
    * Create a new BinaryMessageDecoder instance for this class that uses the specified {@link SchemaStore}.
    * @param resolver a {@link SchemaStore} used to find schemas by fingerprint
    */
-  public static BinaryMessageDecoder<RaidenAggregate> createDecoder(SchemaStore resolver) {
-    return new BinaryMessageDecoder<RaidenAggregate>(MODEL$, SCHEMA$, resolver);
+  public static BinaryMessageDecoder<RaidenDelta> createDecoder(SchemaStore resolver) {
+    return new BinaryMessageDecoder<RaidenDelta>(MODEL$, SCHEMA$, resolver);
   }
 
-  /** Serializes this RaidenAggregate to a ByteBuffer. */
+  /** Serializes this RaidenDelta to a ByteBuffer. */
   public java.nio.ByteBuffer toByteBuffer() throws java.io.IOException {
     return ENCODER.encode(this);
   }
 
-  /** Deserializes a RaidenAggregate from a ByteBuffer. */
-  public static RaidenAggregate fromByteBuffer(
+  /** Deserializes a RaidenDelta from a ByteBuffer. */
+  public static RaidenDelta fromByteBuffer(
       java.nio.ByteBuffer b) throws java.io.IOException {
     return DECODER.decode(b);
   }
@@ -57,14 +57,14 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
   @Deprecated public long blockNumber;
   @Deprecated public int btcValue;
   @Deprecated public int ethValue;
-  @Deprecated public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworksChanges;
+  @Deprecated public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
 
   /**
    * Default constructor.  Note that this does not initialize fields
    * to their default values from the schema.  If that is desired then
    * one should use <code>newBuilder()</code>.
    */
-  public RaidenAggregate() {}
+  public RaidenDelta() {}
 
   /**
    * All-args constructor.
@@ -76,7 +76,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
    * @param ethValue The new value for ethValue
    * @param tokenNetworksChanges The new value for tokenNetworksChanges
    */
-  public RaidenAggregate(java.lang.Integer tokenNetworksCount, java.lang.Integer userCount, java.lang.Long timestamp, java.lang.Long blockNumber, java.lang.Integer btcValue, java.lang.Integer ethValue, java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworksChanges) {
+  public RaidenDelta(java.lang.Integer tokenNetworksCount, java.lang.Integer userCount, java.lang.Long timestamp, java.lang.Long blockNumber, java.lang.Integer btcValue, java.lang.Integer ethValue, java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges) {
     this.tokenNetworksCount = tokenNetworksCount;
     this.userCount = userCount;
     this.timestamp = timestamp;
@@ -111,7 +111,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
     case 3: blockNumber = (java.lang.Long)value$; break;
     case 4: btcValue = (java.lang.Integer)value$; break;
     case 5: ethValue = (java.lang.Integer)value$; break;
-    case 6: tokenNetworksChanges = (java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate>)value$; break;
+    case 6: tokenNetworksChanges = (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -216,7 +216,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'tokenNetworksChanges' field.
    * @return The value of the 'tokenNetworksChanges' field.
    */
-  public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> getTokenNetworksChanges() {
+  public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
     return tokenNetworksChanges;
   }
 
@@ -224,41 +224,41 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'tokenNetworksChanges' field.
    * @param value the value to set.
    */
-  public void setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> value) {
+  public void setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
     this.tokenNetworksChanges = value;
   }
 
   /**
-   * Creates a new RaidenAggregate RecordBuilder.
-   * @return A new RaidenAggregate RecordBuilder
+   * Creates a new RaidenDelta RecordBuilder.
+   * @return A new RaidenDelta RecordBuilder
    */
-  public static io.raidenmap.statecacher.RaidenAggregate.Builder newBuilder() {
-    return new io.raidenmap.statecacher.RaidenAggregate.Builder();
+  public static io.raidenmap.statecacher.RaidenDelta.Builder newBuilder() {
+    return new io.raidenmap.statecacher.RaidenDelta.Builder();
   }
 
   /**
-   * Creates a new RaidenAggregate RecordBuilder by copying an existing Builder.
+   * Creates a new RaidenDelta RecordBuilder by copying an existing Builder.
    * @param other The existing builder to copy.
-   * @return A new RaidenAggregate RecordBuilder
+   * @return A new RaidenDelta RecordBuilder
    */
-  public static io.raidenmap.statecacher.RaidenAggregate.Builder newBuilder(io.raidenmap.statecacher.RaidenAggregate.Builder other) {
-    return new io.raidenmap.statecacher.RaidenAggregate.Builder(other);
+  public static io.raidenmap.statecacher.RaidenDelta.Builder newBuilder(io.raidenmap.statecacher.RaidenDelta.Builder other) {
+    return new io.raidenmap.statecacher.RaidenDelta.Builder(other);
   }
 
   /**
-   * Creates a new RaidenAggregate RecordBuilder by copying an existing RaidenAggregate instance.
+   * Creates a new RaidenDelta RecordBuilder by copying an existing RaidenDelta instance.
    * @param other The existing instance to copy.
-   * @return A new RaidenAggregate RecordBuilder
+   * @return A new RaidenDelta RecordBuilder
    */
-  public static io.raidenmap.statecacher.RaidenAggregate.Builder newBuilder(io.raidenmap.statecacher.RaidenAggregate other) {
-    return new io.raidenmap.statecacher.RaidenAggregate.Builder(other);
+  public static io.raidenmap.statecacher.RaidenDelta.Builder newBuilder(io.raidenmap.statecacher.RaidenDelta other) {
+    return new io.raidenmap.statecacher.RaidenDelta.Builder(other);
   }
 
   /**
-   * RecordBuilder for RaidenAggregate instances.
+   * RecordBuilder for RaidenDelta instances.
    */
-  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RaidenAggregate>
-    implements org.apache.avro.data.RecordBuilder<RaidenAggregate> {
+  public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<RaidenDelta>
+    implements org.apache.avro.data.RecordBuilder<RaidenDelta> {
 
     private int tokenNetworksCount;
     private int userCount;
@@ -266,7 +266,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
     private long blockNumber;
     private int btcValue;
     private int ethValue;
-    private java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> tokenNetworksChanges;
+    private java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
 
     /** Creates a new Builder */
     private Builder() {
@@ -277,7 +277,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(io.raidenmap.statecacher.RaidenAggregate.Builder other) {
+    private Builder(io.raidenmap.statecacher.RaidenDelta.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.tokenNetworksCount)) {
         this.tokenNetworksCount = data().deepCopy(fields()[0].schema(), other.tokenNetworksCount);
@@ -310,10 +310,10 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
     }
 
     /**
-     * Creates a Builder by copying an existing RaidenAggregate instance
+     * Creates a Builder by copying an existing RaidenDelta instance
      * @param other The existing instance to copy.
      */
-    private Builder(io.raidenmap.statecacher.RaidenAggregate other) {
+    private Builder(io.raidenmap.statecacher.RaidenDelta other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.tokenNetworksCount)) {
         this.tokenNetworksCount = data().deepCopy(fields()[0].schema(), other.tokenNetworksCount);
@@ -358,7 +358,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'tokenNetworksCount'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setTokenNetworksCount(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setTokenNetworksCount(int value) {
       validate(fields()[0], value);
       this.tokenNetworksCount = value;
       fieldSetFlags()[0] = true;
@@ -378,7 +378,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'tokenNetworksCount' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearTokenNetworksCount() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearTokenNetworksCount() {
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -396,7 +396,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'userCount'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setUserCount(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setUserCount(int value) {
       validate(fields()[1], value);
       this.userCount = value;
       fieldSetFlags()[1] = true;
@@ -416,7 +416,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'userCount' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearUserCount() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearUserCount() {
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -434,7 +434,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'timestamp'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setTimestamp(long value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setTimestamp(long value) {
       validate(fields()[2], value);
       this.timestamp = value;
       fieldSetFlags()[2] = true;
@@ -454,7 +454,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'timestamp' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearTimestamp() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearTimestamp() {
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -472,7 +472,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'blockNumber'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setBlockNumber(long value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setBlockNumber(long value) {
       validate(fields()[3], value);
       this.blockNumber = value;
       fieldSetFlags()[3] = true;
@@ -492,7 +492,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'blockNumber' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearBlockNumber() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearBlockNumber() {
       fieldSetFlags()[3] = false;
       return this;
     }
@@ -510,7 +510,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'btcValue'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setBtcValue(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setBtcValue(int value) {
       validate(fields()[4], value);
       this.btcValue = value;
       fieldSetFlags()[4] = true;
@@ -530,7 +530,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'btcValue' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearBtcValue() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearBtcValue() {
       fieldSetFlags()[4] = false;
       return this;
     }
@@ -548,7 +548,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'ethValue'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setEthValue(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setEthValue(int value) {
       validate(fields()[5], value);
       this.ethValue = value;
       fieldSetFlags()[5] = true;
@@ -568,7 +568,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'ethValue' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearEthValue() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearEthValue() {
       fieldSetFlags()[5] = false;
       return this;
     }
@@ -577,7 +577,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'tokenNetworksChanges' field.
       * @return The value.
       */
-    public java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> getTokenNetworksChanges() {
+    public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
       return tokenNetworksChanges;
     }
 
@@ -586,7 +586,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'tokenNetworksChanges'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate> value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
       validate(fields()[6], value);
       this.tokenNetworksChanges = value;
       fieldSetFlags()[6] = true;
@@ -606,7 +606,7 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
       * Clears the value of the 'tokenNetworksChanges' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenAggregate.Builder clearTokenNetworksChanges() {
+    public io.raidenmap.statecacher.RaidenDelta.Builder clearTokenNetworksChanges() {
       tokenNetworksChanges = null;
       fieldSetFlags()[6] = false;
       return this;
@@ -614,16 +614,16 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
 
     @Override
     @SuppressWarnings("unchecked")
-    public RaidenAggregate build() {
+    public RaidenDelta build() {
       try {
-        RaidenAggregate record = new RaidenAggregate();
+        RaidenDelta record = new RaidenDelta();
         record.tokenNetworksCount = fieldSetFlags()[0] ? this.tokenNetworksCount : (java.lang.Integer) defaultValue(fields()[0]);
         record.userCount = fieldSetFlags()[1] ? this.userCount : (java.lang.Integer) defaultValue(fields()[1]);
         record.timestamp = fieldSetFlags()[2] ? this.timestamp : (java.lang.Long) defaultValue(fields()[2]);
         record.blockNumber = fieldSetFlags()[3] ? this.blockNumber : (java.lang.Long) defaultValue(fields()[3]);
         record.btcValue = fieldSetFlags()[4] ? this.btcValue : (java.lang.Integer) defaultValue(fields()[4]);
         record.ethValue = fieldSetFlags()[5] ? this.ethValue : (java.lang.Integer) defaultValue(fields()[5]);
-        record.tokenNetworksChanges = fieldSetFlags()[6] ? this.tokenNetworksChanges : (java.util.List<io.raidenmap.statecacher.TokenNetworkAggregate>) defaultValue(fields()[6]);
+        record.tokenNetworksChanges = fieldSetFlags()[6] ? this.tokenNetworksChanges : (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>) defaultValue(fields()[6]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
@@ -632,8 +632,8 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumWriter<RaidenAggregate>
-    WRITER$ = (org.apache.avro.io.DatumWriter<RaidenAggregate>)MODEL$.createDatumWriter(SCHEMA$);
+  private static final org.apache.avro.io.DatumWriter<RaidenDelta>
+    WRITER$ = (org.apache.avro.io.DatumWriter<RaidenDelta>)MODEL$.createDatumWriter(SCHEMA$);
 
   @Override public void writeExternal(java.io.ObjectOutput out)
     throws java.io.IOException {
@@ -641,8 +641,8 @@ public class RaidenAggregate extends org.apache.avro.specific.SpecificRecordBase
   }
 
   @SuppressWarnings("unchecked")
-  private static final org.apache.avro.io.DatumReader<RaidenAggregate>
-    READER$ = (org.apache.avro.io.DatumReader<RaidenAggregate>)MODEL$.createDatumReader(SCHEMA$);
+  private static final org.apache.avro.io.DatumReader<RaidenDelta>
+    READER$ = (org.apache.avro.io.DatumReader<RaidenDelta>)MODEL$.createDatumReader(SCHEMA$);
 
   @Override public void readExternal(java.io.ObjectInput in)
     throws java.io.IOException {
