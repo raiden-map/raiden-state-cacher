@@ -4,17 +4,35 @@ import RaidenMapTokenInfo.TokenInfoAPI.MarketData;
 import RaidenMapTokenInfo.TokenInfoAPI.TokenInfo;
 import RaidenMapTokenInfo.TokenNameAPI.TokenName;
 import com.google.gson.Gson;
+import com.google.gson.JsonSyntaxException;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import io.raidenmap.statecacher.Token;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.time.Instant;
 
 public class TokenInfoBuilder {
+    private static final String tokenNotRegistered = "tokenNotRegistered";
+    private static Token.Builder tokenBuilder;
 
     public static Token buildToken(String ethAddress) {
+        String ID = getTokenID(ethAddress);
+        if (ID.equals(tokenNotRegistered))
+            return buildDefaultToken();
+        else
+            return buildRegisteredToken(ethAddress);
+    }
+
+    private static Token buildDefaultToken() {
+        Token token = tokenBuilder.build();
+        token.setName(tokenNotRegistered);
+        return token;
+    }
+
+    public static Token buildRegisteredToken(String ethAddress) {
         String ID = getTokenID(ethAddress);
         TokenInfo tokenInfo = getTokenInfo(ID);
         MarketData md = tokenInfo.getMarketData();
@@ -45,6 +63,7 @@ public class TokenInfoBuilder {
 
     public static String getTokenID(String ethAddress) {
         JSONObject responseBody = new JSONObject();
+        TokenName t;
         try {
             HttpResponse<JsonNode> response = Unirest.
                     get("https://api.etherscan.io/api?module=account&action=tokentx&contractaddress={ethAddress}&page=1&offset=1")
@@ -53,9 +72,12 @@ public class TokenInfoBuilder {
             responseBody = response.getBody().getObject();
         } catch (Exception e) {
         }
-        TokenName t = gson.fromJson(((JSONObject) responseBody).toString(), TokenName.class);
-        String ID = t.getResult().get(0).getTokenName().toLowerCase();
-        return ID;
+        try {
+            t = gson.fromJson(((JSONObject) responseBody).toString(), TokenName.class);
+        } catch (JsonSyntaxException e) {
+            return tokenNotRegistered;
+        }
+        return t.getResult().get(0).getTokenName().toLowerCase();
     }
 
     protected static TokenInfo getTokenInfo(String tokenID) {
@@ -70,7 +92,10 @@ public class TokenInfoBuilder {
         }
 
         TokenInfo tokenInfo = gson.fromJson(((JSONObject) responseBody).toString(), TokenInfo.class);
-        return tokenInfo;
+        if (((JSONArray) responseBody.get("result")).length() == 0)
+            return new TokenInfo("Unregistered ERC20");
+        else
+            return tokenInfo;
     }
 
     private static Gson gson = new Gson();

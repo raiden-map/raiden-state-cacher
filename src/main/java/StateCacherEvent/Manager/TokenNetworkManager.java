@@ -1,9 +1,9 @@
 package StateCacherEvent.Manager;
 
+import RaidenMapTokenInfo.TokenInfoBuilder;
 import io.raidenmap.event.Metadata;
 import io.raidenmap.event.channel.ChannelNewDeposit;
 import io.raidenmap.event.tokenNetwork.TokenNetworkCreated;
-import io.raidenmap.statecacher.Token;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 
 import java.time.Instant;
@@ -13,8 +13,7 @@ public class TokenNetworkManager {
     public void updateToken(TokenNetworkDelta tokenNetworkDelta, TokenNetworkCreated tokenNetworkCreated) {
         String tokenNetworkAddress = tokenNetworkCreated.getTokenNetworkAddress().toString();
         tokenNetworkDelta.setTokenNetworkAddress(tokenNetworkAddress);
-        tokenNetworkDelta.setToken(tokenBuilder.build());
-        tokenNetworkDelta.getToken().setName("TokenNotRegistered");
+        tokenNetworkDelta.setToken(TokenInfoBuilder.buildToken(tokenNetworkAddress));
     }
 
     public void updateMetadate(TokenNetworkDelta tokenNetworkDelta, Metadata metadata) {
@@ -45,6 +44,4 @@ public class TokenNetworkManager {
         tokenNetworkDelta.setClosedChannels(tokenNetworkDelta.getClosedChannels() + 1);
         tokenNetworkDelta.setOpenChannels(tokenNetworkDelta.getOpenChannels() - 1);
     }
-
-    private Token.Builder tokenBuilder;
 }

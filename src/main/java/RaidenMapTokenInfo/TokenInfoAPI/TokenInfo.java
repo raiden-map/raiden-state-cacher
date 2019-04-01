@@ -8,6 +8,10 @@ import java.util.List;
 
 public class TokenInfo {
 
+    public TokenInfo(String id){
+        this.id = id;
+    }
+
     @SerializedName("id")
     @Expose
     private String id;
