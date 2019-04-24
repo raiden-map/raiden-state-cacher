@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -5653367945508380923L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ProducerKey\",\"namespace\":\"io.raidenmap.producerKey\",\"fields\":[{\"name\":\"txHash\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ProducerKey\",\"namespace\":\"io.raidenmap.producerKey\",\"fields\":[{\"name\":\"txHash\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,7 +51,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence txHash;
+  @Deprecated public java.lang.String txHash;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -64,7 +64,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
    * All-args constructor.
    * @param txHash The new value for txHash
    */
-  public ProducerKey(java.lang.CharSequence txHash) {
+  public ProducerKey(java.lang.String txHash) {
     this.txHash = txHash;
   }
 
@@ -81,7 +81,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: txHash = (java.lang.CharSequence)value$; break;
+    case 0: txHash = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -90,7 +90,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'txHash' field.
    * @return The value of the 'txHash' field.
    */
-  public java.lang.CharSequence getTxHash() {
+  public java.lang.String getTxHash() {
     return txHash;
   }
 
@@ -98,7 +98,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'txHash' field.
    * @param value the value to set.
    */
-  public void setTxHash(java.lang.CharSequence value) {
+  public void setTxHash(java.lang.String value) {
     this.txHash = value;
   }
 
@@ -134,7 +134,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<ProducerKey>
     implements org.apache.avro.data.RecordBuilder<ProducerKey> {
 
-    private java.lang.CharSequence txHash;
+    private java.lang.String txHash;
 
     /** Creates a new Builder */
     private Builder() {
@@ -169,7 +169,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'txHash' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTxHash() {
+    public java.lang.String getTxHash() {
       return txHash;
     }
 
@@ -178,7 +178,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'txHash'.
       * @return This builder.
       */
-    public io.raidenmap.producerKey.ProducerKey.Builder setTxHash(java.lang.CharSequence value) {
+    public io.raidenmap.producerKey.ProducerKey.Builder setTxHash(java.lang.String value) {
       validate(fields()[0], value);
       this.txHash = value;
       fieldSetFlags()[0] = true;
@@ -209,7 +209,7 @@ public class ProducerKey extends org.apache.avro.specific.SpecificRecordBase imp
     public ProducerKey build() {
       try {
         ProducerKey record = new ProducerKey();
-        record.txHash = fieldSetFlags()[0] ? this.txHash : (java.lang.CharSequence) defaultValue(fields()[0]);
+        record.txHash = fieldSetFlags()[0] ? this.txHash : (java.lang.String) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

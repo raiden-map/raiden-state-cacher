@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Token extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -3692665845639816431L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Token\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Token\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,9 +51,9 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence name;
-  @Deprecated public java.lang.CharSequence tag;
-  @Deprecated public java.lang.CharSequence imageUrl;
+  @Deprecated public java.lang.String name;
+  @Deprecated public java.lang.String tag;
+  @Deprecated public java.lang.String imageUrl;
   @Deprecated public double valueUsd;
   @Deprecated public double valueEth;
   @Deprecated public double valueBtc;
@@ -92,7 +92,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * @param volume The new value for volume
    * @param timestamp The new value for timestamp
    */
-  public Token(java.lang.CharSequence name, java.lang.CharSequence tag, java.lang.CharSequence imageUrl, java.lang.Double valueUsd, java.lang.Double valueEth, java.lang.Double valueBtc, java.lang.Float priceChangeDayUsd, java.lang.Float priceChangeWeekUsd, java.lang.Float priceChangeDayEth, java.lang.Float priceChangeWeekEth, java.lang.Float priceChangeDayBtc, java.lang.Float priceChangeWeekBtc, java.lang.Double marketCap, java.lang.Double volume, java.lang.Long timestamp) {
+  public Token(java.lang.String name, java.lang.String tag, java.lang.String imageUrl, java.lang.Double valueUsd, java.lang.Double valueEth, java.lang.Double valueBtc, java.lang.Float priceChangeDayUsd, java.lang.Float priceChangeWeekUsd, java.lang.Float priceChangeDayEth, java.lang.Float priceChangeWeekEth, java.lang.Float priceChangeDayBtc, java.lang.Float priceChangeWeekBtc, java.lang.Double marketCap, java.lang.Double volume, java.lang.Long timestamp) {
     this.name = name;
     this.tag = tag;
     this.imageUrl = imageUrl;
@@ -137,9 +137,9 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: name = (java.lang.CharSequence)value$; break;
-    case 1: tag = (java.lang.CharSequence)value$; break;
-    case 2: imageUrl = (java.lang.CharSequence)value$; break;
+    case 0: name = (java.lang.String)value$; break;
+    case 1: tag = (java.lang.String)value$; break;
+    case 2: imageUrl = (java.lang.String)value$; break;
     case 3: valueUsd = (java.lang.Double)value$; break;
     case 4: valueEth = (java.lang.Double)value$; break;
     case 5: valueBtc = (java.lang.Double)value$; break;
@@ -160,7 +160,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'name' field.
    * @return The value of the 'name' field.
    */
-  public java.lang.CharSequence getName() {
+  public java.lang.String getName() {
     return name;
   }
 
@@ -168,7 +168,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Sets the value of the 'name' field.
    * @param value the value to set.
    */
-  public void setName(java.lang.CharSequence value) {
+  public void setName(java.lang.String value) {
     this.name = value;
   }
 
@@ -176,7 +176,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'tag' field.
    * @return The value of the 'tag' field.
    */
-  public java.lang.CharSequence getTag() {
+  public java.lang.String getTag() {
     return tag;
   }
 
@@ -184,7 +184,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Sets the value of the 'tag' field.
    * @param value the value to set.
    */
-  public void setTag(java.lang.CharSequence value) {
+  public void setTag(java.lang.String value) {
     this.tag = value;
   }
 
@@ -192,7 +192,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Gets the value of the 'imageUrl' field.
    * @return The value of the 'imageUrl' field.
    */
-  public java.lang.CharSequence getImageUrl() {
+  public java.lang.String getImageUrl() {
     return imageUrl;
   }
 
@@ -200,7 +200,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
    * Sets the value of the 'imageUrl' field.
    * @param value the value to set.
    */
-  public void setImageUrl(java.lang.CharSequence value) {
+  public void setImageUrl(java.lang.String value) {
     this.imageUrl = value;
   }
 
@@ -428,9 +428,9 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Token>
     implements org.apache.avro.data.RecordBuilder<Token> {
 
-    private java.lang.CharSequence name;
-    private java.lang.CharSequence tag;
-    private java.lang.CharSequence imageUrl;
+    private java.lang.String name;
+    private java.lang.String tag;
+    private java.lang.String imageUrl;
     private double valueUsd;
     private double valueEth;
     private double valueBtc;
@@ -589,7 +589,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * Gets the value of the 'name' field.
       * @return The value.
       */
-    public java.lang.CharSequence getName() {
+    public java.lang.String getName() {
       return name;
     }
 
@@ -598,7 +598,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'name'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Token.Builder setName(java.lang.CharSequence value) {
+    public io.raidenmap.statecacher.Token.Builder setName(java.lang.String value) {
       validate(fields()[0], value);
       this.name = value;
       fieldSetFlags()[0] = true;
@@ -628,7 +628,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * Gets the value of the 'tag' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTag() {
+    public java.lang.String getTag() {
       return tag;
     }
 
@@ -637,7 +637,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'tag'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Token.Builder setTag(java.lang.CharSequence value) {
+    public io.raidenmap.statecacher.Token.Builder setTag(java.lang.String value) {
       validate(fields()[1], value);
       this.tag = value;
       fieldSetFlags()[1] = true;
@@ -667,7 +667,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * Gets the value of the 'imageUrl' field.
       * @return The value.
       */
-    public java.lang.CharSequence getImageUrl() {
+    public java.lang.String getImageUrl() {
       return imageUrl;
     }
 
@@ -676,7 +676,7 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
       * @param value The value of 'imageUrl'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Token.Builder setImageUrl(java.lang.CharSequence value) {
+    public io.raidenmap.statecacher.Token.Builder setImageUrl(java.lang.String value) {
       validate(fields()[2], value);
       this.imageUrl = value;
       fieldSetFlags()[2] = true;
@@ -1163,9 +1163,9 @@ public class Token extends org.apache.avro.specific.SpecificRecordBase implement
     public Token build() {
       try {
         Token record = new Token();
-        record.name = fieldSetFlags()[0] ? this.name : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.tag = fieldSetFlags()[1] ? this.tag : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.imageUrl = fieldSetFlags()[2] ? this.imageUrl : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.name = fieldSetFlags()[0] ? this.name : (java.lang.String) defaultValue(fields()[0]);
+        record.tag = fieldSetFlags()[1] ? this.tag : (java.lang.String) defaultValue(fields()[1]);
+        record.imageUrl = fieldSetFlags()[2] ? this.imageUrl : (java.lang.String) defaultValue(fields()[2]);
         record.valueUsd = fieldSetFlags()[3] ? this.valueUsd : (java.lang.Double) defaultValue(fields()[3]);
         record.valueEth = fieldSetFlags()[4] ? this.valueEth : (java.lang.Double) defaultValue(fields()[4]);
         record.valueBtc = fieldSetFlags()[5] ? this.valueBtc : (java.lang.Double) defaultValue(fields()[5]);

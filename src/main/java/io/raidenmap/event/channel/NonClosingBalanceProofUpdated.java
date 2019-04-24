@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -107894423138265711L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"NonClosingBalanceProofUpdated\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"closingParticipant\",\"type\":\"string\"},{\"name\":\"nonce\",\"type\":\"int\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"NonClosingBalanceProofUpdated\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"closingParticipant\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"nonce\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
   }
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
-  @Deprecated public java.lang.CharSequence closingParticipant;
+  @Deprecated public java.lang.String closingParticipant;
   @Deprecated public int nonce;
 
   /**
@@ -68,7 +68,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
    * @param closingParticipant The new value for closingParticipant
    * @param nonce The new value for nonce
    */
-  public NonClosingBalanceProofUpdated(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.CharSequence closingParticipant, java.lang.Integer nonce) {
+  public NonClosingBalanceProofUpdated(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String closingParticipant, java.lang.Integer nonce) {
     this.channelEvent = channelEvent;
     this.closingParticipant = closingParticipant;
     this.nonce = nonce;
@@ -90,7 +90,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
-    case 1: closingParticipant = (java.lang.CharSequence)value$; break;
+    case 1: closingParticipant = (java.lang.String)value$; break;
     case 2: nonce = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -116,7 +116,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
    * Gets the value of the 'closingParticipant' field.
    * @return The value of the 'closingParticipant' field.
    */
-  public java.lang.CharSequence getClosingParticipant() {
+  public java.lang.String getClosingParticipant() {
     return closingParticipant;
   }
 
@@ -124,7 +124,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
    * Sets the value of the 'closingParticipant' field.
    * @param value the value to set.
    */
-  public void setClosingParticipant(java.lang.CharSequence value) {
+  public void setClosingParticipant(java.lang.String value) {
     this.closingParticipant = value;
   }
 
@@ -178,7 +178,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
 
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
-    private java.lang.CharSequence closingParticipant;
+    private java.lang.String closingParticipant;
     private int nonce;
 
     /** Creates a new Builder */
@@ -308,7 +308,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
       * Gets the value of the 'closingParticipant' field.
       * @return The value.
       */
-    public java.lang.CharSequence getClosingParticipant() {
+    public java.lang.String getClosingParticipant() {
       return closingParticipant;
     }
 
@@ -317,7 +317,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
       * @param value The value of 'closingParticipant'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.NonClosingBalanceProofUpdated.Builder setClosingParticipant(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.NonClosingBalanceProofUpdated.Builder setClosingParticipant(java.lang.String value) {
       validate(fields()[1], value);
       this.closingParticipant = value;
       fieldSetFlags()[1] = true;
@@ -391,7 +391,7 @@ public class NonClosingBalanceProofUpdated extends org.apache.avro.specific.Spec
         } else {
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
-        record.closingParticipant = fieldSetFlags()[1] ? this.closingParticipant : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.closingParticipant = fieldSetFlags()[1] ? this.closingParticipant : (java.lang.String) defaultValue(fields()[1]);
         record.nonce = fieldSetFlags()[2] ? this.nonce : (java.lang.Integer) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {

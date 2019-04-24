@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -190477097471593231L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkCreated\",\"namespace\":\"io.raidenmap.event.tokenNetwork\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"tokenAddress\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkCreated\",\"namespace\":\"io.raidenmap.event.tokenNetwork\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tokenAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,8 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
   }
 
   @Deprecated public io.raidenmap.event.Metadata metadata;
-  @Deprecated public java.lang.CharSequence tokenNetworkAddress;
-  @Deprecated public java.lang.CharSequence tokenAddress;
+  @Deprecated public java.lang.String tokenNetworkAddress;
+  @Deprecated public java.lang.String tokenAddress;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,7 +68,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
    * @param tokenNetworkAddress The new value for tokenNetworkAddress
    * @param tokenAddress The new value for tokenAddress
    */
-  public TokenNetworkCreated(io.raidenmap.event.Metadata metadata, java.lang.CharSequence tokenNetworkAddress, java.lang.CharSequence tokenAddress) {
+  public TokenNetworkCreated(io.raidenmap.event.Metadata metadata, java.lang.String tokenNetworkAddress, java.lang.String tokenAddress) {
     this.metadata = metadata;
     this.tokenNetworkAddress = tokenNetworkAddress;
     this.tokenAddress = tokenAddress;
@@ -90,8 +90,8 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: metadata = (io.raidenmap.event.Metadata)value$; break;
-    case 1: tokenNetworkAddress = (java.lang.CharSequence)value$; break;
-    case 2: tokenAddress = (java.lang.CharSequence)value$; break;
+    case 1: tokenNetworkAddress = (java.lang.String)value$; break;
+    case 2: tokenAddress = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -116,7 +116,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
    * Gets the value of the 'tokenNetworkAddress' field.
    * @return The value of the 'tokenNetworkAddress' field.
    */
-  public java.lang.CharSequence getTokenNetworkAddress() {
+  public java.lang.String getTokenNetworkAddress() {
     return tokenNetworkAddress;
   }
 
@@ -124,7 +124,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
    * Sets the value of the 'tokenNetworkAddress' field.
    * @param value the value to set.
    */
-  public void setTokenNetworkAddress(java.lang.CharSequence value) {
+  public void setTokenNetworkAddress(java.lang.String value) {
     this.tokenNetworkAddress = value;
   }
 
@@ -132,7 +132,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
    * Gets the value of the 'tokenAddress' field.
    * @return The value of the 'tokenAddress' field.
    */
-  public java.lang.CharSequence getTokenAddress() {
+  public java.lang.String getTokenAddress() {
     return tokenAddress;
   }
 
@@ -140,7 +140,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
    * Sets the value of the 'tokenAddress' field.
    * @param value the value to set.
    */
-  public void setTokenAddress(java.lang.CharSequence value) {
+  public void setTokenAddress(java.lang.String value) {
     this.tokenAddress = value;
   }
 
@@ -178,8 +178,8 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
 
     private io.raidenmap.event.Metadata metadata;
     private io.raidenmap.event.Metadata.Builder metadataBuilder;
-    private java.lang.CharSequence tokenNetworkAddress;
-    private java.lang.CharSequence tokenAddress;
+    private java.lang.String tokenNetworkAddress;
+    private java.lang.String tokenAddress;
 
     /** Creates a new Builder */
     private Builder() {
@@ -308,7 +308,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
       * Gets the value of the 'tokenNetworkAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTokenNetworkAddress() {
+    public java.lang.String getTokenNetworkAddress() {
       return tokenNetworkAddress;
     }
 
@@ -317,7 +317,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
       * @param value The value of 'tokenNetworkAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.tokenNetwork.TokenNetworkCreated.Builder setTokenNetworkAddress(java.lang.CharSequence value) {
+    public io.raidenmap.event.tokenNetwork.TokenNetworkCreated.Builder setTokenNetworkAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.tokenNetworkAddress = value;
       fieldSetFlags()[1] = true;
@@ -347,7 +347,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
       * Gets the value of the 'tokenAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTokenAddress() {
+    public java.lang.String getTokenAddress() {
       return tokenAddress;
     }
 
@@ -356,7 +356,7 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
       * @param value The value of 'tokenAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.tokenNetwork.TokenNetworkCreated.Builder setTokenAddress(java.lang.CharSequence value) {
+    public io.raidenmap.event.tokenNetwork.TokenNetworkCreated.Builder setTokenAddress(java.lang.String value) {
       validate(fields()[2], value);
       this.tokenAddress = value;
       fieldSetFlags()[2] = true;
@@ -392,8 +392,8 @@ public class TokenNetworkCreated extends org.apache.avro.specific.SpecificRecord
         } else {
           record.metadata = fieldSetFlags()[0] ? this.metadata : (io.raidenmap.event.Metadata) defaultValue(fields()[0]);
         }
-        record.tokenNetworkAddress = fieldSetFlags()[1] ? this.tokenNetworkAddress : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.tokenAddress = fieldSetFlags()[2] ? this.tokenAddress : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.tokenNetworkAddress = fieldSetFlags()[1] ? this.tokenNetworkAddress : (java.lang.String) defaultValue(fields()[1]);
+        record.tokenAddress = fieldSetFlags()[2] ? this.tokenAddress : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -9036355569214326590L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelClosed\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelClosed\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
-  @Deprecated public java.lang.CharSequence participant;
+  @Deprecated public java.lang.String participant;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -66,7 +66,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
    * @param channelEvent The new value for channelEvent
    * @param participant The new value for participant
    */
-  public ChannelClosed(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.CharSequence participant) {
+  public ChannelClosed(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant) {
     this.channelEvent = channelEvent;
     this.participant = participant;
   }
@@ -86,7 +86,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
-    case 1: participant = (java.lang.CharSequence)value$; break;
+    case 1: participant = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -111,7 +111,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'participant' field.
    * @return The value of the 'participant' field.
    */
-  public java.lang.CharSequence getParticipant() {
+  public java.lang.String getParticipant() {
     return participant;
   }
 
@@ -119,7 +119,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
    * Sets the value of the 'participant' field.
    * @param value the value to set.
    */
-  public void setParticipant(java.lang.CharSequence value) {
+  public void setParticipant(java.lang.String value) {
     this.participant = value;
   }
 
@@ -157,7 +157,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
 
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
-    private java.lang.CharSequence participant;
+    private java.lang.String participant;
 
     /** Creates a new Builder */
     private Builder() {
@@ -278,7 +278,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
       * Gets the value of the 'participant' field.
       * @return The value.
       */
-    public java.lang.CharSequence getParticipant() {
+    public java.lang.String getParticipant() {
       return participant;
     }
 
@@ -287,7 +287,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'participant'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelClosed.Builder setParticipant(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.ChannelClosed.Builder setParticipant(java.lang.String value) {
       validate(fields()[1], value);
       this.participant = value;
       fieldSetFlags()[1] = true;
@@ -323,7 +323,7 @@ public class ChannelClosed extends org.apache.avro.specific.SpecificRecordBase i
         } else {
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
-        record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.String) defaultValue(fields()[1]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

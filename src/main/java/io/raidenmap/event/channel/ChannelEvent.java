@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 6195037573499707754L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelEvent\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"int\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelEvent\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
   }
 
   @Deprecated public io.raidenmap.event.Metadata metadata;
-  @Deprecated public java.lang.CharSequence tokenNetworkAddress;
+  @Deprecated public java.lang.String tokenNetworkAddress;
   @Deprecated public int id;
 
   /**
@@ -68,7 +68,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
    * @param tokenNetworkAddress The new value for tokenNetworkAddress
    * @param id The new value for id
    */
-  public ChannelEvent(io.raidenmap.event.Metadata metadata, java.lang.CharSequence tokenNetworkAddress, java.lang.Integer id) {
+  public ChannelEvent(io.raidenmap.event.Metadata metadata, java.lang.String tokenNetworkAddress, java.lang.Integer id) {
     this.metadata = metadata;
     this.tokenNetworkAddress = tokenNetworkAddress;
     this.id = id;
@@ -90,7 +90,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: metadata = (io.raidenmap.event.Metadata)value$; break;
-    case 1: tokenNetworkAddress = (java.lang.CharSequence)value$; break;
+    case 1: tokenNetworkAddress = (java.lang.String)value$; break;
     case 2: id = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -116,7 +116,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
    * Gets the value of the 'tokenNetworkAddress' field.
    * @return The value of the 'tokenNetworkAddress' field.
    */
-  public java.lang.CharSequence getTokenNetworkAddress() {
+  public java.lang.String getTokenNetworkAddress() {
     return tokenNetworkAddress;
   }
 
@@ -124,7 +124,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
    * Sets the value of the 'tokenNetworkAddress' field.
    * @param value the value to set.
    */
-  public void setTokenNetworkAddress(java.lang.CharSequence value) {
+  public void setTokenNetworkAddress(java.lang.String value) {
     this.tokenNetworkAddress = value;
   }
 
@@ -178,7 +178,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
 
     private io.raidenmap.event.Metadata metadata;
     private io.raidenmap.event.Metadata.Builder metadataBuilder;
-    private java.lang.CharSequence tokenNetworkAddress;
+    private java.lang.String tokenNetworkAddress;
     private int id;
 
     /** Creates a new Builder */
@@ -308,7 +308,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
       * Gets the value of the 'tokenNetworkAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTokenNetworkAddress() {
+    public java.lang.String getTokenNetworkAddress() {
       return tokenNetworkAddress;
     }
 
@@ -317,7 +317,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
       * @param value The value of 'tokenNetworkAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelEvent.Builder setTokenNetworkAddress(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.ChannelEvent.Builder setTokenNetworkAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.tokenNetworkAddress = value;
       fieldSetFlags()[1] = true;
@@ -391,7 +391,7 @@ public class ChannelEvent extends org.apache.avro.specific.SpecificRecordBase im
         } else {
           record.metadata = fieldSetFlags()[0] ? this.metadata : (io.raidenmap.event.Metadata) defaultValue(fields()[0]);
         }
-        record.tokenNetworkAddress = fieldSetFlags()[1] ? this.tokenNetworkAddress : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.tokenNetworkAddress = fieldSetFlags()[1] ? this.tokenNetworkAddress : (java.lang.String) defaultValue(fields()[1]);
         record.id = fieldSetFlags()[2] ? this.id : (java.lang.Integer) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {

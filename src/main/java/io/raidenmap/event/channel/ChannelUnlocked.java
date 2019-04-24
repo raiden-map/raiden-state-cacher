@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -1229310426553854788L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelUnlocked\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":\"string\"},{\"name\":\"unlockedAmount\",\"type\":\"int\"},{\"name\":\"returnedTokens\",\"type\":\"int\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelUnlocked\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"unlockedAmount\",\"type\":\"int\"},{\"name\":\"returnedTokens\",\"type\":\"int\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,7 +52,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
   }
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
-  @Deprecated public java.lang.CharSequence participant;
+  @Deprecated public java.lang.String participant;
   @Deprecated public int unlockedAmount;
   @Deprecated public int returnedTokens;
 
@@ -70,7 +70,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
    * @param unlockedAmount The new value for unlockedAmount
    * @param returnedTokens The new value for returnedTokens
    */
-  public ChannelUnlocked(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.CharSequence participant, java.lang.Integer unlockedAmount, java.lang.Integer returnedTokens) {
+  public ChannelUnlocked(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant, java.lang.Integer unlockedAmount, java.lang.Integer returnedTokens) {
     this.channelEvent = channelEvent;
     this.participant = participant;
     this.unlockedAmount = unlockedAmount;
@@ -94,7 +94,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
-    case 1: participant = (java.lang.CharSequence)value$; break;
+    case 1: participant = (java.lang.String)value$; break;
     case 2: unlockedAmount = (java.lang.Integer)value$; break;
     case 3: returnedTokens = (java.lang.Integer)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -121,7 +121,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'participant' field.
    * @return The value of the 'participant' field.
    */
-  public java.lang.CharSequence getParticipant() {
+  public java.lang.String getParticipant() {
     return participant;
   }
 
@@ -129,7 +129,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'participant' field.
    * @param value the value to set.
    */
-  public void setParticipant(java.lang.CharSequence value) {
+  public void setParticipant(java.lang.String value) {
     this.participant = value;
   }
 
@@ -199,7 +199,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
 
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
-    private java.lang.CharSequence participant;
+    private java.lang.String participant;
     private int unlockedAmount;
     private int returnedTokens;
 
@@ -338,7 +338,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'participant' field.
       * @return The value.
       */
-    public java.lang.CharSequence getParticipant() {
+    public java.lang.String getParticipant() {
       return participant;
     }
 
@@ -347,7 +347,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'participant'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelUnlocked.Builder setParticipant(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.ChannelUnlocked.Builder setParticipant(java.lang.String value) {
       validate(fields()[1], value);
       this.participant = value;
       fieldSetFlags()[1] = true;
@@ -459,7 +459,7 @@ public class ChannelUnlocked extends org.apache.avro.specific.SpecificRecordBase
         } else {
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
-        record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.CharSequence) defaultValue(fields()[1]);
+        record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.String) defaultValue(fields()[1]);
         record.unlockedAmount = fieldSetFlags()[2] ? this.unlockedAmount : (java.lang.Integer) defaultValue(fields()[2]);
         record.returnedTokens = fieldSetFlags()[3] ? this.returnedTokens : (java.lang.Integer) defaultValue(fields()[3]);
         return record;

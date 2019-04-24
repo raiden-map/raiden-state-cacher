@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 5535592841787833735L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":\"string\"},{\"name\":\"tag\",\"type\":\"string\"},{\"name\":\"imageUrl\",\"type\":\"string\"},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]}}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"int\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = 8537130479185602144L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,14 +52,14 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   }
 
   @Deprecated public io.raidenmap.statecacher.Token token;
-  @Deprecated public java.util.List<io.raidenmap.statecacher.Channel> channels;
-  @Deprecated public java.lang.CharSequence tokenNetworkAddress;
+  @Deprecated public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> modifiedChannels;
+  @Deprecated public java.lang.String tokenNetworkAddress;
   @Deprecated public long timestamp;
   @Deprecated public int channelsCount;
   @Deprecated public int openChannels;
   @Deprecated public int closedChannels;
   @Deprecated public int settledChannels;
-  @Deprecated public int avgChannelDeposit;
+  @Deprecated public double avgChannelDeposit;
   @Deprecated public long totalDeposit;
   @Deprecated public int users;
   @Deprecated public long blockNumber;
@@ -74,7 +74,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   /**
    * All-args constructor.
    * @param token The new value for token
-   * @param channels The new value for channels
+   * @param modifiedChannels The new value for modifiedChannels
    * @param tokenNetworkAddress The new value for tokenNetworkAddress
    * @param timestamp The new value for timestamp
    * @param channelsCount The new value for channelsCount
@@ -86,9 +86,9 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * @param users The new value for users
    * @param blockNumber The new value for blockNumber
    */
-  public TokenNetworkDelta(io.raidenmap.statecacher.Token token, java.util.List<io.raidenmap.statecacher.Channel> channels, java.lang.CharSequence tokenNetworkAddress, java.lang.Long timestamp, java.lang.Integer channelsCount, java.lang.Integer openChannels, java.lang.Integer closedChannels, java.lang.Integer settledChannels, java.lang.Integer avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber) {
+  public TokenNetworkDelta(io.raidenmap.statecacher.Token token, java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> modifiedChannels, java.lang.String tokenNetworkAddress, java.lang.Long timestamp, java.lang.Integer channelsCount, java.lang.Integer openChannels, java.lang.Integer closedChannels, java.lang.Integer settledChannels, java.lang.Double avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber) {
     this.token = token;
-    this.channels = channels;
+    this.modifiedChannels = modifiedChannels;
     this.tokenNetworkAddress = tokenNetworkAddress;
     this.timestamp = timestamp;
     this.channelsCount = channelsCount;
@@ -106,7 +106,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   public java.lang.Object get(int field$) {
     switch (field$) {
     case 0: return token;
-    case 1: return channels;
+    case 1: return modifiedChannels;
     case 2: return tokenNetworkAddress;
     case 3: return timestamp;
     case 4: return channelsCount;
@@ -126,14 +126,14 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: token = (io.raidenmap.statecacher.Token)value$; break;
-    case 1: channels = (java.util.List<io.raidenmap.statecacher.Channel>)value$; break;
-    case 2: tokenNetworkAddress = (java.lang.CharSequence)value$; break;
+    case 1: modifiedChannels = (java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel>)value$; break;
+    case 2: tokenNetworkAddress = (java.lang.String)value$; break;
     case 3: timestamp = (java.lang.Long)value$; break;
     case 4: channelsCount = (java.lang.Integer)value$; break;
     case 5: openChannels = (java.lang.Integer)value$; break;
     case 6: closedChannels = (java.lang.Integer)value$; break;
     case 7: settledChannels = (java.lang.Integer)value$; break;
-    case 8: avgChannelDeposit = (java.lang.Integer)value$; break;
+    case 8: avgChannelDeposit = (java.lang.Double)value$; break;
     case 9: totalDeposit = (java.lang.Long)value$; break;
     case 10: users = (java.lang.Integer)value$; break;
     case 11: blockNumber = (java.lang.Long)value$; break;
@@ -158,26 +158,26 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   }
 
   /**
-   * Gets the value of the 'channels' field.
-   * @return The value of the 'channels' field.
+   * Gets the value of the 'modifiedChannels' field.
+   * @return The value of the 'modifiedChannels' field.
    */
-  public java.util.List<io.raidenmap.statecacher.Channel> getChannels() {
-    return channels;
+  public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> getModifiedChannels() {
+    return modifiedChannels;
   }
 
   /**
-   * Sets the value of the 'channels' field.
+   * Sets the value of the 'modifiedChannels' field.
    * @param value the value to set.
    */
-  public void setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
-    this.channels = value;
+  public void setModifiedChannels(java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> value) {
+    this.modifiedChannels = value;
   }
 
   /**
    * Gets the value of the 'tokenNetworkAddress' field.
    * @return The value of the 'tokenNetworkAddress' field.
    */
-  public java.lang.CharSequence getTokenNetworkAddress() {
+  public java.lang.String getTokenNetworkAddress() {
     return tokenNetworkAddress;
   }
 
@@ -185,7 +185,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'tokenNetworkAddress' field.
    * @param value the value to set.
    */
-  public void setTokenNetworkAddress(java.lang.CharSequence value) {
+  public void setTokenNetworkAddress(java.lang.String value) {
     this.tokenNetworkAddress = value;
   }
 
@@ -273,7 +273,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'avgChannelDeposit' field.
    * @return The value of the 'avgChannelDeposit' field.
    */
-  public java.lang.Integer getAvgChannelDeposit() {
+  public java.lang.Double getAvgChannelDeposit() {
     return avgChannelDeposit;
   }
 
@@ -281,7 +281,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'avgChannelDeposit' field.
    * @param value the value to set.
    */
-  public void setAvgChannelDeposit(java.lang.Integer value) {
+  public void setAvgChannelDeposit(java.lang.Double value) {
     this.avgChannelDeposit = value;
   }
 
@@ -367,14 +367,14 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
 
     private io.raidenmap.statecacher.Token token;
     private io.raidenmap.statecacher.Token.Builder tokenBuilder;
-    private java.util.List<io.raidenmap.statecacher.Channel> channels;
-    private java.lang.CharSequence tokenNetworkAddress;
+    private java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> modifiedChannels;
+    private java.lang.String tokenNetworkAddress;
     private long timestamp;
     private int channelsCount;
     private int openChannels;
     private int closedChannels;
     private int settledChannels;
-    private int avgChannelDeposit;
+    private double avgChannelDeposit;
     private long totalDeposit;
     private int users;
     private long blockNumber;
@@ -397,8 +397,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       if (other.hasTokenBuilder()) {
         this.tokenBuilder = io.raidenmap.statecacher.Token.newBuilder(other.getTokenBuilder());
       }
-      if (isValidValue(fields()[1], other.channels)) {
-        this.channels = data().deepCopy(fields()[1].schema(), other.channels);
+      if (isValidValue(fields()[1], other.modifiedChannels)) {
+        this.modifiedChannels = data().deepCopy(fields()[1].schema(), other.modifiedChannels);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.tokenNetworkAddress)) {
@@ -454,8 +454,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
         fieldSetFlags()[0] = true;
       }
       this.tokenBuilder = null;
-      if (isValidValue(fields()[1], other.channels)) {
-        this.channels = data().deepCopy(fields()[1].schema(), other.channels);
+      if (isValidValue(fields()[1], other.modifiedChannels)) {
+        this.modifiedChannels = data().deepCopy(fields()[1].schema(), other.modifiedChannels);
         fieldSetFlags()[1] = true;
       }
       if (isValidValue(fields()[2], other.tokenNetworkAddress)) {
@@ -575,40 +575,40 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
     }
 
     /**
-      * Gets the value of the 'channels' field.
+      * Gets the value of the 'modifiedChannels' field.
       * @return The value.
       */
-    public java.util.List<io.raidenmap.statecacher.Channel> getChannels() {
-      return channels;
+    public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> getModifiedChannels() {
+      return modifiedChannels;
     }
 
     /**
-      * Sets the value of the 'channels' field.
-      * @param value The value of 'channels'.
+      * Sets the value of the 'modifiedChannels' field.
+      * @param value The value of 'modifiedChannels'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setModifiedChannels(java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> value) {
       validate(fields()[1], value);
-      this.channels = value;
+      this.modifiedChannels = value;
       fieldSetFlags()[1] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'channels' field has been set.
-      * @return True if the 'channels' field has been set, false otherwise.
+      * Checks whether the 'modifiedChannels' field has been set.
+      * @return True if the 'modifiedChannels' field has been set, false otherwise.
       */
-    public boolean hasChannels() {
+    public boolean hasModifiedChannels() {
       return fieldSetFlags()[1];
     }
 
 
     /**
-      * Clears the value of the 'channels' field.
+      * Clears the value of the 'modifiedChannels' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder clearChannels() {
-      channels = null;
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder clearModifiedChannels() {
+      modifiedChannels = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -617,7 +617,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'tokenNetworkAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getTokenNetworkAddress() {
+    public java.lang.String getTokenNetworkAddress() {
       return tokenNetworkAddress;
     }
 
@@ -626,7 +626,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'tokenNetworkAddress'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setTokenNetworkAddress(java.lang.CharSequence value) {
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setTokenNetworkAddress(java.lang.String value) {
       validate(fields()[2], value);
       this.tokenNetworkAddress = value;
       fieldSetFlags()[2] = true;
@@ -846,7 +846,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'avgChannelDeposit' field.
       * @return The value.
       */
-    public java.lang.Integer getAvgChannelDeposit() {
+    public java.lang.Double getAvgChannelDeposit() {
       return avgChannelDeposit;
     }
 
@@ -855,7 +855,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'avgChannelDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setAvgChannelDeposit(int value) {
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setAvgChannelDeposit(double value) {
       validate(fields()[8], value);
       this.avgChannelDeposit = value;
       fieldSetFlags()[8] = true;
@@ -1004,14 +1004,14 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
         } else {
           record.token = fieldSetFlags()[0] ? this.token : (io.raidenmap.statecacher.Token) defaultValue(fields()[0]);
         }
-        record.channels = fieldSetFlags()[1] ? this.channels : (java.util.List<io.raidenmap.statecacher.Channel>) defaultValue(fields()[1]);
-        record.tokenNetworkAddress = fieldSetFlags()[2] ? this.tokenNetworkAddress : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.modifiedChannels = fieldSetFlags()[1] ? this.modifiedChannels : (java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel>) defaultValue(fields()[1]);
+        record.tokenNetworkAddress = fieldSetFlags()[2] ? this.tokenNetworkAddress : (java.lang.String) defaultValue(fields()[2]);
         record.timestamp = fieldSetFlags()[3] ? this.timestamp : (java.lang.Long) defaultValue(fields()[3]);
         record.channelsCount = fieldSetFlags()[4] ? this.channelsCount : (java.lang.Integer) defaultValue(fields()[4]);
         record.openChannels = fieldSetFlags()[5] ? this.openChannels : (java.lang.Integer) defaultValue(fields()[5]);
         record.closedChannels = fieldSetFlags()[6] ? this.closedChannels : (java.lang.Integer) defaultValue(fields()[6]);
         record.settledChannels = fieldSetFlags()[7] ? this.settledChannels : (java.lang.Integer) defaultValue(fields()[7]);
-        record.avgChannelDeposit = fieldSetFlags()[8] ? this.avgChannelDeposit : (java.lang.Integer) defaultValue(fields()[8]);
+        record.avgChannelDeposit = fieldSetFlags()[8] ? this.avgChannelDeposit : (java.lang.Double) defaultValue(fields()[8]);
         record.totalDeposit = fieldSetFlags()[9] ? this.totalDeposit : (java.lang.Long) defaultValue(fields()[9]);
         record.users = fieldSetFlags()[10] ? this.users : (java.lang.Integer) defaultValue(fields()[10]);
         record.blockNumber = fieldSetFlags()[11] ? this.blockNumber : (java.lang.Long) defaultValue(fields()[11]);
@@ -1040,12 +1040,4 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
     READER$.read(this, SpecificData.getDecoder(in));
   }
 
-  public void updateClosedChannels() {
-    setClosedChannels(getClosedChannels() + 1);
-    setOpenChannels(getOpenChannels() - 1);
-  }
-
-  public void updateSettledChannels() {
-    setSettledChannels(getSettledChannels() + 1);
-  }
 }

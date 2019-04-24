@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 5758234313469786723L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelOpened\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":\"string\"},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant1\",\"type\":\"string\"},{\"name\":\"participant2\",\"type\":\"string\"},{\"name\":\"settleTimeout\",\"type\":\"long\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelOpened\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant1\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"participant2\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"settleTimeout\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,8 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
   }
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
-  @Deprecated public java.lang.CharSequence participant1;
-  @Deprecated public java.lang.CharSequence participant2;
+  @Deprecated public java.lang.String participant1;
+  @Deprecated public java.lang.String participant2;
   @Deprecated public long settleTimeout;
 
   /**
@@ -70,7 +70,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
    * @param participant2 The new value for participant2
    * @param settleTimeout The new value for settleTimeout
    */
-  public ChannelOpened(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.CharSequence participant1, java.lang.CharSequence participant2, java.lang.Long settleTimeout) {
+  public ChannelOpened(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant1, java.lang.String participant2, java.lang.Long settleTimeout) {
     this.channelEvent = channelEvent;
     this.participant1 = participant1;
     this.participant2 = participant2;
@@ -94,8 +94,8 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
-    case 1: participant1 = (java.lang.CharSequence)value$; break;
-    case 2: participant2 = (java.lang.CharSequence)value$; break;
+    case 1: participant1 = (java.lang.String)value$; break;
+    case 2: participant2 = (java.lang.String)value$; break;
     case 3: settleTimeout = (java.lang.Long)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -121,7 +121,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'participant1' field.
    * @return The value of the 'participant1' field.
    */
-  public java.lang.CharSequence getParticipant1() {
+  public java.lang.String getParticipant1() {
     return participant1;
   }
 
@@ -129,7 +129,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
    * Sets the value of the 'participant1' field.
    * @param value the value to set.
    */
-  public void setParticipant1(java.lang.CharSequence value) {
+  public void setParticipant1(java.lang.String value) {
     this.participant1 = value;
   }
 
@@ -137,7 +137,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
    * Gets the value of the 'participant2' field.
    * @return The value of the 'participant2' field.
    */
-  public java.lang.CharSequence getParticipant2() {
+  public java.lang.String getParticipant2() {
     return participant2;
   }
 
@@ -145,7 +145,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
    * Sets the value of the 'participant2' field.
    * @param value the value to set.
    */
-  public void setParticipant2(java.lang.CharSequence value) {
+  public void setParticipant2(java.lang.String value) {
     this.participant2 = value;
   }
 
@@ -199,8 +199,8 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
 
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
-    private java.lang.CharSequence participant1;
-    private java.lang.CharSequence participant2;
+    private java.lang.String participant1;
+    private java.lang.String participant2;
     private long settleTimeout;
 
     /** Creates a new Builder */
@@ -338,7 +338,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
       * Gets the value of the 'participant1' field.
       * @return The value.
       */
-    public java.lang.CharSequence getParticipant1() {
+    public java.lang.String getParticipant1() {
       return participant1;
     }
 
@@ -347,7 +347,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'participant1'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelOpened.Builder setParticipant1(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.ChannelOpened.Builder setParticipant1(java.lang.String value) {
       validate(fields()[1], value);
       this.participant1 = value;
       fieldSetFlags()[1] = true;
@@ -377,7 +377,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
       * Gets the value of the 'participant2' field.
       * @return The value.
       */
-    public java.lang.CharSequence getParticipant2() {
+    public java.lang.String getParticipant2() {
       return participant2;
     }
 
@@ -386,7 +386,7 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
       * @param value The value of 'participant2'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelOpened.Builder setParticipant2(java.lang.CharSequence value) {
+    public io.raidenmap.event.channel.ChannelOpened.Builder setParticipant2(java.lang.String value) {
       validate(fields()[2], value);
       this.participant2 = value;
       fieldSetFlags()[2] = true;
@@ -460,8 +460,8 @@ public class ChannelOpened extends org.apache.avro.specific.SpecificRecordBase i
         } else {
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
-        record.participant1 = fieldSetFlags()[1] ? this.participant1 : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.participant2 = fieldSetFlags()[2] ? this.participant2 : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.participant1 = fieldSetFlags()[1] ? this.participant1 : (java.lang.String) defaultValue(fields()[1]);
+        record.participant2 = fieldSetFlags()[2] ? this.participant2 : (java.lang.String) defaultValue(fields()[2]);
         record.settleTimeout = fieldSetFlags()[3] ? this.settleTimeout : (java.lang.Long) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {

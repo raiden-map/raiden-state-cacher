@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = 1465902282320937486L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"io.raidenmap\",\"fields\":[{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"ipAddress\",\"type\":\"string\"},{\"name\":\"state\",\"type\":\"string\"},{\"name\":\"latitude\",\"type\":\"float\"},{\"name\":\"longitude\",\"type\":\"float\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"io.raidenmap\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"ipAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"latitude\",\"type\":\"float\"},{\"name\":\"longitude\",\"type\":\"float\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,9 +51,9 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.CharSequence ethAddress;
-  @Deprecated public java.lang.CharSequence ipAddress;
-  @Deprecated public java.lang.CharSequence state;
+  @Deprecated public java.lang.String ethAddress;
+  @Deprecated public java.lang.String ipAddress;
+  @Deprecated public java.lang.String state;
   @Deprecated public float latitude;
   @Deprecated public float longitude;
 
@@ -72,7 +72,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * @param latitude The new value for latitude
    * @param longitude The new value for longitude
    */
-  public Endpoint(java.lang.CharSequence ethAddress, java.lang.CharSequence ipAddress, java.lang.CharSequence state, java.lang.Float latitude, java.lang.Float longitude) {
+  public Endpoint(java.lang.String ethAddress, java.lang.String ipAddress, java.lang.String state, java.lang.Float latitude, java.lang.Float longitude) {
     this.ethAddress = ethAddress;
     this.ipAddress = ipAddress;
     this.state = state;
@@ -97,9 +97,9 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: ethAddress = (java.lang.CharSequence)value$; break;
-    case 1: ipAddress = (java.lang.CharSequence)value$; break;
-    case 2: state = (java.lang.CharSequence)value$; break;
+    case 0: ethAddress = (java.lang.String)value$; break;
+    case 1: ipAddress = (java.lang.String)value$; break;
+    case 2: state = (java.lang.String)value$; break;
     case 3: latitude = (java.lang.Float)value$; break;
     case 4: longitude = (java.lang.Float)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -110,7 +110,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'ethAddress' field.
    * @return The value of the 'ethAddress' field.
    */
-  public java.lang.CharSequence getEthAddress() {
+  public java.lang.String getEthAddress() {
     return ethAddress;
   }
 
@@ -118,7 +118,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'ethAddress' field.
    * @param value the value to set.
    */
-  public void setEthAddress(java.lang.CharSequence value) {
+  public void setEthAddress(java.lang.String value) {
     this.ethAddress = value;
   }
 
@@ -126,7 +126,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'ipAddress' field.
    * @return The value of the 'ipAddress' field.
    */
-  public java.lang.CharSequence getIpAddress() {
+  public java.lang.String getIpAddress() {
     return ipAddress;
   }
 
@@ -134,7 +134,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'ipAddress' field.
    * @param value the value to set.
    */
-  public void setIpAddress(java.lang.CharSequence value) {
+  public void setIpAddress(java.lang.String value) {
     this.ipAddress = value;
   }
 
@@ -142,7 +142,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Gets the value of the 'state' field.
    * @return The value of the 'state' field.
    */
-  public java.lang.CharSequence getState() {
+  public java.lang.String getState() {
     return state;
   }
 
@@ -150,7 +150,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
    * Sets the value of the 'state' field.
    * @param value the value to set.
    */
-  public void setState(java.lang.CharSequence value) {
+  public void setState(java.lang.String value) {
     this.state = value;
   }
 
@@ -218,9 +218,9 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Endpoint>
     implements org.apache.avro.data.RecordBuilder<Endpoint> {
 
-    private java.lang.CharSequence ethAddress;
-    private java.lang.CharSequence ipAddress;
-    private java.lang.CharSequence state;
+    private java.lang.String ethAddress;
+    private java.lang.String ipAddress;
+    private java.lang.String state;
     private float latitude;
     private float longitude;
 
@@ -289,7 +289,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'ethAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getEthAddress() {
+    public java.lang.String getEthAddress() {
       return ethAddress;
     }
 
@@ -298,7 +298,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'ethAddress'.
       * @return This builder.
       */
-    public io.raidenmap.Endpoint.Builder setEthAddress(java.lang.CharSequence value) {
+    public io.raidenmap.Endpoint.Builder setEthAddress(java.lang.String value) {
       validate(fields()[0], value);
       this.ethAddress = value;
       fieldSetFlags()[0] = true;
@@ -328,7 +328,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'ipAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getIpAddress() {
+    public java.lang.String getIpAddress() {
       return ipAddress;
     }
 
@@ -337,7 +337,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'ipAddress'.
       * @return This builder.
       */
-    public io.raidenmap.Endpoint.Builder setIpAddress(java.lang.CharSequence value) {
+    public io.raidenmap.Endpoint.Builder setIpAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.ipAddress = value;
       fieldSetFlags()[1] = true;
@@ -367,7 +367,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * Gets the value of the 'state' field.
       * @return The value.
       */
-    public java.lang.CharSequence getState() {
+    public java.lang.String getState() {
       return state;
     }
 
@@ -376,7 +376,7 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
       * @param value The value of 'state'.
       * @return This builder.
       */
-    public io.raidenmap.Endpoint.Builder setState(java.lang.CharSequence value) {
+    public io.raidenmap.Endpoint.Builder setState(java.lang.String value) {
       validate(fields()[2], value);
       this.state = value;
       fieldSetFlags()[2] = true;
@@ -483,9 +483,9 @@ public class Endpoint extends org.apache.avro.specific.SpecificRecordBase implem
     public Endpoint build() {
       try {
         Endpoint record = new Endpoint();
-        record.ethAddress = fieldSetFlags()[0] ? this.ethAddress : (java.lang.CharSequence) defaultValue(fields()[0]);
-        record.ipAddress = fieldSetFlags()[1] ? this.ipAddress : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.state = fieldSetFlags()[2] ? this.state : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.ethAddress = fieldSetFlags()[0] ? this.ethAddress : (java.lang.String) defaultValue(fields()[0]);
+        record.ipAddress = fieldSetFlags()[1] ? this.ipAddress : (java.lang.String) defaultValue(fields()[1]);
+        record.state = fieldSetFlags()[2] ? this.state : (java.lang.String) defaultValue(fields()[2]);
         record.latitude = fieldSetFlags()[3] ? this.latitude : (java.lang.Float) defaultValue(fields()[3]);
         record.longitude = fieldSetFlags()[4] ? this.longitude : (java.lang.Float) defaultValue(fields()[4]);
         return record;

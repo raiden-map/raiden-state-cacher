@@ -14,7 +14,7 @@ import org.apache.avro.message.SchemaStore;
 @org.apache.avro.specific.AvroGenerated
 public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
   private static final long serialVersionUID = -3339181557259852220L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AddressRegistered\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"ethAddress\",\"type\":\"string\"},{\"name\":\"endpointAddress\",\"type\":\"string\"}]}");
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AddressRegistered\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"endpointAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
   }
 
   @Deprecated public io.raidenmap.event.Metadata metadata;
-  @Deprecated public java.lang.CharSequence ethAddress;
-  @Deprecated public java.lang.CharSequence endpointAddress;
+  @Deprecated public java.lang.String ethAddress;
+  @Deprecated public java.lang.String endpointAddress;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,7 +68,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * @param ethAddress The new value for ethAddress
    * @param endpointAddress The new value for endpointAddress
    */
-  public AddressRegistered(io.raidenmap.event.Metadata metadata, java.lang.CharSequence ethAddress, java.lang.CharSequence endpointAddress) {
+  public AddressRegistered(io.raidenmap.event.Metadata metadata, java.lang.String ethAddress, java.lang.String endpointAddress) {
     this.metadata = metadata;
     this.ethAddress = ethAddress;
     this.endpointAddress = endpointAddress;
@@ -90,8 +90,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: metadata = (io.raidenmap.event.Metadata)value$; break;
-    case 1: ethAddress = (java.lang.CharSequence)value$; break;
-    case 2: endpointAddress = (java.lang.CharSequence)value$; break;
+    case 1: ethAddress = (java.lang.String)value$; break;
+    case 2: endpointAddress = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -116,7 +116,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'ethAddress' field.
    * @return The value of the 'ethAddress' field.
    */
-  public java.lang.CharSequence getEthAddress() {
+  public java.lang.String getEthAddress() {
     return ethAddress;
   }
 
@@ -124,7 +124,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'ethAddress' field.
    * @param value the value to set.
    */
-  public void setEthAddress(java.lang.CharSequence value) {
+  public void setEthAddress(java.lang.String value) {
     this.ethAddress = value;
   }
 
@@ -132,7 +132,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'endpointAddress' field.
    * @return The value of the 'endpointAddress' field.
    */
-  public java.lang.CharSequence getEndpointAddress() {
+  public java.lang.String getEndpointAddress() {
     return endpointAddress;
   }
 
@@ -140,7 +140,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'endpointAddress' field.
    * @param value the value to set.
    */
-  public void setEndpointAddress(java.lang.CharSequence value) {
+  public void setEndpointAddress(java.lang.String value) {
     this.endpointAddress = value;
   }
 
@@ -178,8 +178,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
 
     private io.raidenmap.event.Metadata metadata;
     private io.raidenmap.event.Metadata.Builder metadataBuilder;
-    private java.lang.CharSequence ethAddress;
-    private java.lang.CharSequence endpointAddress;
+    private java.lang.String ethAddress;
+    private java.lang.String endpointAddress;
 
     /** Creates a new Builder */
     private Builder() {
@@ -308,7 +308,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'ethAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getEthAddress() {
+    public java.lang.String getEthAddress() {
       return ethAddress;
     }
 
@@ -317,7 +317,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'ethAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder setEthAddress(java.lang.CharSequence value) {
+    public io.raidenmap.event.AddressRegistered.Builder setEthAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.ethAddress = value;
       fieldSetFlags()[1] = true;
@@ -347,7 +347,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'endpointAddress' field.
       * @return The value.
       */
-    public java.lang.CharSequence getEndpointAddress() {
+    public java.lang.String getEndpointAddress() {
       return endpointAddress;
     }
 
@@ -356,7 +356,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'endpointAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder setEndpointAddress(java.lang.CharSequence value) {
+    public io.raidenmap.event.AddressRegistered.Builder setEndpointAddress(java.lang.String value) {
       validate(fields()[2], value);
       this.endpointAddress = value;
       fieldSetFlags()[2] = true;
@@ -392,8 +392,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
         } else {
           record.metadata = fieldSetFlags()[0] ? this.metadata : (io.raidenmap.event.Metadata) defaultValue(fields()[0]);
         }
-        record.ethAddress = fieldSetFlags()[1] ? this.ethAddress : (java.lang.CharSequence) defaultValue(fields()[1]);
-        record.endpointAddress = fieldSetFlags()[2] ? this.endpointAddress : (java.lang.CharSequence) defaultValue(fields()[2]);
+        record.ethAddress = fieldSetFlags()[1] ? this.ethAddress : (java.lang.String) defaultValue(fields()[1]);
+        record.endpointAddress = fieldSetFlags()[2] ? this.endpointAddress : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
