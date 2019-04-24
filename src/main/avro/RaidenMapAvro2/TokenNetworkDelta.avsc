@@ -8,10 +8,10 @@
             "type": "io.raidenmap.statecacher.Token"
         },
         {
-            "name": "channels",
+            "name": "modifiedChannels",
             "type": {
-                "type": "array",
-                "items": "io.raidenmap.statecacher.Channel"
+                "type": "map",
+                "values": "io.raidenmap.statecacher.Channel"
             }
         },
         {
