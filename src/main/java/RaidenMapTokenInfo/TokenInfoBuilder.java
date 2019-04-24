@@ -16,8 +16,11 @@ import java.time.Instant;
 
 public class TokenInfoBuilder {
     private static final String tokenNotRegistered = "tokenNotRegistered";
-    private static Token.Builder tokenBuilder;
+    private static Token.Builder tokenBuilder = Token.newBuilder(new Token(tokenNotRegistered, "", "", 0d, 0d, 0d, 0f, 0f, 0f, 0f, 0f, 0f, 0d, 0d, 0l));
 
+    public static Token createToken(){
+        return  tokenBuilder.build();
+    }
     public static Token buildToken(String ethAddress) {
         String ID = getTokenID(ethAddress);
         if (ID.equals(tokenNotRegistered))
@@ -27,6 +30,7 @@ public class TokenInfoBuilder {
     }
 
     private static Token buildDefaultToken() {
+        tokenBuilder.setName(tokenNotRegistered);
         Token token = tokenBuilder.build();
         token.setName(tokenNotRegistered);
         return token;
@@ -77,7 +81,8 @@ public class TokenInfoBuilder {
         } catch (JsonSyntaxException e) {
             return tokenNotRegistered;
         }
-        return t.getResult().get(0).getTokenName().toLowerCase();
+        return tokenNotRegistered;
+        //return t.getResult().get(0).getTokenName().toLowerCase();
     }
 
     protected static TokenInfo getTokenInfo(String tokenID) {
