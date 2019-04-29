@@ -27,23 +27,28 @@ public class TokenNetworkCreatedTransformer extends EventTransformer implements 
     public void init(ProcessorContext context) {
         this.context = context;
         stateStore = (KeyValueStore) this.context.getStateStore(storeName);
+        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
+        TokenNetworkDeltaPunctuator punctuator = new TokenNetworkDeltaPunctuator(10, context, lightStateStore);
+        context.schedule(Duration.ofSeconds(10), PunctuationType.WALL_CLOCK_TIME, punctuator);
     }
 
     @Override
-    public KeyValue<String, TokenNetworkDelta> transform(ProducerKey producerKey, TokenNetworkCreated tokenNetworkCreated) {
+    public KeyValue<Key, TokenNetworkDelta> transform(ProducerKey producerKey, TokenNetworkCreated tokenNetworkCreated) {
         String address = tokenNetworkCreated.getTokenNetworkAddress().toString();
+        Key key = new Key(address);
         Token token = TokenInfoBuilder.buildToken(address);
-        TokenNetworkDelta tokenNetworkDelta = null;
-        tokenNetworkDelta = stateStore.get(tokenNetworkCreated.getTokenNetworkAddress().toString());
-        if( tokenNetworkDelta == null)
-            tokenNetworkDelta = new TokenNetworkDelta(token, Collections.EMPTY_MAP, address, 0l, 0, 0, 0, 0, 0d, 0l, 0, 0l);
 
-        tokenNetworkDelta.setTimestamp(Instant.now().toEpochMilli());
-        tokenNetworkDelta.setBlockNumber(tokenNetworkCreated.getMetadata().getBlockNumber());
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        tokenNetworkDelta = initializeTokenNetworkDelta(tokenNetworkDelta, token, address);
+        updateMetadata(tokenNetworkDelta, tokenNetworkCreated);
+        stateStore.put(key, tokenNetworkDelta);
 
-        stateStore.put(address, tokenNetworkDelta);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        lightTokenNetworkDelta = initializeTokenNetworkDelta(lightTokenNetworkDelta, token, address);
+        updateMetadata(lightTokenNetworkDelta, tokenNetworkCreated);
+        lightStateStore.put(key, lightTokenNetworkDelta);
 
-        return KeyValue.pair(address, tokenNetworkDelta);
+        return KeyValue.pair(key, lightTokenNetworkDelta);
     }
 
     @Override

@@ -22,18 +22,22 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
     public void init(ProcessorContext context) {
         this.context = context;
         stateStore = (KeyValueStore) this.context.getStateStore(storeName);
+        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
     }
 
     @Override
-    public KeyValue<String, TokenNetworkDelta> transform(ProducerKey producerKey, ChannelOpened channelOpened) {
-        TokenNetworkDelta tokenNetworkDelta = stateStore.get(channelOpened.getChannelEvent().getTokenNetworkAddress().toString());
+    public KeyValue<Key, TokenNetworkDelta> transform(ProducerKey producerKey, ChannelOpened channelOpened) {
+        String address = channelOpened.getChannelEvent().getTokenNetworkAddress().toString();
+        Key key = new Key(address);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        updateChannelEvent(tokenNetworkDelta, channelOpened);
+        stateStore.put(key, tokenNetworkDelta);
 
-        incrementChannelCount(tokenNetworkDelta);
-        addChannel(tokenNetworkDelta, channelOpened);
-        updateMetadata(tokenNetworkDelta, channelOpened.getChannelEvent());
-        stateStore.put(tokenNetworkDelta.getTokenNetworkAddress().toString(), tokenNetworkDelta);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        updateChannelEvent(lightTokenNetworkDelta, channelOpened);
+        lightStateStore.put(key, lightTokenNetworkDelta);
 
-        return KeyValue.pair(tokenNetworkDelta.getTokenNetworkAddress().toString(), tokenNetworkDelta);
+        return KeyValue.pair(key, lightTokenNetworkDelta);
     }
 
     @Override

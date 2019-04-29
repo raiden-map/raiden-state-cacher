@@ -21,18 +21,31 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
     public void init(ProcessorContext context) {
         this.context = context;
         stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        context.commit();
+        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
     }
 
     @Override
-    public KeyValue<String, TokenNetworkDelta> transform(ProducerKey producerKey, ChannelNewDeposit channelNewDeposit) {
-        TokenNetworkDelta tokenNetworkDelta = stateStore.get(channelNewDeposit.getChannelEvent().getTokenNetworkAddress().toString());
-        updateChannelNewDeposit(tokenNetworkDelta, channelNewDeposit);
-        updateChannelState(tokenNetworkDelta, channelNewDeposit.getChannelEvent(), stateName);
-        updateMetadata(tokenNetworkDelta, channelNewDeposit.getChannelEvent());
-        stateStore.put(tokenNetworkDelta.getTokenNetworkAddress().toString(), tokenNetworkDelta);
+    public KeyValue<Key, TokenNetworkDelta> transform(ProducerKey producerKey, ChannelNewDeposit channelNewDeposit) {
+        String address = channelNewDeposit.getChannelEvent().getTokenNetworkAddress().toString();
+        Key key = new Key(address);
+        String id = String.valueOf(channelNewDeposit.getChannelEvent().getId());
 
-        return KeyValue.pair(tokenNetworkDelta.getTokenNetworkAddress().toString(), tokenNetworkDelta);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        updateChannelEvent(tokenNetworkDelta, channelNewDeposit);
+        stateStore.put(key, tokenNetworkDelta);
+
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        checkAndInsertChannel(id, lightTokenNetworkDelta, tokenNetworkDelta);
+        updateChannelEvent(lightTokenNetworkDelta, channelNewDeposit);
+        lightStateStore.put(key, lightTokenNetworkDelta);
+
+        return KeyValue.pair(key, lightTokenNetworkDelta);
+    }
+
+    private void checkAndInsertChannel(String id, TokenNetworkDelta lightTokenNetworkDelta, TokenNetworkDelta tokenNetworkDelta) {
+        if (!lightTokenNetworkDelta.getModifiedChannels().containsKey(id)) {
+            lightTokenNetworkDelta.getModifiedChannels().put(id, Channel.newBuilder(tokenNetworkDelta.getModifiedChannels().get(id)).build());
+        }
     }
 
     @Override
