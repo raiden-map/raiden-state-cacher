@@ -3,6 +3,7 @@ package StateCacherEvent.TokenNetworkDelta.Transformer;
 import io.raidenmap.event.channel.ChannelOpened;
 import io.raidenmap.producerKey.ProducerKey;
 import io.raidenmap.statecacher.Channel;
+import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.Participant;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.KeyValue;
@@ -10,7 +11,7 @@ import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
-public class ChannelOpenedTransformer extends ChannelTransformer implements Transformer<ProducerKey, ChannelOpened, KeyValue<String, TokenNetworkDelta>> {
+public class ChannelOpenedTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelOpened, KeyValue<Key, TokenNetworkDelta>> {
 
     public ChannelOpenedTransformer(String storeName) {
         super(storeName, "ChannelOpened");

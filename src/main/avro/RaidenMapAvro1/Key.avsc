@@ -1,0 +1,11 @@
+{
+    "namespace": "io.raidenmap.statecacher",
+    "type": "record",
+    "name": "Key",
+    "fields": [
+        {
+            "name": "tokenNetworkAddress",
+            "type": "string"
+        }
+    ]
+}

@@ -2,13 +2,15 @@ package StateCacherEvent.TokenNetworkDelta.Transformer;
 
 import io.raidenmap.event.channel.ChannelNewDeposit;
 import io.raidenmap.producerKey.ProducerKey;
+import io.raidenmap.statecacher.Channel;
+import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
-public class ChannelNewDepositTransformer extends ChannelTransformer implements Transformer<ProducerKey, ChannelNewDeposit, KeyValue<String, TokenNetworkDelta>> {
+public class ChannelNewDepositTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelNewDeposit, KeyValue<Key, TokenNetworkDelta>> {
 
 
     public ChannelNewDepositTransformer(String storeName) {
