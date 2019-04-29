@@ -45,6 +45,12 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
 
     }
 
+    @Override
+    protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
+        addChannel(tokenNetworkDelta, (ChannelOpened) channelEvent);
+        incrementChannelCount(tokenNetworkDelta);
+        updateMetadata(tokenNetworkDelta, ((ChannelOpened)channelEvent).getChannelEvent());
+    }
 
     private void incrementChannelCount(TokenNetworkDelta tokenNetworkDelta) {
         tokenNetworkDelta.setChannelsCount(tokenNetworkDelta.getChannelsCount() + 1);
@@ -70,4 +76,5 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
     private Participant buildDefaultParticipant() {
         return new Participant("", 0l, 0l, false);
     }
+
 }

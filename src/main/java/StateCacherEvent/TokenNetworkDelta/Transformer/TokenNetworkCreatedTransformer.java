@@ -55,4 +55,22 @@ public class TokenNetworkCreatedTransformer extends EventTransformer implements 
     public void close() {
 
     }
+
+    @Override
+    protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
+
+    }
+
+    private TokenNetworkDelta initializeTokenNetworkDelta(TokenNetworkDelta tokenNetworkDelta, Token token, String address) {
+        if (tokenNetworkDelta == null)
+            return new TokenNetworkDelta(token, Collections.EMPTY_MAP, address, 0l, 0, 0, 0, 0, 0d, 0l, 0, 0l);
+        else
+            return tokenNetworkDelta;
+    }
+
+    protected void updateMetadata(TokenNetworkDelta tokenNetworkDelta, TokenNetworkCreated tokenNetworkCreated) {
+        tokenNetworkDelta.setTimestamp(Instant.now().toEpochMilli());
+        tokenNetworkDelta.setBlockNumber(tokenNetworkCreated.getMetadata().getBlockNumber());
+    }
+
 }

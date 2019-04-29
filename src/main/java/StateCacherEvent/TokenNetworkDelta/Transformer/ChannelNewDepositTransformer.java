@@ -53,10 +53,30 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
 
     }
 
+    @Override
+    protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
+        updateChannelNewDeposit(tokenNetworkDelta, (ChannelNewDeposit) channelEvent);
+        try {
+            updateChannelState(tokenNetworkDelta, ((ChannelNewDeposit) channelEvent).getChannelEvent(), stateName);
+        } catch (NullPointerException n) {
+        }
+        updateMetadata(tokenNetworkDelta, ((ChannelNewDeposit) channelEvent).getChannelEvent());
+    }
+
     private void updateChannelNewDeposit(TokenNetworkDelta tokenNetworkDelta, ChannelNewDeposit channelNewDeposit) {
         String id = String.valueOf(channelNewDeposit.getChannelEvent().getId());
+        long tokenNetworkDeposit = tokenNetworkDelta.getTotalDeposit();
         long newDeposit = channelNewDeposit.getTotalDeposit();
         String participantAddress = channelNewDeposit.getParticipant().toString();
-        findParticipant(tokenNetworkDelta.getModifiedChannels().get(id), participantAddress).setDeposit(newDeposit);
+        try {
+            findParticipant(tokenNetworkDelta.getModifiedChannels().get(id), participantAddress).setDeposit(newDeposit);
+            tokenNetworkDelta.setTotalDeposit(tokenNetworkDeposit + newDeposit);
+            tokenNetworkDeposit = tokenNetworkDelta.getTotalDeposit();
+            int channels = tokenNetworkDelta.getModifiedChannels().size();
+            tokenNetworkDelta.setAvgChannelDeposit((double) (tokenNetworkDeposit / channels));
+        } catch (NullPointerException n) {
+
+        }
     }
+
 }

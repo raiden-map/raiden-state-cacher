@@ -2,6 +2,7 @@ package StateCacherEvent.TokenNetworkDelta.Transformer;
 
 import io.raidenmap.event.channel.ChannelEvent;
 import io.raidenmap.statecacher.Channel;
+import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.Participant;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.processor.ProcessorContext;
@@ -10,16 +11,26 @@ import org.apache.kafka.streams.state.KeyValueStore;
 import java.time.Instant;
 import java.util.Objects;
 
-public abstract class ChannelTransformer {
-    protected KeyValueStore<String, TokenNetworkDelta> stateStore;
+public abstract class EventTransformer {
+    protected KeyValueStore<Key, TokenNetworkDelta> stateStore;
     protected String storeName;
+    protected KeyValueStore<Key, TokenNetworkDelta> lightStateStore;
+    protected String lightStoreName;
     protected String stateName;
     protected ProcessorContext context;
 
-    public ChannelTransformer(String storeName, String stateName){
+    public EventTransformer(String storeName, String stateName){
         Objects.requireNonNull(storeName, "Store Name can't be null");
         this.storeName = storeName;
+        this.lightStoreName = "light-"+storeName;
         this.stateName = stateName;
+    }
+
+    protected abstract void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent);
+
+    protected TokenNetworkDelta restoreTokenNetworkDelta(Key key, KeyValueStore<Key, TokenNetworkDelta> stateStore) {
+        TokenNetworkDelta tokenNetworkDelta = stateStore.get(key);
+        return tokenNetworkDelta;
     }
 
     protected Participant findParticipant(Channel channel, String participant) {
