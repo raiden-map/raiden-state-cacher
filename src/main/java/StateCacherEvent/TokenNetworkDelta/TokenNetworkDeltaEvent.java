@@ -38,26 +38,27 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
 
     private void consumeFromTokenNetworkCreatedTopic() {
         tokenNetworkDeltaStream = builder.stream(topicTokenNetworkCreated, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getTokenNetworkCreatedSerde()))
-                .transform(() -> new TokenNetworkCreatedTransformer(stateStoreName), stateStoreName);
-        tokenNetworkDeltaStream.print(Printed.toSysOut());
+                .transform(() -> new TokenNetworkCreatedTransformer(stateStoreName), stateStoreName, lightStateStoreName);
+        //tokenNetworkDeltaStream.print(Printed.toSysOut());
+        tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
     private void consumeFromChannelOpenedTopic() {
         tokenNetworkDeltaStream = builder.stream(topicChannelOpened, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelOpenedSerde()))
-                .transform(() -> new ChannelOpenedTransformer(stateStoreName), stateStoreName);
-        tokenNetworkDeltaStream.print(Printed.toSysOut());
+                .transform(() -> new ChannelOpenedTransformer(stateStoreName), stateStoreName, lightStateStoreName);
+        tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
     private void consumeFromChannelNewDepositTopic() {
         tokenNetworkDeltaStream = builder.stream(topicChannelNewDeposit, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelNewDepositSerde()))
-                .transform(() -> new ChannelNewDepositTransformer(stateStoreName), stateStoreName);
-        tokenNetworkDeltaStream.print(Printed.toSysOut());
+                .transform(() -> new ChannelNewDepositTransformer(stateStoreName), stateStoreName, lightStateStoreName);
+        tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
-    private void consumeFromChannelClosedTopic(){
+    private void consumeFromChannelClosedTopic() {
         tokenNetworkDeltaStream = builder.stream(topicChannelClosed, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelClosedSerde()))
-                .transform(() -> new ChannelClosedTransformer(stateStoreName), stateStoreName);
-        tokenNetworkDeltaStream.print(Printed.toSysOut());
+                .transform(() -> new ChannelClosedTransformer(stateStoreName), stateStoreName, lightStateStoreName);
+        tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
     private KStream<String, TokenNetworkDelta> tokenNetworkDeltaStream;
