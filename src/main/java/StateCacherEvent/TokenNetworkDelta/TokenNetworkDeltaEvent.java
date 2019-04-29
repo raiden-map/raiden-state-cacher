@@ -61,6 +61,18 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
         tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
-    private KStream<String, TokenNetworkDelta> tokenNetworkDeltaStream;
+    private KStream<Key, TokenNetworkDelta> tokenNetworkDeltaStream;
 
+    protected final String stateStoreName = "tokenNetworkDeltaStateStore";
+    protected KeyValueBytesStoreSupplier storeSupplier;
+    protected StoreBuilder<KeyValueStore<Key, TokenNetworkDelta>> storeBuilder;
+
+    protected final String lightStateStoreName = "light-" + stateStoreName;
+    protected KeyValueBytesStoreSupplier lightStoreSupplier;
+    protected StoreBuilder<KeyValueStore<Key, TokenNetworkDelta>> lightStoreBuilder;
+
+    protected final String topicTokenNetworkCreated = "raidenEvent.TokenNetworkCreated";
+    protected final String topicChannelOpened = "raidenEvent.ChannelOpened";
+    protected final String topicChannelClosed = "raidenEvent.ChannelClosed";
+    protected final String topicChannelNewDeposit = "raidenEvent.ChannelNewDeposit";
 }
