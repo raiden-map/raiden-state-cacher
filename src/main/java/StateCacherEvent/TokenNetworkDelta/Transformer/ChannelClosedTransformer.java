@@ -46,11 +46,6 @@ public class ChannelClosedTransformer extends EventTransformer implements Transf
 
     }
 
-    private void checkAndInsertChannel(String id, TokenNetworkDelta lightTokenNetworkDelta, TokenNetworkDelta tokenNetworkDelta) {
-        if(!lightTokenNetworkDelta.getModifiedChannels().containsKey(id))
-            lightTokenNetworkDelta.getModifiedChannels().put(id, Channel.newBuilder(tokenNetworkDelta.getModifiedChannels().get(id)).build());
-    }
-
     @Override
     protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
         updateChannelClosed(tokenNetworkDelta, (ChannelClosed) channelEvent);

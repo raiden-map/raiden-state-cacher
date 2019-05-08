@@ -1,5 +1,6 @@
 package StateCacherEvent.TokenNetworkDelta.Transformer;
 
+import RaidenMapTokenInfo.TokenInfoBuilder;
 import io.raidenmap.event.channel.ChannelEvent;
 import io.raidenmap.statecacher.Channel;
 import io.raidenmap.statecacher.Key;
@@ -18,6 +19,8 @@ public abstract class EventTransformer {
     protected String lightStoreName;
     protected String stateName;
     protected ProcessorContext context;
+    protected int limitModifiedChannelsMapSize = 10;
+    protected int punctuatorTimeInSeconds = 10;
 
     public EventTransformer(String storeName, String stateName){
         Objects.requireNonNull(storeName, "Store Name can't be null");
@@ -31,6 +34,12 @@ public abstract class EventTransformer {
     protected TokenNetworkDelta restoreTokenNetworkDelta(Key key, KeyValueStore<Key, TokenNetworkDelta> stateStore) {
         TokenNetworkDelta tokenNetworkDelta = stateStore.get(key);
         return tokenNetworkDelta;
+    }
+
+    protected void checkAndInsertChannel(String id, TokenNetworkDelta lightTokenNetworkDelta, TokenNetworkDelta tokenNetworkDelta) {
+        if (!lightTokenNetworkDelta.getModifiedChannels().containsKey(id)) {
+            lightTokenNetworkDelta.getModifiedChannels().put(id, Channel.newBuilder(tokenNetworkDelta.getModifiedChannels().get(id)).build());
+        }
     }
 
     protected Participant findParticipant(Channel channel, String participant) {
@@ -51,5 +60,6 @@ public abstract class EventTransformer {
     protected void updateMetadata(TokenNetworkDelta tokenNetworkDelta, ChannelEvent channelEvent) {
         tokenNetworkDelta.setTimestamp(Instant.now().toEpochMilli());
         tokenNetworkDelta.setBlockNumber(channelEvent.getMetadata().getBlockNumber());
+        tokenNetworkDelta.setToken(TokenInfoBuilder.buildTokenByTag(tokenNetworkDelta.getToken().getTag()));
     }
 }

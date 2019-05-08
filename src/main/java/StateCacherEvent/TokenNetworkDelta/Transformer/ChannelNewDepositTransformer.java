@@ -42,12 +42,6 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
         return KeyValue.pair(key, lightTokenNetworkDelta);
     }
 
-    private void checkAndInsertChannel(String id, TokenNetworkDelta lightTokenNetworkDelta, TokenNetworkDelta tokenNetworkDelta) {
-        if (!lightTokenNetworkDelta.getModifiedChannels().containsKey(id)) {
-            lightTokenNetworkDelta.getModifiedChannels().put(id, Channel.newBuilder(tokenNetworkDelta.getModifiedChannels().get(id)).build());
-        }
-    }
-
     @Override
     public void close() {
 
