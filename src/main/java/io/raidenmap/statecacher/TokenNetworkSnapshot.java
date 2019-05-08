@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -2773977980025352710L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkSnapshot\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkDeltas\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}},{\"name\":\"creationBlockNumber\",\"type\":\"long\"},{\"name\":\"creationTimestamp\",\"type\":\"long\"},{\"name\":\"stateBlockNumber\",\"type\":\"long\"},{\"name\":\"stateTimestamp\",\"type\":\"long\"},{\"name\":\"token\",\"type\":\"Token\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"channels\",\"type\":{\"type\":\"array\",\"items\":\"Channel\"}},{\"name\":\"endpoints\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"io.raidenmap\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"ipAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"latitude\",\"type\":\"float\"},{\"name\":\"longitude\",\"type\":\"float\"}]}}},{\"name\":\"twitter\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = 2198268000684162560L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkSnapshot\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkDeltas\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}},{\"name\":\"creationBlockNumber\",\"type\":\"long\"},{\"name\":\"creationTimestamp\",\"type\":\"long\"},{\"name\":\"stateBlockNumber\",\"type\":\"long\"},{\"name\":\"stateTimestamp\",\"type\":\"long\"},{\"name\":\"token\",\"type\":\"Token\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"channels\",\"type\":{\"type\":\"map\",\"values\":\"Channel\",\"avro.java.string\":\"String\"}},{\"name\":\"endpoints\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"Endpoint\",\"namespace\":\"io.raidenmap\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"ipAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"latitude\",\"type\":\"float\"},{\"name\":\"longitude\",\"type\":\"float\"}]}}},{\"name\":\"twitter\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -62,7 +62,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
   @Deprecated public long totalDeposit;
   @Deprecated public int users;
   @Deprecated public long blockNumber;
-  @Deprecated public java.util.List<io.raidenmap.statecacher.Channel> channels;
+  @Deprecated public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> channels;
   @Deprecated public java.util.List<io.raidenmap.Endpoint> endpoints;
   @Deprecated public java.lang.String twitter;
 
@@ -90,7 +90,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
    * @param endpoints The new value for endpoints
    * @param twitter The new value for twitter
    */
-  public TokenNetworkSnapshot(java.lang.String tokenNetworkAddress, java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworkDeltas, java.lang.Long creationBlockNumber, java.lang.Long creationTimestamp, java.lang.Long stateBlockNumber, java.lang.Long stateTimestamp, io.raidenmap.statecacher.Token token, java.lang.Double avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber, java.util.List<io.raidenmap.statecacher.Channel> channels, java.util.List<io.raidenmap.Endpoint> endpoints, java.lang.String twitter) {
+  public TokenNetworkSnapshot(java.lang.String tokenNetworkAddress, java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworkDeltas, java.lang.Long creationBlockNumber, java.lang.Long creationTimestamp, java.lang.Long stateBlockNumber, java.lang.Long stateTimestamp, io.raidenmap.statecacher.Token token, java.lang.Double avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber, java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> channels, java.util.List<io.raidenmap.Endpoint> endpoints, java.lang.String twitter) {
     this.tokenNetworkAddress = tokenNetworkAddress;
     this.tokenNetworkDeltas = tokenNetworkDeltas;
     this.creationBlockNumber = creationBlockNumber;
@@ -144,7 +144,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
     case 8: totalDeposit = (java.lang.Long)value$; break;
     case 9: users = (java.lang.Integer)value$; break;
     case 10: blockNumber = (java.lang.Long)value$; break;
-    case 11: channels = (java.util.List<io.raidenmap.statecacher.Channel>)value$; break;
+    case 11: channels = (java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel>)value$; break;
     case 12: endpoints = (java.util.List<io.raidenmap.Endpoint>)value$; break;
     case 13: twitter = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -331,7 +331,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
    * Gets the value of the 'channels' field.
    * @return The value of the 'channels' field.
    */
-  public java.util.List<io.raidenmap.statecacher.Channel> getChannels() {
+  public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> getChannels() {
     return channels;
   }
 
@@ -339,7 +339,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
    * Sets the value of the 'channels' field.
    * @param value the value to set.
    */
-  public void setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
+  public void setChannels(java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> value) {
     this.channels = value;
   }
 
@@ -419,7 +419,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
     private long totalDeposit;
     private int users;
     private long blockNumber;
-    private java.util.List<io.raidenmap.statecacher.Channel> channels;
+    private java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> channels;
     private java.util.List<io.raidenmap.Endpoint> endpoints;
     private java.lang.String twitter;
 
@@ -1020,7 +1020,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
       * Gets the value of the 'channels' field.
       * @return The value.
       */
-    public java.util.List<io.raidenmap.statecacher.Channel> getChannels() {
+    public java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> getChannels() {
       return channels;
     }
 
@@ -1029,7 +1029,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
       * @param value The value of 'channels'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setChannels(java.util.List<io.raidenmap.statecacher.Channel> value) {
+    public io.raidenmap.statecacher.TokenNetworkSnapshot.Builder setChannels(java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> value) {
       validate(fields()[11], value);
       this.channels = value;
       fieldSetFlags()[11] = true;
@@ -1153,7 +1153,7 @@ public class TokenNetworkSnapshot extends org.apache.avro.specific.SpecificRecor
         record.totalDeposit = fieldSetFlags()[8] ? this.totalDeposit : (java.lang.Long) defaultValue(fields()[8]);
         record.users = fieldSetFlags()[9] ? this.users : (java.lang.Integer) defaultValue(fields()[9]);
         record.blockNumber = fieldSetFlags()[10] ? this.blockNumber : (java.lang.Long) defaultValue(fields()[10]);
-        record.channels = fieldSetFlags()[11] ? this.channels : (java.util.List<io.raidenmap.statecacher.Channel>) defaultValue(fields()[11]);
+        record.channels = fieldSetFlags()[11] ? this.channels : (java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel>) defaultValue(fields()[11]);
         record.endpoints = fieldSetFlags()[12] ? this.endpoints : (java.util.List<io.raidenmap.Endpoint>) defaultValue(fields()[12]);
         record.twitter = fieldSetFlags()[13] ? this.twitter : (java.lang.String) defaultValue(fields()[13]);
         return record;
