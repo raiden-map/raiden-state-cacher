@@ -4,6 +4,7 @@ import io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde;
 import io.raidenmap.event.channel.ChannelClosed;
 import io.raidenmap.event.channel.ChannelNewDeposit;
 import io.raidenmap.event.channel.ChannelOpened;
+import io.raidenmap.event.channel.ChannelSettled;
 import io.raidenmap.event.tokenNetwork.TokenNetworkCreated;
 import io.raidenmap.producerKey.ProducerKey;
 import io.raidenmap.statecacher.Key;
@@ -36,6 +37,8 @@ public class SpecificSerdeManager {
         addSerdeConfig(channelNewDepositSerde, false);
         channelClosedSerde = new SpecificAvroSerde<>();
         addSerdeConfig(channelClosedSerde, false);
+        channelSettledSerde= new SpecificAvroSerde<>();
+        addSerdeConfig(channelSettledSerde, false);
         tokenNetworkDeltaSerde = new SpecificAvroSerde<>();
         addSerdeConfig(tokenNetworkDeltaSerde, false);
         tokenNetworkSnapshotSerde = new SpecificAvroSerde<>();
@@ -43,6 +46,7 @@ public class SpecificSerdeManager {
 
         userCountSerde = new SpecificAvroSerde<>();
         addSerdeConfig(userCountSerde, false);
+
     }
 
     private void addSerdeConfig(Serde serde, boolean isKey) {
@@ -73,6 +77,10 @@ public class SpecificSerdeManager {
         return channelClosedSerde;
     }
 
+    public Serde<ChannelSettled> getChannelSettledSerde() {
+        return channelSettledSerde;
+    }
+
     public Serde<TokenNetworkDelta> getTokenNetworkDeltaSerde() {
         return tokenNetworkDeltaSerde;
     }
@@ -91,6 +99,7 @@ public class SpecificSerdeManager {
     protected Serde<ChannelOpened> channelOpenedSerde;
     protected Serde<ChannelNewDeposit> channelNewDepositSerde;
     protected Serde<ChannelClosed> channelClosedSerde;
+    protected Serde<ChannelSettled> channelSettledSerde;
 
     protected Serde<TokenNetworkCreated> tokenNetworkCreatedSerde;
     protected Serde<TokenNetworkDelta> tokenNetworkDeltaSerde;
