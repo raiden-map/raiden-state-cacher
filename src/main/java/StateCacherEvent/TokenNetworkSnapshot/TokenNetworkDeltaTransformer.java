@@ -1,5 +1,6 @@
 package StateCacherEvent.TokenNetworkSnapshot;
 
+import io.raidenmap.statecacher.Channel;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import io.raidenmap.statecacher.TokenNetworkSnapshot;
@@ -11,15 +12,15 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetworkDelta, KeyValue<Key, TokenNetworkSnapshot>> {
 
     protected KeyValueStore<Key, TokenNetworkSnapshot> stateStore;
     protected String storeName;
-
     protected ProcessorContext context;
+    private int limitTokenNetworkDeltaArraySize = 5;
+    private int punctuatorTimeInSeconds = 15;
 
     public TokenNetworkDeltaTransformer(String storeName) {
         this.storeName = storeName;
@@ -29,8 +30,8 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
     public void init(ProcessorContext context) {
         this.context = context;
         stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        TokenNetworkSnapshotPunctuator punctuator = new TokenNetworkSnapshotPunctuator(10, context, stateStore);
-        context.schedule(Duration.ofSeconds(15), PunctuationType.WALL_CLOCK_TIME, punctuator);
+        TokenNetworkSnapshotPunctuator punctuator = new TokenNetworkSnapshotPunctuator(limitTokenNetworkDeltaArraySize, context, stateStore);
+        context.schedule(Duration.ofSeconds(punctuatorTimeInSeconds), PunctuationType.WALL_CLOCK_TIME, punctuator);
     }
 
     @Override
@@ -62,14 +63,14 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
                     tokenNetworkDelta.getTotalDeposit(),
                     0,
                     tokenNetworkDelta.getBlockNumber(),
-                    new ArrayList<>(),
+                    new HashMap<>(),
                     new ArrayList<>(),
                     "");
-            //TODO: update Channels list
+            tokenNetworkSnapshot = updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
             return tokenNetworkSnapshot;
         } else {
             tokenNetworkSnapshot.getTokenNetworkDeltas().add(tokenNetworkDelta);
-            //TODO: update Channels list
+            tokenNetworkSnapshot = updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
             tokenNetworkSnapshot.setBlockNumber(tokenNetworkDelta.getBlockNumber());
             tokenNetworkSnapshot.setStateTimestamp(Instant.now().toEpochMilli());
             tokenNetworkSnapshot.setUsers(tokenNetworkDelta.getUsers());
@@ -78,5 +79,16 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
             tokenNetworkSnapshot.setBlockNumber(tokenNetworkDelta.getBlockNumber());
             return tokenNetworkSnapshot;
         }
+    }
+
+    private TokenNetworkSnapshot updateChannelList(TokenNetworkSnapshot tokenNetworkSnapshot, TokenNetworkDelta tokenNetworkDelta) {
+        Map<String, Channel> tmpChannels = tokenNetworkDelta.getModifiedChannels();
+        for (Channel i : tmpChannels.values()) {
+            if (!i.getState().equals("ChannelSettled"))
+                tokenNetworkSnapshot.getChannels().put(i.getChannelId().toString(), i);
+            else
+                tokenNetworkSnapshot.getChannels().remove(i.getChannelId().toString());
+        }
+        return tokenNetworkSnapshot;
     }
 }
