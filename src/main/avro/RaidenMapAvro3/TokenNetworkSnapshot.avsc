@@ -53,8 +53,8 @@
         {
             "name": "channels",
             "type": {
-                "type": "array",
-                "items": "io.raidenmap.statecacher.Channel"
+                "type": "map",
+                "values": "io.raidenmap.statecacher.Channel"
             }
         },
         {
