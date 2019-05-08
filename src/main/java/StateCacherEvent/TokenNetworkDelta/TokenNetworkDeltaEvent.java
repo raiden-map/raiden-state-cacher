@@ -7,6 +7,7 @@ import StateCacherEvent.TokenNetworkDelta.Transformer.ChannelOpenedTransformer;
 import StateCacherEvent.TokenNetworkDelta.Transformer.TokenNetworkCreatedTransformer;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
+import io.raidenmap.statecacher.UserCount;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.kstream.*;
 import org.apache.kafka.streams.state.KeyValueBytesStoreSupplier;
@@ -26,6 +27,10 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
         lightStoreSupplier = Stores.inMemoryKeyValueStore(lightStateStoreName);
         lightStoreBuilder = Stores.keyValueStoreBuilder(lightStoreSupplier, specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde());
         builder.addStateStore(lightStoreBuilder);
+
+        userCountStoreSupplier = Stores.inMemoryKeyValueStore(userCountStateStoreName);
+        userCountStoreBuilder = Stores.keyValueStoreBuilder(userCountStoreSupplier, Serdes.String(), specificSerdeManager.getUserCountSerde());
+        builder.addStateStore(userCountStoreBuilder);
     }
 
     @Override
@@ -45,8 +50,8 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
 
     private void consumeFromChannelOpenedTopic() {
         tokenNetworkDeltaStream = builder.stream(topicChannelOpened, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelOpenedSerde()))
-                .transform(() -> new ChannelOpenedTransformer(stateStoreName), stateStoreName, lightStateStoreName);
-        tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
+                .transform(() -> new ChannelOpenedTransformer(stateStoreName), stateStoreName, lightStateStoreName, userCountStateStoreName);
+        //tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
     private void consumeFromChannelNewDepositTopic() {
@@ -71,8 +76,13 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
     protected KeyValueBytesStoreSupplier lightStoreSupplier;
     protected StoreBuilder<KeyValueStore<Key, TokenNetworkDelta>> lightStoreBuilder;
 
+    protected final String userCountStateStoreName = "userCountStateStore2";
+    protected KeyValueBytesStoreSupplier userCountStoreSupplier;
+    protected StoreBuilder<KeyValueStore<String, UserCount>> userCountStoreBuilder;
+
     protected final String topicTokenNetworkCreated = "raidenEvent.TokenNetworkCreated";
     protected final String topicChannelOpened = "raidenEvent.ChannelOpened";
     protected final String topicChannelClosed = "raidenEvent.ChannelClosed";
     protected final String topicChannelNewDeposit = "raidenEvent.ChannelNewDeposit";
+    protected final String topicChannelSettled = "raidenEvent.ChannelSettled";
 }

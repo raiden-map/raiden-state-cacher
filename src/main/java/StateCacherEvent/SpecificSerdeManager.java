@@ -9,6 +9,7 @@ import io.raidenmap.producerKey.ProducerKey;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import io.raidenmap.statecacher.TokenNetworkSnapshot;
+import io.raidenmap.statecacher.UserCount;
 import org.apache.kafka.common.serialization.Serde;
 
 import java.util.Collections;
@@ -39,6 +40,9 @@ public class SpecificSerdeManager {
         addSerdeConfig(tokenNetworkDeltaSerde, false);
         tokenNetworkSnapshotSerde = new SpecificAvroSerde<>();
         addSerdeConfig(tokenNetworkSnapshotSerde, false);
+
+        userCountSerde = new SpecificAvroSerde<>();
+        addSerdeConfig(userCountSerde, false);
     }
 
     private void addSerdeConfig(Serde serde, boolean isKey) {
@@ -77,6 +81,10 @@ public class SpecificSerdeManager {
         return tokenNetworkSnapshotSerde;
     }
 
+    public Serde<UserCount> getUserCountSerde() {
+        return userCountSerde;
+    }
+
     private Map<String, String> serdeConfig;
     protected Serde<ProducerKey> producerKeySerde;
     protected Serde<Key> keySerde;
@@ -88,4 +96,5 @@ public class SpecificSerdeManager {
     protected Serde<TokenNetworkDelta> tokenNetworkDeltaSerde;
     protected Serde<TokenNetworkSnapshot> tokenNetworkSnapshotSerde;
 
+    protected Serde<UserCount> userCountSerde;
 }

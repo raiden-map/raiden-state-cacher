@@ -13,6 +13,9 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 public class ChannelOpenedTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelOpened, KeyValue<Key, TokenNetworkDelta>> {
 
+    protected KeyValueStore<String, UserCount> userCountStateStore;
+    protected String userCountStoreName = "userCountStateStore2";
+
     public ChannelOpenedTransformer(String storeName) {
         super(storeName, "ChannelOpened");
     }
