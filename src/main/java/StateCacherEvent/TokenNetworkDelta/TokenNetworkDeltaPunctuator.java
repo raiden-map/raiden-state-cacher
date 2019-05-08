@@ -13,6 +13,7 @@ import java.util.Collections;
 public class TokenNetworkDeltaPunctuator implements Punctuator {
 
     private int limit;
+    private boolean send;
     private ProcessorContext context;
     private KeyValueStore<Key, TokenNetworkDelta> stateStore;
 
@@ -22,6 +23,7 @@ public class TokenNetworkDeltaPunctuator implements Punctuator {
         this.limit = limit;
         this.context = context;
         this.stateStore = keyValueStore;
+        this.send = false;
     }
 
     @Override
@@ -34,11 +36,14 @@ public class TokenNetworkDeltaPunctuator implements Punctuator {
             TokenNetworkDelta tokenNetworkDelta = keyValue.value;
 
             if (tokenNetworkDelta != null) {
-                if (tokenNetworkDelta.getModifiedChannels().size() >= limit) {
+                if (tokenNetworkDelta.getModifiedChannels().size() >= limit || send) {
                     context.forward(key, tokenNetworkDelta);
                     tokenNetworkDelta.setModifiedChannels(Collections.EMPTY_MAP);
                     stateStore.put(key, tokenNetworkDelta);
+                    send = false;
                 }
+                else
+                    send = true;
             }
         }
     }
