@@ -1,0 +1,14 @@
+{
+    "name": "UserCount",
+    "type": "record",
+    "namespace": "io.raidenmap.statecacher",
+    "fields": [
+        {
+            "name": "user",
+            "type": {
+                "type": "map",
+                "values": "int"
+            }
+        }
+    ]
+}
