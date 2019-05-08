@@ -39,6 +39,7 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
         consumeFromChannelOpenedTopic();
         consumeFromChannelNewDepositTopic();
         consumeFromChannelClosedTopic();
+        consumeFromChannelSettledTopic();
     }
 
     private void consumeFromTokenNetworkCreatedTopic() {
@@ -64,6 +65,10 @@ public class TokenNetworkDeltaEvent extends StateCacherEvent {
         tokenNetworkDeltaStream = builder.stream(topicChannelClosed, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelClosedSerde()))
                 .transform(() -> new ChannelClosedTransformer(stateStoreName), stateStoreName, lightStateStoreName);
         tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
+    private void consumeFromChannelSettledTopic() {
+        tokenNetworkDeltaStream = builder.stream(topicChannelSettled, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getChannelSettledSerde()))
+                .transform(() -> new ChannelSettledTransformer(stateStoreName), stateStoreName, lightStateStoreName, userCountStateStoreName);
+        //tokenNetworkDeltaStream.to(toStreamTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()));
     }
 
     private KStream<Key, TokenNetworkDelta> tokenNetworkDeltaStream;
