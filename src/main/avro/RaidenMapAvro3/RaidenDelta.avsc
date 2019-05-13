@@ -30,8 +30,8 @@
         {
             "name": "tokenNetworksChanges",
             "type": {
-                "type": "array",
-                "items": "io.raidenmap.statecacher.TokenNetworkDelta"
+                "type": "map",
+                "values": "io.raidenmap.statecacher.TokenNetworkDelta"
             }
         }
     ]
