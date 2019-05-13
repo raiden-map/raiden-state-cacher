@@ -1,5 +1,5 @@
 {
-    "namespace": "io.raidenmap.event",
+    "namespace": "io.raidenmap.event.Endpoint",
     "type": "record",
     "name": "AddressRegistered",
     "fields": [
