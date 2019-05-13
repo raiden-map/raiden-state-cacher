@@ -1,7 +1,8 @@
-package StateCacherEvent.TokenNetworkDelta.Transformer;
+package StateCacherEvents.TokenNetworkDelta.Transformer;
 
 import RaidenMapTokenInfo.TokenInfoBuilder;
-import StateCacherEvent.TokenNetworkDelta.TokenNetworkDeltaPunctuator;
+import StateCacherEvents.StateStores;
+import StateCacherEvents.TokenNetworkDelta.TokenNetworkDeltaPunctuator;
 import io.raidenmap.event.tokenNetwork.TokenNetworkCreated;
 import io.raidenmap.producerKey.ProducerKey;
 import io.raidenmap.statecacher.Key;
@@ -15,21 +16,20 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.time.Duration;
 import java.time.Instant;
-import java.util.Collections;
 import java.util.HashMap;
 
 public class TokenNetworkCreatedTransformer extends EventTransformer implements Transformer<ProducerKey, TokenNetworkCreated, KeyValue<Key, TokenNetworkDelta>> {
 
-    public TokenNetworkCreatedTransformer(String storeName) {
-        super(storeName, "TokenNetworkCreated");
+    public TokenNetworkCreatedTransformer() {
+        super("TokenNetworkCreated");
     }
 
     @Override
     public void init(ProcessorContext context) {
         this.context = context;
-        stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
-        TokenNetworkDeltaPunctuator punctuator = new TokenNetworkDeltaPunctuator(limitModifiedChannelsMapSize, context, lightStateStore);
+        tokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.tokenNetworkDeltaStoreName);
+        lightTokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.lightTokenNetworkDeltaStoreName);
+        TokenNetworkDeltaPunctuator punctuator = new TokenNetworkDeltaPunctuator(limitModifiedChannelsMapSize, context, lightTokenNetworkDeltaStateStore);
         context.schedule(Duration.ofSeconds(punctuatorTimeInSeconds), PunctuationType.WALL_CLOCK_TIME, punctuator);
     }
 
@@ -39,15 +39,15 @@ public class TokenNetworkCreatedTransformer extends EventTransformer implements 
         Key key = new Key(address);
         Token token = TokenInfoBuilder.buildToken(tokenNetworkCreated.getTokenAddress().toString());
 
-        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, tokenNetworkDeltaStateStore);
         tokenNetworkDelta = initializeTokenNetworkDelta(tokenNetworkDelta, token, address);
         updateMetadata(tokenNetworkDelta, tokenNetworkCreated);
-        stateStore.put(key, tokenNetworkDelta);
+        tokenNetworkDeltaStateStore.put(key, tokenNetworkDelta);
 
-        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightTokenNetworkDeltaStateStore);
         lightTokenNetworkDelta = initializeTokenNetworkDelta(lightTokenNetworkDelta, token, address);
         updateMetadata(lightTokenNetworkDelta, tokenNetworkCreated);
-        lightStateStore.put(key, lightTokenNetworkDelta);
+        lightTokenNetworkDeltaStateStore.put(key, lightTokenNetworkDelta);
 
         return KeyValue.pair(key, lightTokenNetworkDelta);
     }

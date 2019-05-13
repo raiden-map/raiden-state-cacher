@@ -1,5 +1,6 @@
-package StateCacherEvent.TokenNetworkSnapshot;
+package StateCacherEvents.TokenNetworkSnapshot;
 
+import StateCacherEvents.StateStores;
 import io.raidenmap.statecacher.Channel;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
@@ -16,29 +17,29 @@ import java.util.*;
 
 public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetworkDelta, KeyValue<Key, TokenNetworkSnapshot>> {
 
-    protected KeyValueStore<Key, TokenNetworkSnapshot> stateStore;
-    protected String storeName;
+    protected KeyValueStore<Key, TokenNetworkSnapshot> tokenNetworkSnapshotKeyValueStore;
     protected ProcessorContext context;
-    private int limitTokenNetworkDeltaArraySize = 5;
-    private int punctuatorTimeInSeconds = 15;
+    private int limitTokenNetworkDeltaArraySize;
+    private int punctuatorTimeInSeconds;
 
-    public TokenNetworkDeltaTransformer(String storeName) {
-        this.storeName = storeName;
+    TokenNetworkDeltaTransformer() {
+        limitTokenNetworkDeltaArraySize = 5;
+        punctuatorTimeInSeconds = 15;
     }
 
     @Override
     public void init(ProcessorContext context) {
         this.context = context;
-        stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        TokenNetworkSnapshotPunctuator punctuator = new TokenNetworkSnapshotPunctuator(limitTokenNetworkDeltaArraySize, context, stateStore);
+        tokenNetworkSnapshotKeyValueStore = (KeyValueStore) this.context.getStateStore(StateStores.tokenNetworkSnapshotStoreName);
+        TokenNetworkSnapshotPunctuator punctuator = new TokenNetworkSnapshotPunctuator(limitTokenNetworkDeltaArraySize, context, tokenNetworkSnapshotKeyValueStore);
         context.schedule(Duration.ofSeconds(punctuatorTimeInSeconds), PunctuationType.WALL_CLOCK_TIME, punctuator);
     }
 
     @Override
     public KeyValue<Key, TokenNetworkSnapshot> transform(Key key, TokenNetworkDelta tokenNetworkDelta) {
-        TokenNetworkSnapshot tokenNetworkSnapshot = stateStore.get(key);
+        TokenNetworkSnapshot tokenNetworkSnapshot = tokenNetworkSnapshotKeyValueStore.get(key);
         tokenNetworkSnapshot = updateTokenNetworkSnapshot(tokenNetworkSnapshot, tokenNetworkDelta);
-        stateStore.put(key, tokenNetworkSnapshot);
+        tokenNetworkSnapshotKeyValueStore.put(key, tokenNetworkSnapshot);
         return KeyValue.pair(key, tokenNetworkSnapshot);
     }
 
@@ -49,7 +50,7 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
 
     private TokenNetworkSnapshot updateTokenNetworkSnapshot(TokenNetworkSnapshot tokenNetworkSnapshot, TokenNetworkDelta tokenNetworkDelta) {
         if (tokenNetworkSnapshot == null) {
-            List deltas = new ArrayList();
+            List<TokenNetworkDelta> deltas = new ArrayList<>();
             deltas.add(tokenNetworkDelta);
             tokenNetworkSnapshot = new TokenNetworkSnapshot(
                     tokenNetworkDelta.getTokenNetworkAddress().toString(),
@@ -66,11 +67,11 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
                     new HashMap<>(),
                     new ArrayList<>(),
                     "");
-            tokenNetworkSnapshot = updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
+            updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
             return tokenNetworkSnapshot;
         } else {
             tokenNetworkSnapshot.getTokenNetworkDeltas().add(tokenNetworkDelta);
-            tokenNetworkSnapshot = updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
+            updateChannelList(tokenNetworkSnapshot, tokenNetworkDelta);
             tokenNetworkSnapshot.setBlockNumber(tokenNetworkDelta.getBlockNumber());
             tokenNetworkSnapshot.setStateTimestamp(Instant.now().toEpochMilli());
             tokenNetworkSnapshot.setUsers(tokenNetworkDelta.getUsers());
@@ -81,7 +82,7 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
         }
     }
 
-    private TokenNetworkSnapshot updateChannelList(TokenNetworkSnapshot tokenNetworkSnapshot, TokenNetworkDelta tokenNetworkDelta) {
+    private void updateChannelList(TokenNetworkSnapshot tokenNetworkSnapshot, TokenNetworkDelta tokenNetworkDelta) {
         Map<String, Channel> tmpChannels = tokenNetworkDelta.getModifiedChannels();
         for (Channel i : tmpChannels.values()) {
             if (!i.getState().equals("ChannelSettled"))
@@ -89,6 +90,5 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
             else
                 tokenNetworkSnapshot.getChannels().remove(i.getChannelId().toString());
         }
-        return tokenNetworkSnapshot;
     }
 }

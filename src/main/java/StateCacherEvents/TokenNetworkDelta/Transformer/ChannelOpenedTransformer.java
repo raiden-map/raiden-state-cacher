@@ -1,5 +1,6 @@
-package StateCacherEvent.TokenNetworkDelta.Transformer;
+package StateCacherEvents.TokenNetworkDelta.Transformer;
 
+import StateCacherEvents.StateStores;
 import io.raidenmap.event.channel.ChannelOpened;
 import io.raidenmap.producerKey.ProducerKey;
 import io.raidenmap.statecacher.*;
@@ -8,25 +9,23 @@ import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
 public class ChannelOpenedTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelOpened, KeyValue<Key, TokenNetworkDelta>> {
 
     protected KeyValueStore<String, UserCount> userCountStateStore;
-    protected String userCountStoreName = "userCountStateStore2";
 
-    public ChannelOpenedTransformer(String storeName) {
-        super(storeName, "ChannelOpened");
+    public ChannelOpenedTransformer() {
+        super("ChannelOpened");
     }
 
     @Override
     public void init(ProcessorContext context) {
         this.context = context;
-        stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
-        userCountStateStore = (KeyValueStore) this.context.getStateStore(userCountStoreName);
+        tokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.tokenNetworkDeltaStoreName);
+        lightTokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.lightTokenNetworkDeltaStoreName);
+        userCountStateStore = (KeyValueStore) this.context.getStateStore(StateStores.userCountStoreName);
     }
 
     @Override
@@ -36,13 +35,13 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
 
         updateUserCountStore(channelOpened);
 
-        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, tokenNetworkDeltaStateStore);
         updateChannelEvent(tokenNetworkDelta, channelOpened);
-        stateStore.put(key, tokenNetworkDelta);
+        tokenNetworkDeltaStateStore.put(key, tokenNetworkDelta);
 
-        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightTokenNetworkDeltaStateStore);
         updateChannelEvent(lightTokenNetworkDelta, channelOpened);
-        lightStateStore.put(key, lightTokenNetworkDelta);
+        lightTokenNetworkDeltaStateStore.put(key, lightTokenNetworkDelta);
 
         return KeyValue.pair(key, lightTokenNetworkDelta);
     }
@@ -102,7 +101,6 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
             userCount = new UserCount();
             userCount.setUser(new HashMap<>());
         }
-        userCount.getUser().put("test",0);
         incremectParticipant(userCount.getUser(), participant1);
         incremectParticipant(userCount.getUser(), participant2);
 

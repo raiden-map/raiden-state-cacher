@@ -1,8 +1,8 @@
-package StateCacherEvent.TokenNetworkDelta.Transformer;
+package StateCacherEvents.TokenNetworkDelta.Transformer;
 
+import StateCacherEvents.StateStores;
 import io.raidenmap.event.channel.ChannelNewDeposit;
 import io.raidenmap.producerKey.ProducerKey;
-import io.raidenmap.statecacher.Channel;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.KeyValue;
@@ -13,15 +13,15 @@ import org.apache.kafka.streams.state.KeyValueStore;
 public class ChannelNewDepositTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelNewDeposit, KeyValue<Key, TokenNetworkDelta>> {
 
 
-    public ChannelNewDepositTransformer(String storeName) {
-        super(storeName, "ChannelNewDeposit");
+    public ChannelNewDepositTransformer() {
+        super("ChannelNewDeposit");
     }
 
     @Override
     public void init(ProcessorContext context) {
         this.context = context;
-        stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
+        tokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.tokenNetworkDeltaStoreName);
+        lightTokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.lightTokenNetworkDeltaStoreName);
     }
 
     @Override
@@ -30,14 +30,14 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
         Key key = new Key(address);
         String id = String.valueOf(channelNewDeposit.getChannelEvent().getId());
 
-        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, tokenNetworkDeltaStateStore);
         updateChannelEvent(tokenNetworkDelta, channelNewDeposit);
-        stateStore.put(key, tokenNetworkDelta);
+        tokenNetworkDeltaStateStore.put(key, tokenNetworkDelta);
 
-        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightTokenNetworkDeltaStateStore);
         checkAndInsertChannel(id, lightTokenNetworkDelta, tokenNetworkDelta);
         updateChannelEvent(lightTokenNetworkDelta, channelNewDeposit);
-        lightStateStore.put(key, lightTokenNetworkDelta);
+        lightTokenNetworkDeltaStateStore.put(key, lightTokenNetworkDelta);
 
         return KeyValue.pair(key, lightTokenNetworkDelta);
     }

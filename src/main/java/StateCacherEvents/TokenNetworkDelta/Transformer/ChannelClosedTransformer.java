@@ -1,8 +1,8 @@
-package StateCacherEvent.TokenNetworkDelta.Transformer;
+package StateCacherEvents.TokenNetworkDelta.Transformer;
 
+import StateCacherEvents.StateStores;
 import io.raidenmap.event.channel.ChannelClosed;
 import io.raidenmap.producerKey.ProducerKey;
-import io.raidenmap.statecacher.Channel;
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.KeyValue;
@@ -12,15 +12,15 @@ import org.apache.kafka.streams.state.KeyValueStore;
 
 public class ChannelClosedTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelClosed, KeyValue<Key, TokenNetworkDelta>> {
 
-    public ChannelClosedTransformer(String storeName) {
-        super(storeName, "ChannelClosed");
+    public ChannelClosedTransformer() {
+        super("ChannelClosed");
     }
 
     @Override
     public void init(ProcessorContext context) {
         this.context = context;
-        stateStore = (KeyValueStore) this.context.getStateStore(storeName);
-        lightStateStore = (KeyValueStore) this.context.getStateStore(lightStoreName);
+        tokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.tokenNetworkDeltaStoreName);
+        lightTokenNetworkDeltaStateStore = (KeyValueStore) this.context.getStateStore(StateStores.lightTokenNetworkDeltaStoreName);
     }
 
     @Override
@@ -29,14 +29,14 @@ public class ChannelClosedTransformer extends EventTransformer implements Transf
         Key key = new Key(address);
         String id = String.valueOf(channelClosed.getChannelEvent().getId());
 
-        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, stateStore);
+        TokenNetworkDelta tokenNetworkDelta = restoreTokenNetworkDelta(key, tokenNetworkDeltaStateStore);
         updateChannelEvent(tokenNetworkDelta, channelClosed);
-        stateStore.put(key, tokenNetworkDelta);
+        tokenNetworkDeltaStateStore.put(key, tokenNetworkDelta);
 
-        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightStateStore);
+        TokenNetworkDelta lightTokenNetworkDelta = restoreTokenNetworkDelta(key, lightTokenNetworkDeltaStateStore);
         checkAndInsertChannel(id, lightTokenNetworkDelta, tokenNetworkDelta);
         updateChannelEvent(lightTokenNetworkDelta, channelClosed);
-        lightStateStore.put(key, lightTokenNetworkDelta);
+        lightTokenNetworkDeltaStateStore.put(key, lightTokenNetworkDelta);
 
         return KeyValue.pair(key, lightTokenNetworkDelta);
     }

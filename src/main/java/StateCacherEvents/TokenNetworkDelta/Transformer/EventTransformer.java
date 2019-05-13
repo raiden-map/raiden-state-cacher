@@ -1,4 +1,4 @@
-package StateCacherEvent.TokenNetworkDelta.Transformer;
+package StateCacherEvents.TokenNetworkDelta.Transformer;
 
 import RaidenMapTokenInfo.TokenInfoBuilder;
 import io.raidenmap.event.channel.ChannelEvent;
@@ -10,29 +10,25 @@ import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
 import java.time.Instant;
-import java.util.Objects;
 
 public abstract class EventTransformer {
-    protected KeyValueStore<Key, TokenNetworkDelta> stateStore;
-    protected String storeName;
-    protected KeyValueStore<Key, TokenNetworkDelta> lightStateStore;
-    protected String lightStoreName;
+    protected KeyValueStore<Key, TokenNetworkDelta> tokenNetworkDeltaStateStore;
+    protected KeyValueStore<Key, TokenNetworkDelta> lightTokenNetworkDeltaStateStore;
+
     protected String stateName;
+
     protected ProcessorContext context;
     protected int limitModifiedChannelsMapSize = 10;
     protected int punctuatorTimeInSeconds = 10;
 
-    public EventTransformer(String storeName, String stateName){
-        Objects.requireNonNull(storeName, "Store Name can't be null");
-        this.storeName = storeName;
-        this.lightStoreName = "light-"+storeName;
+    public EventTransformer(String stateName){
         this.stateName = stateName;
     }
 
     protected abstract void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent);
 
-    protected TokenNetworkDelta restoreTokenNetworkDelta(Key key, KeyValueStore<Key, TokenNetworkDelta> stateStore) {
-        TokenNetworkDelta tokenNetworkDelta = stateStore.get(key);
+    protected TokenNetworkDelta restoreTokenNetworkDelta(Key key, KeyValueStore<Key, TokenNetworkDelta> tokenNetworkDeltaStateStore) {
+        TokenNetworkDelta tokenNetworkDelta = tokenNetworkDeltaStateStore.get(key);
         return tokenNetworkDelta;
     }
 

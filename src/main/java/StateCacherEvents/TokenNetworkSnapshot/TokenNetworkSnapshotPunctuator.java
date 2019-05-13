@@ -1,4 +1,4 @@
-package StateCacherEvent.TokenNetworkSnapshot;
+package StateCacherEvents.TokenNetworkSnapshot;
 
 import io.raidenmap.statecacher.Key;
 import io.raidenmap.statecacher.TokenNetworkSnapshot;
@@ -37,6 +37,8 @@ public class TokenNetworkSnapshotPunctuator implements Punctuator {
                 if (tokenNetworkSnapshot.getTokenNetworkDeltas().size() >= limit) {
                     context.forward(key, tokenNetworkSnapshot);
                     tokenNetworkSnapshot.setTokenNetworkDeltas(Collections.EMPTY_LIST);
+                    tokenNetworkSnapshot.setChannels(Collections.EMPTY_MAP);
+                    tokenNetworkSnapshot.setEndpoints(Collections.EMPTY_LIST);
                     stateStore.put(key, tokenNetworkSnapshot);
                 }
             }
