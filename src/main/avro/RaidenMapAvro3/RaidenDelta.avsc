@@ -21,11 +21,11 @@
         },
         {
             "name": "btcValue",
-            "type": "int"
+            "type": "float"
         },
         {
             "name": "ethValue",
-            "type": "int"
+            "type": "float"
         },
         {
             "name": "tokenNetworksChanges",
