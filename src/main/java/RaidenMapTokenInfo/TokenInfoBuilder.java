@@ -10,6 +10,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import io.raidenmap.statecacher.Token;
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.time.Instant;
@@ -21,12 +22,21 @@ public class TokenInfoBuilder {
     public static Token createToken(){
         return  tokenBuilder.build();
     }
+
     public static Token buildToken(String ethAddress) {
         String ID = getTokenID(ethAddress);
         if (ID.equals(tokenNotRegistered))
             return buildDefaultToken();
         else
-            return buildRegisteredToken(ethAddress);
+            return buildDefaultToken(); //return buildRegisteredToken(ethAddress);
+    }
+
+    public static Token buildTokenByTag(String tag) {
+
+        if (tag.equals(tokenNotRegistered))
+            return buildDefaultToken();
+        else
+            return buildDefaultToken();//return buildRegisteredToken(tag);
     }
 
     private static Token buildDefaultToken() {
@@ -101,6 +111,24 @@ public class TokenInfoBuilder {
             return new TokenInfo("Unregistered ERC20");
         else
             return tokenInfo;
+    }
+
+    public static Double getPrice(String coinName, String symbolValue) {
+        JSONObject responseBody = new JSONObject();
+        try {
+            HttpResponse<JsonNode> response = Unirest.
+                    get("https://api.coingecko.com/api/v3/simple/price?ids={coinName}&vs_currencies={symbolValue}")
+                    .routeParam("coinName", coinName)
+                    .routeParam("symbolValue", symbolValue)
+                    .asJson();
+            responseBody = response.getBody().getObject();
+
+        } catch (Exception e) {
+            System.out.println("NOT FOUND");
+
+        }
+        responseBody = (JSONObject) responseBody.get(coinName);
+        return (Double)responseBody.get(symbolValue);
     }
 
     private static Gson gson = new Gson();
