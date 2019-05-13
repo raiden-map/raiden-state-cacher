@@ -3,7 +3,7 @@
  *
  * DO NOT EDIT DIRECTLY
  */
-package io.raidenmap.event;
+package io.raidenmap.event.Endpoint;
 
 import org.apache.avro.specific.SpecificData;
 import org.apache.avro.message.BinaryMessageEncoder;
@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3339181557259852220L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AddressRegistered\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"endpointAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = -7783398853249547698L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"AddressRegistered\",\"namespace\":\"io.raidenmap.event.Endpoint\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"endpointAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -148,8 +148,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * Creates a new AddressRegistered RecordBuilder.
    * @return A new AddressRegistered RecordBuilder
    */
-  public static io.raidenmap.event.AddressRegistered.Builder newBuilder() {
-    return new io.raidenmap.event.AddressRegistered.Builder();
+  public static io.raidenmap.event.Endpoint.AddressRegistered.Builder newBuilder() {
+    return new io.raidenmap.event.Endpoint.AddressRegistered.Builder();
   }
 
   /**
@@ -157,8 +157,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing builder to copy.
    * @return A new AddressRegistered RecordBuilder
    */
-  public static io.raidenmap.event.AddressRegistered.Builder newBuilder(io.raidenmap.event.AddressRegistered.Builder other) {
-    return new io.raidenmap.event.AddressRegistered.Builder(other);
+  public static io.raidenmap.event.Endpoint.AddressRegistered.Builder newBuilder(io.raidenmap.event.Endpoint.AddressRegistered.Builder other) {
+    return new io.raidenmap.event.Endpoint.AddressRegistered.Builder(other);
   }
 
   /**
@@ -166,8 +166,8 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
    * @param other The existing instance to copy.
    * @return A new AddressRegistered RecordBuilder
    */
-  public static io.raidenmap.event.AddressRegistered.Builder newBuilder(io.raidenmap.event.AddressRegistered other) {
-    return new io.raidenmap.event.AddressRegistered.Builder(other);
+  public static io.raidenmap.event.Endpoint.AddressRegistered.Builder newBuilder(io.raidenmap.event.Endpoint.AddressRegistered other) {
+    return new io.raidenmap.event.Endpoint.AddressRegistered.Builder(other);
   }
 
   /**
@@ -190,7 +190,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing Builder.
      * @param other The existing Builder to copy.
      */
-    private Builder(io.raidenmap.event.AddressRegistered.Builder other) {
+    private Builder(io.raidenmap.event.Endpoint.AddressRegistered.Builder other) {
       super(other);
       if (isValidValue(fields()[0], other.metadata)) {
         this.metadata = data().deepCopy(fields()[0].schema(), other.metadata);
@@ -213,7 +213,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
      * Creates a Builder by copying an existing AddressRegistered instance
      * @param other The existing instance to copy.
      */
-    private Builder(io.raidenmap.event.AddressRegistered other) {
+    private Builder(io.raidenmap.event.Endpoint.AddressRegistered other) {
             super(SCHEMA$);
       if (isValidValue(fields()[0], other.metadata)) {
         this.metadata = data().deepCopy(fields()[0].schema(), other.metadata);
@@ -243,7 +243,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'metadata'.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder setMetadata(io.raidenmap.event.Metadata value) {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder setMetadata(io.raidenmap.event.Metadata value) {
       validate(fields()[0], value);
       this.metadataBuilder = null;
       this.metadata = value;
@@ -279,7 +279,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
      * @param value The builder instance that must be set.
      * @return This builder.
      */
-    public io.raidenmap.event.AddressRegistered.Builder setMetadataBuilder(io.raidenmap.event.Metadata.Builder value) {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder setMetadataBuilder(io.raidenmap.event.Metadata.Builder value) {
       clearMetadata();
       metadataBuilder = value;
       return this;
@@ -297,7 +297,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'metadata' field.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder clearMetadata() {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder clearMetadata() {
       metadata = null;
       metadataBuilder = null;
       fieldSetFlags()[0] = false;
@@ -317,7 +317,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'ethAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder setEthAddress(java.lang.String value) {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder setEthAddress(java.lang.String value) {
       validate(fields()[1], value);
       this.ethAddress = value;
       fieldSetFlags()[1] = true;
@@ -337,7 +337,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'ethAddress' field.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder clearEthAddress() {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder clearEthAddress() {
       ethAddress = null;
       fieldSetFlags()[1] = false;
       return this;
@@ -356,7 +356,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'endpointAddress'.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder setEndpointAddress(java.lang.String value) {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder setEndpointAddress(java.lang.String value) {
       validate(fields()[2], value);
       this.endpointAddress = value;
       fieldSetFlags()[2] = true;
@@ -376,7 +376,7 @@ public class AddressRegistered extends org.apache.avro.specific.SpecificRecordBa
       * Clears the value of the 'endpointAddress' field.
       * @return This builder.
       */
-    public io.raidenmap.event.AddressRegistered.Builder clearEndpointAddress() {
+    public io.raidenmap.event.Endpoint.AddressRegistered.Builder clearEndpointAddress() {
       endpointAddress = null;
       fieldSetFlags()[2] = false;
       return this;

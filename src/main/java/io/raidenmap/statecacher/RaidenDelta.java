@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 7959062103371843308L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RaidenDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworksCount\",\"type\":\"int\"},{\"name\":\"userCount\",\"type\":\"int\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"btcValue\",\"type\":\"int\"},{\"name\":\"ethValue\",\"type\":\"int\"},{\"name\":\"tokenNetworksChanges\",\"type\":{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}}}]}");
+  private static final long serialVersionUID = 3821814965345571979L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"RaidenDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworksCount\",\"type\":\"int\"},{\"name\":\"userCount\",\"type\":\"int\"},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"btcValue\",\"type\":\"float\"},{\"name\":\"ethValue\",\"type\":\"float\"},{\"name\":\"tokenNetworksChanges\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]},\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -55,9 +55,9 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
   @Deprecated public int userCount;
   @Deprecated public long timestamp;
   @Deprecated public long blockNumber;
-  @Deprecated public int btcValue;
-  @Deprecated public int ethValue;
-  @Deprecated public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
+  @Deprecated public float btcValue;
+  @Deprecated public float ethValue;
+  @Deprecated public java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -76,7 +76,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * @param ethValue The new value for ethValue
    * @param tokenNetworksChanges The new value for tokenNetworksChanges
    */
-  public RaidenDelta(java.lang.Integer tokenNetworksCount, java.lang.Integer userCount, java.lang.Long timestamp, java.lang.Long blockNumber, java.lang.Integer btcValue, java.lang.Integer ethValue, java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges) {
+  public RaidenDelta(java.lang.Integer tokenNetworksCount, java.lang.Integer userCount, java.lang.Long timestamp, java.lang.Long blockNumber, java.lang.Float btcValue, java.lang.Float ethValue, java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges) {
     this.tokenNetworksCount = tokenNetworksCount;
     this.userCount = userCount;
     this.timestamp = timestamp;
@@ -109,9 +109,9 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
     case 1: userCount = (java.lang.Integer)value$; break;
     case 2: timestamp = (java.lang.Long)value$; break;
     case 3: blockNumber = (java.lang.Long)value$; break;
-    case 4: btcValue = (java.lang.Integer)value$; break;
-    case 5: ethValue = (java.lang.Integer)value$; break;
-    case 6: tokenNetworksChanges = (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>)value$; break;
+    case 4: btcValue = (java.lang.Float)value$; break;
+    case 5: ethValue = (java.lang.Float)value$; break;
+    case 6: tokenNetworksChanges = (java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta>)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -184,7 +184,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'btcValue' field.
    * @return The value of the 'btcValue' field.
    */
-  public java.lang.Integer getBtcValue() {
+  public java.lang.Float getBtcValue() {
     return btcValue;
   }
 
@@ -192,7 +192,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'btcValue' field.
    * @param value the value to set.
    */
-  public void setBtcValue(java.lang.Integer value) {
+  public void setBtcValue(java.lang.Float value) {
     this.btcValue = value;
   }
 
@@ -200,7 +200,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'ethValue' field.
    * @return The value of the 'ethValue' field.
    */
-  public java.lang.Integer getEthValue() {
+  public java.lang.Float getEthValue() {
     return ethValue;
   }
 
@@ -208,7 +208,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'ethValue' field.
    * @param value the value to set.
    */
-  public void setEthValue(java.lang.Integer value) {
+  public void setEthValue(java.lang.Float value) {
     this.ethValue = value;
   }
 
@@ -216,7 +216,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'tokenNetworksChanges' field.
    * @return The value of the 'tokenNetworksChanges' field.
    */
-  public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
+  public java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
     return tokenNetworksChanges;
   }
 
@@ -224,7 +224,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'tokenNetworksChanges' field.
    * @param value the value to set.
    */
-  public void setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
+  public void setTokenNetworksChanges(java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> value) {
     this.tokenNetworksChanges = value;
   }
 
@@ -264,9 +264,9 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
     private int userCount;
     private long timestamp;
     private long blockNumber;
-    private int btcValue;
-    private int ethValue;
-    private java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
+    private float btcValue;
+    private float ethValue;
+    private java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> tokenNetworksChanges;
 
     /** Creates a new Builder */
     private Builder() {
@@ -501,7 +501,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'btcValue' field.
       * @return The value.
       */
-    public java.lang.Integer getBtcValue() {
+    public java.lang.Float getBtcValue() {
       return btcValue;
     }
 
@@ -510,7 +510,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'btcValue'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenDelta.Builder setBtcValue(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setBtcValue(float value) {
       validate(fields()[4], value);
       this.btcValue = value;
       fieldSetFlags()[4] = true;
@@ -539,7 +539,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'ethValue' field.
       * @return The value.
       */
-    public java.lang.Integer getEthValue() {
+    public java.lang.Float getEthValue() {
       return ethValue;
     }
 
@@ -548,7 +548,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'ethValue'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenDelta.Builder setEthValue(int value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setEthValue(float value) {
       validate(fields()[5], value);
       this.ethValue = value;
       fieldSetFlags()[5] = true;
@@ -577,7 +577,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'tokenNetworksChanges' field.
       * @return The value.
       */
-    public java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
+    public java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> getTokenNetworksChanges() {
       return tokenNetworksChanges;
     }
 
@@ -586,7 +586,7 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'tokenNetworksChanges'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.RaidenDelta.Builder setTokenNetworksChanges(java.util.List<io.raidenmap.statecacher.TokenNetworkDelta> value) {
+    public io.raidenmap.statecacher.RaidenDelta.Builder setTokenNetworksChanges(java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta> value) {
       validate(fields()[6], value);
       this.tokenNetworksChanges = value;
       fieldSetFlags()[6] = true;
@@ -621,9 +621,9 @@ public class RaidenDelta extends org.apache.avro.specific.SpecificRecordBase imp
         record.userCount = fieldSetFlags()[1] ? this.userCount : (java.lang.Integer) defaultValue(fields()[1]);
         record.timestamp = fieldSetFlags()[2] ? this.timestamp : (java.lang.Long) defaultValue(fields()[2]);
         record.blockNumber = fieldSetFlags()[3] ? this.blockNumber : (java.lang.Long) defaultValue(fields()[3]);
-        record.btcValue = fieldSetFlags()[4] ? this.btcValue : (java.lang.Integer) defaultValue(fields()[4]);
-        record.ethValue = fieldSetFlags()[5] ? this.ethValue : (java.lang.Integer) defaultValue(fields()[5]);
-        record.tokenNetworksChanges = fieldSetFlags()[6] ? this.tokenNetworksChanges : (java.util.List<io.raidenmap.statecacher.TokenNetworkDelta>) defaultValue(fields()[6]);
+        record.btcValue = fieldSetFlags()[4] ? this.btcValue : (java.lang.Float) defaultValue(fields()[4]);
+        record.ethValue = fieldSetFlags()[5] ? this.ethValue : (java.lang.Float) defaultValue(fields()[5]);
+        record.tokenNetworksChanges = fieldSetFlags()[6] ? this.tokenNetworksChanges : (java.util.Map<java.lang.String,io.raidenmap.statecacher.TokenNetworkDelta>) defaultValue(fields()[6]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);
