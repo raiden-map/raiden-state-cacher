@@ -25,7 +25,7 @@ public class RaidenDeltaEvent extends StateCacherEvent {
     private void consumeFromTokenNetworkDeltaTopic() {
         raidenDeltaEventStream = builder.stream(Topics.tokenNetworkDeltaTopic, Consumed.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getTokenNetworkDeltaSerde()))
                 .transform(TokenNetworkDeltaTransformer::new, StateStores.raidenDeltaStoreName, StateStores.userCountStoreName, StateStores.tokenNetworkDeltaStoreName);
-        raidenDeltaEventStream.print(Printed.<Key, RaidenDelta>toSysOut().withLabel("RAIDEN DELTA"));
+        //raidenDeltaEventStream.print(Printed.<Key, RaidenDelta>toSysOut().withLabel("RAIDEN DELTA"));
         raidenDeltaEventStream.to(Topics.raidenDeltaTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenDeltaSerde()));
     }
 

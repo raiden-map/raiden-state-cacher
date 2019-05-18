@@ -73,17 +73,9 @@ public class TokenNetworkDeltaTransformer implements Transformer<Key, TokenNetwo
 
     private void updateTokenNetworkData(RaidenDelta raidenDelta, TokenNetworkDelta tokenNetworkDelta) {
         raidenDelta.getTokenNetworksChanges().put(tokenNetworkDelta.getTokenNetworkAddress().toString(), tokenNetworkDelta);
-        //raidenDelta.setUserCount(countUsers(userCountKeyValueStore.all()));
         int userInc = tokenNetworkDelta.getUsers() - raidenDelta.getUserCount();
         raidenDelta.setUserCount(raidenDelta.getUserCount() + userInc);
         raidenDelta.setTokenNetworksCount(Iterators.size(tokenNetworkDeltaKeyValueStore.all()));
-    }
-
-    private int countUsers(KeyValueIterator<Key, UserCount> it) {
-        int totalUser = 0;
-        while (it.hasNext())
-            totalUser += it.next().value.getUser().size();
-        return totalUser;
     }
 
     private void updatePrice(RaidenDelta raidenDelta) {
