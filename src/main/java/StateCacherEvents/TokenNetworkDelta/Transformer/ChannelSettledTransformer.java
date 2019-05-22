@@ -1,5 +1,6 @@
 package StateCacherEvents.TokenNetworkDelta.Transformer;
 
+import StateCacherEvents.RaidenBigDecimal;
 import StateCacherEvents.StateStores;
 import io.raidenmap.event.channel.ChannelSettled;
 import io.raidenmap.producerKey.ProducerKey;
@@ -10,6 +11,8 @@ import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
+
+import java.math.BigDecimal;
 
 public class ChannelSettledTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelSettled, KeyValue<Key, TokenNetworkDelta>> {
 
@@ -55,23 +58,22 @@ public class ChannelSettledTransformer extends EventTransformer implements Trans
     protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
         updateChannelSettled(tokenNetworkDelta, (ChannelSettled) channelEvent);
         try {
-            updateChannelState(tokenNetworkDelta, ((ChannelSettled) channelEvent).getChannelEvent(), stateName);
+            updateChannelState(tokenNetworkDelta, ((ChannelSettled) channelEvent).getChannelEvent());
         } catch (NullPointerException n) {
         }
         updateMetadata(tokenNetworkDelta, ((ChannelSettled) channelEvent).getChannelEvent());
     }
 
     private void updateChannelSettled(TokenNetworkDelta tokenNetworkDelta, ChannelSettled channelSettled) {
-        String id = String.valueOf(channelSettled.getChannelEvent().getId());
         updateUserCount(tokenNetworkDelta);
-        long tokenNetworkDeposit = tokenNetworkDelta.getTotalDeposit();
-        tokenNetworkDeposit -= channelSettled.getParticipant1Amount();
-        tokenNetworkDeposit -= channelSettled.getParticipant2Amount();
+        BigDecimal tokenNetworkDeposit = RaidenBigDecimal.valueOf(tokenNetworkDelta.getTotalDeposit());
+        tokenNetworkDeposit.subtract(RaidenBigDecimal.valueOf(channelSettled.getParticipant1Amount()));
+        tokenNetworkDeposit.subtract(RaidenBigDecimal.valueOf(channelSettled.getParticipant2Amount()));
         tokenNetworkDelta.setSettledChannels(tokenNetworkDelta.getSettledChannels()+1);
         try {
-            tokenNetworkDelta.setTotalDeposit(tokenNetworkDeposit);
-            int channels = tokenNetworkDelta.getModifiedChannels().size();
-            tokenNetworkDelta.setAvgChannelDeposit((double) (tokenNetworkDeposit / channels));
+            tokenNetworkDelta.setTotalDeposit(tokenNetworkDeposit.toPlainString());
+            BigDecimal channels = BigDecimal.valueOf(tokenNetworkDelta.getModifiedChannels().size());
+            tokenNetworkDelta.setAvgChannelDeposit(RaidenBigDecimal.divide(tokenNetworkDeposit, channels));
         } catch (NullPointerException n) {
 
         }
@@ -91,13 +93,13 @@ public class ChannelSettledTransformer extends EventTransformer implements Trans
         String participant1 = tokenNetworkDelta.getModifiedChannels().get(id).getFirstParticipant().getEthAddress().toString();
         String participant2 = tokenNetworkDelta.getModifiedChannels().get(id).getSecondParticipant().getEthAddress().toString();
 
-        decremectParticipant(userCount, participant1);
-        decremectParticipant(userCount, participant2);
+        decrementParticipant(userCount, participant1);
+        decrementParticipant(userCount, participant2);
 
         userCountStateStore.put(tokenNetworkAddress, userCount);
     }
 
-    private void decremectParticipant(UserCount userCount, String participant) {
+    private void decrementParticipant(UserCount userCount, String participant) {
         userCount.getUser().put(participant, userCount.getUser().get(participant) - 1);
         if (userCount.getUser().get(participant) == 0)
             userCount.getUser().remove(participant);

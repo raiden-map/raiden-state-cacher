@@ -9,6 +9,7 @@ import io.raidenmap.statecacher.TokenNetworkDelta;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
 
+import java.math.BigDecimal;
 import java.time.Instant;
 
 public abstract class EventTransformer {
@@ -46,9 +47,9 @@ public abstract class EventTransformer {
         } else return null;
     }
 
-    protected void updateChannelState(TokenNetworkDelta tokenNetworkDelta, ChannelEvent channelEvent, String newState) {
+    protected void updateChannelState(TokenNetworkDelta tokenNetworkDelta, ChannelEvent channelEvent) {
         String id = String.valueOf(channelEvent.getId());
-        tokenNetworkDelta.getModifiedChannels().get(id).setState(newState);
+        tokenNetworkDelta.getModifiedChannels().get(id).setState(this.stateName);
         tokenNetworkDelta.getModifiedChannels().get(id).setLastStateChangeBlock(tokenNetworkDelta.getBlockNumber());
 
     }
@@ -58,4 +59,5 @@ public abstract class EventTransformer {
         tokenNetworkDelta.setBlockNumber(channelEvent.getMetadata().getBlockNumber());
         tokenNetworkDelta.setToken(TokenInfoBuilder.buildTokenByTag(tokenNetworkDelta.getToken().getTag()));
     }
+
 }

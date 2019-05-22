@@ -16,11 +16,4 @@ public abstract class StateCacherEvent {
 
     protected final String schemaRegistry = "http://raiden-sr-schema-registry.kafka.svc.cluster.local:8081";
 
-    protected final String topicTokenNetworkCreated = "raidenEvent.TokenNetworkCreated";
-    protected final String topicChannelOpened = "raidenEvent.ChannelOpened";
-    protected final String topicChannelClosed = "raidenEvent.ChannelClosed";
-    protected final String topicChannelNewDeposit = "raidenEvent.ChannelNewDeposit";
-    protected final String topicChannelSettled = "raidenEvent.ChannelSettled";
-    protected final String topicEndpoint = "raidenEvent.AddressRegistered";
-
 }

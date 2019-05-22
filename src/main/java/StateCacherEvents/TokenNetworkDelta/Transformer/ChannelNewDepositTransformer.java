@@ -1,5 +1,6 @@
 package StateCacherEvents.TokenNetworkDelta.Transformer;
 
+import StateCacherEvents.RaidenBigDecimal;
 import StateCacherEvents.StateStores;
 import io.raidenmap.event.channel.ChannelNewDeposit;
 import io.raidenmap.producerKey.ProducerKey;
@@ -9,6 +10,8 @@ import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.kstream.Transformer;
 import org.apache.kafka.streams.processor.ProcessorContext;
 import org.apache.kafka.streams.state.KeyValueStore;
+
+import java.math.BigDecimal;
 
 public class ChannelNewDepositTransformer extends EventTransformer implements Transformer<ProducerKey, ChannelNewDeposit, KeyValue<Key, TokenNetworkDelta>> {
 
@@ -51,7 +54,7 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
     protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
         updateChannelNewDeposit(tokenNetworkDelta, (ChannelNewDeposit) channelEvent);
         try {
-            updateChannelState(tokenNetworkDelta, ((ChannelNewDeposit) channelEvent).getChannelEvent(), stateName);
+            updateChannelState(tokenNetworkDelta, ((ChannelNewDeposit) channelEvent).getChannelEvent());
         } catch (NullPointerException n) {
         }
         updateMetadata(tokenNetworkDelta, ((ChannelNewDeposit) channelEvent).getChannelEvent());
@@ -59,15 +62,15 @@ public class ChannelNewDepositTransformer extends EventTransformer implements Tr
 
     private void updateChannelNewDeposit(TokenNetworkDelta tokenNetworkDelta, ChannelNewDeposit channelNewDeposit) {
         String id = String.valueOf(channelNewDeposit.getChannelEvent().getId());
-        long tokenNetworkDeposit = tokenNetworkDelta.getTotalDeposit();
-        long newDeposit = channelNewDeposit.getTotalDeposit();
+        BigDecimal tokenNetworkDeposit = RaidenBigDecimal.valueOf(tokenNetworkDelta.getTotalDeposit());
+        BigDecimal newDeposit = RaidenBigDecimal.valueOf(channelNewDeposit.getTotalDeposit());
         String participantAddress = channelNewDeposit.getParticipant().toString();
         try {
-            findParticipant(tokenNetworkDelta.getModifiedChannels().get(id), participantAddress).setDeposit(newDeposit);
-            tokenNetworkDelta.setTotalDeposit(tokenNetworkDeposit + newDeposit);
-            tokenNetworkDeposit = tokenNetworkDelta.getTotalDeposit();
-            int channels = tokenNetworkDelta.getModifiedChannels().size();
-            tokenNetworkDelta.setAvgChannelDeposit((double) (tokenNetworkDeposit / channels));
+            findParticipant(tokenNetworkDelta.getModifiedChannels().get(id), participantAddress).setDeposit(newDeposit.toPlainString());
+            tokenNetworkDelta.setTotalDeposit(tokenNetworkDeposit.add(newDeposit).toPlainString());
+            tokenNetworkDeposit = RaidenBigDecimal.valueOf(tokenNetworkDelta.getTotalDeposit());
+            BigDecimal channels = BigDecimal.valueOf(tokenNetworkDelta.getModifiedChannels().size());
+            tokenNetworkDelta.setAvgChannelDeposit(RaidenBigDecimal.divide(tokenNetworkDeposit, channels));
         } catch (NullPointerException n) {
 
         }

@@ -87,7 +87,7 @@ public class ChannelOpenedTransformer extends EventTransformer implements Transf
     }
 
     private Participant buildDefaultParticipant() {
-        return new Participant("", 0l, 0l, false);
+        return new Participant("", "0", "0", false);
     }
 
     private void updateUserCountStore(ChannelOpened channelOpened ){

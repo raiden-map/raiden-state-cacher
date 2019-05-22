@@ -50,7 +50,7 @@ public class ChannelClosedTransformer extends EventTransformer implements Transf
     protected void updateChannelEvent(TokenNetworkDelta tokenNetworkDelta, Object channelEvent) {
         updateChannelClosed(tokenNetworkDelta, (ChannelClosed) channelEvent);
         try {
-            updateChannelState(tokenNetworkDelta, ((ChannelClosed)channelEvent).getChannelEvent(), stateName);
+            updateChannelState(tokenNetworkDelta, ((ChannelClosed)channelEvent).getChannelEvent());
         } catch (NullPointerException n) {
         }
         decrementChannelCount(tokenNetworkDelta);

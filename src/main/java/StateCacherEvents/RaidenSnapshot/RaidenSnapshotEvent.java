@@ -24,18 +24,18 @@ public class RaidenSnapshotEvent extends StateCacherEvent {
     }
 
     private void consumeFromRaidenDeltaTopic() {
-        raidenSnapshotStream = builder.stream(Topics.raidenDeltaTopic, Consumed.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenDeltaSerde()))
+        raidenSnapshotStream = builder.stream(Topics.raidenDelta, Consumed.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenDeltaSerde()))
                 .transform(RaidenDeltaTransformer::new, StateStores.raidenSnapshotStoreName);
-        //raidenSnapshotStream.print(Printed.<Key, RaidenSnapshot>toSysOut().withLabel("RAIDEN SNAPSHOT"));
-        raidenSnapshotStream.to(Topics.raidenSnapshotTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenSnapshotSerde()));
+        raidenSnapshotStream.print(Printed.<Key, RaidenSnapshot>toSysOut().withLabel("RAIDEN SNAPSHOT"));
+        //raidenSnapshotStream.to(Topics.raidenSnapshot, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenSnapshotSerde()));
 
     }
 
     private void consumeFromEndpointTopic() {
-        raidenSnapshotStream = builder.stream(topicEndpoint, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getAddressRegisteredSerde()))
+        raidenSnapshotStream = builder.stream(Topics.endpoint, Consumed.with(specificSerdeManager.getProducerKeySerde(), specificSerdeManager.getAddressRegisteredSerde()))
                 .transform(EndpointTransformer::new, StateStores.raidenSnapshotStoreName);
-        //raidenSnapshotStream.print(Printed.<Key, RaidenSnapshot>toSysOut().withLabel("RAIDEN SNAPSHOT"));
-        raidenSnapshotStream.to(Topics.raidenSnapshotTopic, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenSnapshotSerde()));
+        raidenSnapshotStream.print(Printed.<Key, RaidenSnapshot>toSysOut().withLabel("RAIDEN SNAPSHOT"));
+        //raidenSnapshotStream.to(Topics.raidenSnapshot, Produced.with(specificSerdeManager.getKeySerde(), specificSerdeManager.getRaidenSnapshotSerde()));
     }
 
     private KStream<Key, RaidenSnapshot> raidenSnapshotStream;

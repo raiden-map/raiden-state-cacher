@@ -64,7 +64,7 @@ public class TokenNetworkCreatedTransformer extends EventTransformer implements 
 
     private TokenNetworkDelta initializeTokenNetworkDelta(TokenNetworkDelta tokenNetworkDelta, Token token, String address) {
         if (tokenNetworkDelta == null)
-            return new TokenNetworkDelta(token, new HashMap<>(), address, 0l, 0, 0, 0, 0, 0d, 0l, 0, 0l);
+            return new TokenNetworkDelta(token, new HashMap<>(), address, 0l, 0, 0, 0, 0, "0", "0", 0, 0l);
         else
             return tokenNetworkDelta;
     }
