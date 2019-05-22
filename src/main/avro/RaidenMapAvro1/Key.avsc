@@ -4,7 +4,7 @@
     "name": "Key",
     "fields": [
         {
-            "name": "tokenNetworkAddress",
+            "name": "key",
             "type": "string"
         }
     ]
