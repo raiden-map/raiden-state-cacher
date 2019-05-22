@@ -23,6 +23,7 @@ public class Main {
         property.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "raiden-kafka-headless.kafka.svc.cluster.local:9092");
         property.put(AbstractKafkaAvroSerDeConfig.SCHEMA_REGISTRY_URL_CONFIG, schemaRegistry);
         property.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        Topics.checkTopicsExistence(property);
         StreamsBuilder builder = new StreamsBuilder();
 
         Properties property1 = new Properties();
