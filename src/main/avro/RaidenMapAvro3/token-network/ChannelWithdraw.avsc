@@ -13,7 +13,7 @@
         },
         {
             "name": "totalWithdraw",
-            "type": "int"
+            "type": "string"
         }
     ]
 }

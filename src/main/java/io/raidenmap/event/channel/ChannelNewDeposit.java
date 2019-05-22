@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -6599682317496450750L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelNewDeposit\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"totalDeposit\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = -2493584677974591856L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelNewDeposit\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"totalDeposit\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -53,7 +53,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
   @Deprecated public java.lang.String participant;
-  @Deprecated public long totalDeposit;
+  @Deprecated public java.lang.String totalDeposit;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,7 +68,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
    * @param participant The new value for participant
    * @param totalDeposit The new value for totalDeposit
    */
-  public ChannelNewDeposit(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant, java.lang.Long totalDeposit) {
+  public ChannelNewDeposit(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant, java.lang.String totalDeposit) {
     this.channelEvent = channelEvent;
     this.participant = participant;
     this.totalDeposit = totalDeposit;
@@ -91,7 +91,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
     case 1: participant = (java.lang.String)value$; break;
-    case 2: totalDeposit = (java.lang.Long)value$; break;
+    case 2: totalDeposit = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -132,7 +132,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'totalDeposit' field.
    * @return The value of the 'totalDeposit' field.
    */
-  public java.lang.Long getTotalDeposit() {
+  public java.lang.String getTotalDeposit() {
     return totalDeposit;
   }
 
@@ -140,7 +140,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'totalDeposit' field.
    * @param value the value to set.
    */
-  public void setTotalDeposit(java.lang.Long value) {
+  public void setTotalDeposit(java.lang.String value) {
     this.totalDeposit = value;
   }
 
@@ -179,7 +179,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
     private java.lang.String participant;
-    private long totalDeposit;
+    private java.lang.String totalDeposit;
 
     /** Creates a new Builder */
     private Builder() {
@@ -347,7 +347,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'totalDeposit' field.
       * @return The value.
       */
-    public java.lang.Long getTotalDeposit() {
+    public java.lang.String getTotalDeposit() {
       return totalDeposit;
     }
 
@@ -356,7 +356,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'totalDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelNewDeposit.Builder setTotalDeposit(long value) {
+    public io.raidenmap.event.channel.ChannelNewDeposit.Builder setTotalDeposit(java.lang.String value) {
       validate(fields()[2], value);
       this.totalDeposit = value;
       fieldSetFlags()[2] = true;
@@ -377,6 +377,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public io.raidenmap.event.channel.ChannelNewDeposit.Builder clearTotalDeposit() {
+      totalDeposit = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -392,7 +393,7 @@ public class ChannelNewDeposit extends org.apache.avro.specific.SpecificRecordBa
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
         record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.String) defaultValue(fields()[1]);
-        record.totalDeposit = fieldSetFlags()[2] ? this.totalDeposit : (java.lang.Long) defaultValue(fields()[2]);
+        record.totalDeposit = fieldSetFlags()[2] ? this.totalDeposit : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

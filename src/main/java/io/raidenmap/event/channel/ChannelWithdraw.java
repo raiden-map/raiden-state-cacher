@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3050613127079982818L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelWithdraw\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":\"long\"},{\"name\":\"totalWithdraw\",\"type\":\"int\"}]}");
+  private static final long serialVersionUID = -4787155618972526482L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelWithdraw\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant\",\"type\":\"long\"},{\"name\":\"totalWithdraw\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -53,7 +53,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
   @Deprecated public long participant;
-  @Deprecated public int totalWithdraw;
+  @Deprecated public java.lang.String totalWithdraw;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,7 +68,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
    * @param participant The new value for participant
    * @param totalWithdraw The new value for totalWithdraw
    */
-  public ChannelWithdraw(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.Long participant, java.lang.Integer totalWithdraw) {
+  public ChannelWithdraw(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.Long participant, java.lang.String totalWithdraw) {
     this.channelEvent = channelEvent;
     this.participant = participant;
     this.totalWithdraw = totalWithdraw;
@@ -91,7 +91,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
     case 1: participant = (java.lang.Long)value$; break;
-    case 2: totalWithdraw = (java.lang.Integer)value$; break;
+    case 2: totalWithdraw = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -132,7 +132,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
    * Gets the value of the 'totalWithdraw' field.
    * @return The value of the 'totalWithdraw' field.
    */
-  public java.lang.Integer getTotalWithdraw() {
+  public java.lang.String getTotalWithdraw() {
     return totalWithdraw;
   }
 
@@ -140,7 +140,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
    * Sets the value of the 'totalWithdraw' field.
    * @param value the value to set.
    */
-  public void setTotalWithdraw(java.lang.Integer value) {
+  public void setTotalWithdraw(java.lang.String value) {
     this.totalWithdraw = value;
   }
 
@@ -179,7 +179,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
     private long participant;
-    private int totalWithdraw;
+    private java.lang.String totalWithdraw;
 
     /** Creates a new Builder */
     private Builder() {
@@ -346,7 +346,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
       * Gets the value of the 'totalWithdraw' field.
       * @return The value.
       */
-    public java.lang.Integer getTotalWithdraw() {
+    public java.lang.String getTotalWithdraw() {
       return totalWithdraw;
     }
 
@@ -355,7 +355,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
       * @param value The value of 'totalWithdraw'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelWithdraw.Builder setTotalWithdraw(int value) {
+    public io.raidenmap.event.channel.ChannelWithdraw.Builder setTotalWithdraw(java.lang.String value) {
       validate(fields()[2], value);
       this.totalWithdraw = value;
       fieldSetFlags()[2] = true;
@@ -376,6 +376,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
       * @return This builder.
       */
     public io.raidenmap.event.channel.ChannelWithdraw.Builder clearTotalWithdraw() {
+      totalWithdraw = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -391,7 +392,7 @@ public class ChannelWithdraw extends org.apache.avro.specific.SpecificRecordBase
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
         record.participant = fieldSetFlags()[1] ? this.participant : (java.lang.Long) defaultValue(fields()[1]);
-        record.totalWithdraw = fieldSetFlags()[2] ? this.totalWithdraw : (java.lang.Integer) defaultValue(fields()[2]);
+        record.totalWithdraw = fieldSetFlags()[2] ? this.totalWithdraw : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

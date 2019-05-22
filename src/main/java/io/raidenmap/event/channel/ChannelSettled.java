@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -3505493798135828582L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelSettled\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant1Amount\",\"type\":\"long\"},{\"name\":\"participant2Amount\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = -2077536064563312048L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"ChannelSettled\",\"namespace\":\"io.raidenmap.event.channel\",\"fields\":[{\"name\":\"channelEvent\",\"type\":{\"type\":\"record\",\"name\":\"ChannelEvent\",\"fields\":[{\"name\":\"metadata\",\"type\":{\"type\":\"record\",\"name\":\"Metadata\",\"namespace\":\"io.raidenmap.event\",\"fields\":[{\"name\":\"blockNumber\",\"type\":\"long\"},{\"name\":\"blockTimestamp\",\"type\":\"long\"},{\"name\":\"eventTimestamp\",\"type\":\"long\"}]}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"id\",\"type\":\"int\"}]}},{\"name\":\"participant1Amount\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"participant2Amount\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,8 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
   }
 
   @Deprecated public io.raidenmap.event.channel.ChannelEvent channelEvent;
-  @Deprecated public long participant1Amount;
-  @Deprecated public long participant2Amount;
+  @Deprecated public java.lang.String participant1Amount;
+  @Deprecated public java.lang.String participant2Amount;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -68,7 +68,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
    * @param participant1Amount The new value for participant1Amount
    * @param participant2Amount The new value for participant2Amount
    */
-  public ChannelSettled(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.Long participant1Amount, java.lang.Long participant2Amount) {
+  public ChannelSettled(io.raidenmap.event.channel.ChannelEvent channelEvent, java.lang.String participant1Amount, java.lang.String participant2Amount) {
     this.channelEvent = channelEvent;
     this.participant1Amount = participant1Amount;
     this.participant2Amount = participant2Amount;
@@ -90,8 +90,8 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: channelEvent = (io.raidenmap.event.channel.ChannelEvent)value$; break;
-    case 1: participant1Amount = (java.lang.Long)value$; break;
-    case 2: participant2Amount = (java.lang.Long)value$; break;
+    case 1: participant1Amount = (java.lang.String)value$; break;
+    case 2: participant2Amount = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -116,7 +116,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'participant1Amount' field.
    * @return The value of the 'participant1Amount' field.
    */
-  public java.lang.Long getParticipant1Amount() {
+  public java.lang.String getParticipant1Amount() {
     return participant1Amount;
   }
 
@@ -124,7 +124,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'participant1Amount' field.
    * @param value the value to set.
    */
-  public void setParticipant1Amount(java.lang.Long value) {
+  public void setParticipant1Amount(java.lang.String value) {
     this.participant1Amount = value;
   }
 
@@ -132,7 +132,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
    * Gets the value of the 'participant2Amount' field.
    * @return The value of the 'participant2Amount' field.
    */
-  public java.lang.Long getParticipant2Amount() {
+  public java.lang.String getParticipant2Amount() {
     return participant2Amount;
   }
 
@@ -140,7 +140,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
    * Sets the value of the 'participant2Amount' field.
    * @param value the value to set.
    */
-  public void setParticipant2Amount(java.lang.Long value) {
+  public void setParticipant2Amount(java.lang.String value) {
     this.participant2Amount = value;
   }
 
@@ -178,8 +178,8 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
 
     private io.raidenmap.event.channel.ChannelEvent channelEvent;
     private io.raidenmap.event.channel.ChannelEvent.Builder channelEventBuilder;
-    private long participant1Amount;
-    private long participant2Amount;
+    private java.lang.String participant1Amount;
+    private java.lang.String participant2Amount;
 
     /** Creates a new Builder */
     private Builder() {
@@ -308,7 +308,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'participant1Amount' field.
       * @return The value.
       */
-    public java.lang.Long getParticipant1Amount() {
+    public java.lang.String getParticipant1Amount() {
       return participant1Amount;
     }
 
@@ -317,7 +317,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'participant1Amount'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelSettled.Builder setParticipant1Amount(long value) {
+    public io.raidenmap.event.channel.ChannelSettled.Builder setParticipant1Amount(java.lang.String value) {
       validate(fields()[1], value);
       this.participant1Amount = value;
       fieldSetFlags()[1] = true;
@@ -338,6 +338,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * @return This builder.
       */
     public io.raidenmap.event.channel.ChannelSettled.Builder clearParticipant1Amount() {
+      participant1Amount = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -346,7 +347,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * Gets the value of the 'participant2Amount' field.
       * @return The value.
       */
-    public java.lang.Long getParticipant2Amount() {
+    public java.lang.String getParticipant2Amount() {
       return participant2Amount;
     }
 
@@ -355,7 +356,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * @param value The value of 'participant2Amount'.
       * @return This builder.
       */
-    public io.raidenmap.event.channel.ChannelSettled.Builder setParticipant2Amount(long value) {
+    public io.raidenmap.event.channel.ChannelSettled.Builder setParticipant2Amount(java.lang.String value) {
       validate(fields()[2], value);
       this.participant2Amount = value;
       fieldSetFlags()[2] = true;
@@ -376,6 +377,7 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
       * @return This builder.
       */
     public io.raidenmap.event.channel.ChannelSettled.Builder clearParticipant2Amount() {
+      participant2Amount = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -390,8 +392,8 @@ public class ChannelSettled extends org.apache.avro.specific.SpecificRecordBase 
         } else {
           record.channelEvent = fieldSetFlags()[0] ? this.channelEvent : (io.raidenmap.event.channel.ChannelEvent) defaultValue(fields()[0]);
         }
-        record.participant1Amount = fieldSetFlags()[1] ? this.participant1Amount : (java.lang.Long) defaultValue(fields()[1]);
-        record.participant2Amount = fieldSetFlags()[2] ? this.participant2Amount : (java.lang.Long) defaultValue(fields()[2]);
+        record.participant1Amount = fieldSetFlags()[1] ? this.participant1Amount : (java.lang.String) defaultValue(fields()[1]);
+        record.participant2Amount = fieldSetFlags()[2] ? this.participant2Amount : (java.lang.String) defaultValue(fields()[2]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

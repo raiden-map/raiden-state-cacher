@@ -9,11 +9,11 @@
         },
         {
             "name": "participant1Amount",
-            "type": "long"
+            "type": "string"
         },
         {
             "name": "participant2Amount",
-            "type": "long"
+            "type": "string"
         }
     ]
 }

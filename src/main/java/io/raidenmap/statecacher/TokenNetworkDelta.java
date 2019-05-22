@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 8537130479185602144L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":\"double\"},{\"name\":\"totalDeposit\",\"type\":\"long\"},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}");
+  private static final long serialVersionUID = -2520904835935148985L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"TokenNetworkDelta\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"token\",\"type\":{\"type\":\"record\",\"name\":\"Token\",\"fields\":[{\"name\":\"name\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"tag\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"imageUrl\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"valueUsd\",\"type\":\"double\"},{\"name\":\"valueEth\",\"type\":\"double\"},{\"name\":\"valueBtc\",\"type\":\"double\"},{\"name\":\"priceChangeDayUsd\",\"type\":\"float\"},{\"name\":\"priceChangeWeekUsd\",\"type\":\"float\"},{\"name\":\"priceChangeDayEth\",\"type\":\"float\"},{\"name\":\"priceChangeWeekEth\",\"type\":\"float\"},{\"name\":\"priceChangeDayBtc\",\"type\":\"float\"},{\"name\":\"priceChangeWeekBtc\",\"type\":\"float\"},{\"name\":\"marketCap\",\"type\":\"double\"},{\"name\":\"volume\",\"type\":\"double\"},{\"name\":\"timestamp\",\"type\":\"long\"}]}},{\"name\":\"modifiedChannels\",\"type\":{\"type\":\"map\",\"values\":{\"type\":\"record\",\"name\":\"Channel\",\"fields\":[{\"name\":\"channelId\",\"type\":\"int\"},{\"name\":\"state\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"lastStateChangeBlock\",\"type\":\"long\"},{\"name\":\"settleTimeout\",\"type\":\"long\"},{\"name\":\"firstParticipant\",\"type\":{\"type\":\"record\",\"name\":\"Participant\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"withdrawnAmount\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}},{\"name\":\"secondParticipant\",\"type\":\"Participant\"}]},\"avro.java.string\":\"String\"}},{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"timestamp\",\"type\":\"long\"},{\"name\":\"channelsCount\",\"type\":\"int\"},{\"name\":\"openChannels\",\"type\":\"int\"},{\"name\":\"closedChannels\",\"type\":\"int\"},{\"name\":\"settledChannels\",\"type\":\"int\"},{\"name\":\"avgChannelDeposit\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"totalDeposit\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"users\",\"type\":\"int\"},{\"name\":\"blockNumber\",\"type\":\"long\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -59,8 +59,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
   @Deprecated public int openChannels;
   @Deprecated public int closedChannels;
   @Deprecated public int settledChannels;
-  @Deprecated public double avgChannelDeposit;
-  @Deprecated public long totalDeposit;
+  @Deprecated public java.lang.String avgChannelDeposit;
+  @Deprecated public java.lang.String totalDeposit;
   @Deprecated public int users;
   @Deprecated public long blockNumber;
 
@@ -86,7 +86,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * @param users The new value for users
    * @param blockNumber The new value for blockNumber
    */
-  public TokenNetworkDelta(io.raidenmap.statecacher.Token token, java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> modifiedChannels, java.lang.String tokenNetworkAddress, java.lang.Long timestamp, java.lang.Integer channelsCount, java.lang.Integer openChannels, java.lang.Integer closedChannels, java.lang.Integer settledChannels, java.lang.Double avgChannelDeposit, java.lang.Long totalDeposit, java.lang.Integer users, java.lang.Long blockNumber) {
+  public TokenNetworkDelta(io.raidenmap.statecacher.Token token, java.util.Map<java.lang.String,io.raidenmap.statecacher.Channel> modifiedChannels, java.lang.String tokenNetworkAddress, java.lang.Long timestamp, java.lang.Integer channelsCount, java.lang.Integer openChannels, java.lang.Integer closedChannels, java.lang.Integer settledChannels, java.lang.String avgChannelDeposit, java.lang.String totalDeposit, java.lang.Integer users, java.lang.Long blockNumber) {
     this.token = token;
     this.modifiedChannels = modifiedChannels;
     this.tokenNetworkAddress = tokenNetworkAddress;
@@ -133,8 +133,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
     case 5: openChannels = (java.lang.Integer)value$; break;
     case 6: closedChannels = (java.lang.Integer)value$; break;
     case 7: settledChannels = (java.lang.Integer)value$; break;
-    case 8: avgChannelDeposit = (java.lang.Double)value$; break;
-    case 9: totalDeposit = (java.lang.Long)value$; break;
+    case 8: avgChannelDeposit = (java.lang.String)value$; break;
+    case 9: totalDeposit = (java.lang.String)value$; break;
     case 10: users = (java.lang.Integer)value$; break;
     case 11: blockNumber = (java.lang.Long)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
@@ -273,7 +273,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'avgChannelDeposit' field.
    * @return The value of the 'avgChannelDeposit' field.
    */
-  public java.lang.Double getAvgChannelDeposit() {
+  public java.lang.String getAvgChannelDeposit() {
     return avgChannelDeposit;
   }
 
@@ -281,7 +281,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'avgChannelDeposit' field.
    * @param value the value to set.
    */
-  public void setAvgChannelDeposit(java.lang.Double value) {
+  public void setAvgChannelDeposit(java.lang.String value) {
     this.avgChannelDeposit = value;
   }
 
@@ -289,7 +289,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Gets the value of the 'totalDeposit' field.
    * @return The value of the 'totalDeposit' field.
    */
-  public java.lang.Long getTotalDeposit() {
+  public java.lang.String getTotalDeposit() {
     return totalDeposit;
   }
 
@@ -297,7 +297,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
    * Sets the value of the 'totalDeposit' field.
    * @param value the value to set.
    */
-  public void setTotalDeposit(java.lang.Long value) {
+  public void setTotalDeposit(java.lang.String value) {
     this.totalDeposit = value;
   }
 
@@ -374,8 +374,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
     private int openChannels;
     private int closedChannels;
     private int settledChannels;
-    private double avgChannelDeposit;
-    private long totalDeposit;
+    private java.lang.String avgChannelDeposit;
+    private java.lang.String totalDeposit;
     private int users;
     private long blockNumber;
 
@@ -846,7 +846,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'avgChannelDeposit' field.
       * @return The value.
       */
-    public java.lang.Double getAvgChannelDeposit() {
+    public java.lang.String getAvgChannelDeposit() {
       return avgChannelDeposit;
     }
 
@@ -855,7 +855,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'avgChannelDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setAvgChannelDeposit(double value) {
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setAvgChannelDeposit(java.lang.String value) {
       validate(fields()[8], value);
       this.avgChannelDeposit = value;
       fieldSetFlags()[8] = true;
@@ -876,6 +876,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public io.raidenmap.statecacher.TokenNetworkDelta.Builder clearAvgChannelDeposit() {
+      avgChannelDeposit = null;
       fieldSetFlags()[8] = false;
       return this;
     }
@@ -884,7 +885,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * Gets the value of the 'totalDeposit' field.
       * @return The value.
       */
-    public java.lang.Long getTotalDeposit() {
+    public java.lang.String getTotalDeposit() {
       return totalDeposit;
     }
 
@@ -893,7 +894,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @param value The value of 'totalDeposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setTotalDeposit(long value) {
+    public io.raidenmap.statecacher.TokenNetworkDelta.Builder setTotalDeposit(java.lang.String value) {
       validate(fields()[9], value);
       this.totalDeposit = value;
       fieldSetFlags()[9] = true;
@@ -914,6 +915,7 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
       * @return This builder.
       */
     public io.raidenmap.statecacher.TokenNetworkDelta.Builder clearTotalDeposit() {
+      totalDeposit = null;
       fieldSetFlags()[9] = false;
       return this;
     }
@@ -1011,8 +1013,8 @@ public class TokenNetworkDelta extends org.apache.avro.specific.SpecificRecordBa
         record.openChannels = fieldSetFlags()[5] ? this.openChannels : (java.lang.Integer) defaultValue(fields()[5]);
         record.closedChannels = fieldSetFlags()[6] ? this.closedChannels : (java.lang.Integer) defaultValue(fields()[6]);
         record.settledChannels = fieldSetFlags()[7] ? this.settledChannels : (java.lang.Integer) defaultValue(fields()[7]);
-        record.avgChannelDeposit = fieldSetFlags()[8] ? this.avgChannelDeposit : (java.lang.Double) defaultValue(fields()[8]);
-        record.totalDeposit = fieldSetFlags()[9] ? this.totalDeposit : (java.lang.Long) defaultValue(fields()[9]);
+        record.avgChannelDeposit = fieldSetFlags()[8] ? this.avgChannelDeposit : (java.lang.String) defaultValue(fields()[8]);
+        record.totalDeposit = fieldSetFlags()[9] ? this.totalDeposit : (java.lang.String) defaultValue(fields()[9]);
         record.users = fieldSetFlags()[10] ? this.users : (java.lang.Integer) defaultValue(fields()[10]);
         record.blockNumber = fieldSetFlags()[11] ? this.blockNumber : (java.lang.Long) defaultValue(fields()[11]);
         return record;

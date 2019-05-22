@@ -9,11 +9,11 @@
         },
         {
             "name": "deposit",
-            "type": "long"
+            "type": "string"
         },
         {
             "name": "withdrawnAmount",
-            "type": "long"
+            "type": "string"
         },
         {
             "name": "wantsToClose",

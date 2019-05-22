@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Participant extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = 9010194061235726826L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Participant\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":\"long\"},{\"name\":\"withdrawnAmount\",\"type\":\"long\"},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}");
+  private static final long serialVersionUID = -8389285754104181351L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Participant\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"ethAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"deposit\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"withdrawnAmount\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}},{\"name\":\"wantsToClose\",\"type\":\"boolean\"}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -52,8 +52,8 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
   }
 
   @Deprecated public java.lang.String ethAddress;
-  @Deprecated public long deposit;
-  @Deprecated public long withdrawnAmount;
+  @Deprecated public java.lang.String deposit;
+  @Deprecated public java.lang.String withdrawnAmount;
   @Deprecated public boolean wantsToClose;
 
   /**
@@ -70,7 +70,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
    * @param withdrawnAmount The new value for withdrawnAmount
    * @param wantsToClose The new value for wantsToClose
    */
-  public Participant(java.lang.String ethAddress, java.lang.Long deposit, java.lang.Long withdrawnAmount, java.lang.Boolean wantsToClose) {
+  public Participant(java.lang.String ethAddress, java.lang.String deposit, java.lang.String withdrawnAmount, java.lang.Boolean wantsToClose) {
     this.ethAddress = ethAddress;
     this.deposit = deposit;
     this.withdrawnAmount = withdrawnAmount;
@@ -94,8 +94,8 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
     case 0: ethAddress = (java.lang.String)value$; break;
-    case 1: deposit = (java.lang.Long)value$; break;
-    case 2: withdrawnAmount = (java.lang.Long)value$; break;
+    case 1: deposit = (java.lang.String)value$; break;
+    case 2: withdrawnAmount = (java.lang.String)value$; break;
     case 3: wantsToClose = (java.lang.Boolean)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -121,7 +121,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'deposit' field.
    * @return The value of the 'deposit' field.
    */
-  public java.lang.Long getDeposit() {
+  public java.lang.String getDeposit() {
     return deposit;
   }
 
@@ -129,7 +129,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'deposit' field.
    * @param value the value to set.
    */
-  public void setDeposit(java.lang.Long value) {
+  public void setDeposit(java.lang.String value) {
     this.deposit = value;
   }
 
@@ -137,7 +137,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
    * Gets the value of the 'withdrawnAmount' field.
    * @return The value of the 'withdrawnAmount' field.
    */
-  public java.lang.Long getWithdrawnAmount() {
+  public java.lang.String getWithdrawnAmount() {
     return withdrawnAmount;
   }
 
@@ -145,7 +145,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
    * Sets the value of the 'withdrawnAmount' field.
    * @param value the value to set.
    */
-  public void setWithdrawnAmount(java.lang.Long value) {
+  public void setWithdrawnAmount(java.lang.String value) {
     this.withdrawnAmount = value;
   }
 
@@ -198,8 +198,8 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
     implements org.apache.avro.data.RecordBuilder<Participant> {
 
     private java.lang.String ethAddress;
-    private long deposit;
-    private long withdrawnAmount;
+    private java.lang.String deposit;
+    private java.lang.String withdrawnAmount;
     private boolean wantsToClose;
 
     /** Creates a new Builder */
@@ -298,7 +298,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'deposit' field.
       * @return The value.
       */
-    public java.lang.Long getDeposit() {
+    public java.lang.String getDeposit() {
       return deposit;
     }
 
@@ -307,7 +307,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'deposit'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Participant.Builder setDeposit(long value) {
+    public io.raidenmap.statecacher.Participant.Builder setDeposit(java.lang.String value) {
       validate(fields()[1], value);
       this.deposit = value;
       fieldSetFlags()[1] = true;
@@ -328,6 +328,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public io.raidenmap.statecacher.Participant.Builder clearDeposit() {
+      deposit = null;
       fieldSetFlags()[1] = false;
       return this;
     }
@@ -336,7 +337,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * Gets the value of the 'withdrawnAmount' field.
       * @return The value.
       */
-    public java.lang.Long getWithdrawnAmount() {
+    public java.lang.String getWithdrawnAmount() {
       return withdrawnAmount;
     }
 
@@ -345,7 +346,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * @param value The value of 'withdrawnAmount'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Participant.Builder setWithdrawnAmount(long value) {
+    public io.raidenmap.statecacher.Participant.Builder setWithdrawnAmount(java.lang.String value) {
       validate(fields()[2], value);
       this.withdrawnAmount = value;
       fieldSetFlags()[2] = true;
@@ -366,6 +367,7 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       * @return This builder.
       */
     public io.raidenmap.statecacher.Participant.Builder clearWithdrawnAmount() {
+      withdrawnAmount = null;
       fieldSetFlags()[2] = false;
       return this;
     }
@@ -414,8 +416,8 @@ public class Participant extends org.apache.avro.specific.SpecificRecordBase imp
       try {
         Participant record = new Participant();
         record.ethAddress = fieldSetFlags()[0] ? this.ethAddress : (java.lang.String) defaultValue(fields()[0]);
-        record.deposit = fieldSetFlags()[1] ? this.deposit : (java.lang.Long) defaultValue(fields()[1]);
-        record.withdrawnAmount = fieldSetFlags()[2] ? this.withdrawnAmount : (java.lang.Long) defaultValue(fields()[2]);
+        record.deposit = fieldSetFlags()[1] ? this.deposit : (java.lang.String) defaultValue(fields()[1]);
+        record.withdrawnAmount = fieldSetFlags()[2] ? this.withdrawnAmount : (java.lang.String) defaultValue(fields()[2]);
         record.wantsToClose = fieldSetFlags()[3] ? this.wantsToClose : (java.lang.Boolean) defaultValue(fields()[3]);
         return record;
       } catch (java.lang.Exception e) {

@@ -13,8 +13,8 @@ import org.apache.avro.message.SchemaStore;
 @SuppressWarnings("all")
 @org.apache.avro.specific.AvroGenerated
 public class Key extends org.apache.avro.specific.SpecificRecordBase implements org.apache.avro.specific.SpecificRecord {
-  private static final long serialVersionUID = -5047547571823111341L;
-  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Key\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"tokenNetworkAddress\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
+  private static final long serialVersionUID = -1993977397086927498L;
+  public static final org.apache.avro.Schema SCHEMA$ = new org.apache.avro.Schema.Parser().parse("{\"type\":\"record\",\"name\":\"Key\",\"namespace\":\"io.raidenmap.statecacher\",\"fields\":[{\"name\":\"key\",\"type\":{\"type\":\"string\",\"avro.java.string\":\"String\"}}]}");
   public static org.apache.avro.Schema getClassSchema() { return SCHEMA$; }
 
   private static SpecificData MODEL$ = new SpecificData();
@@ -51,7 +51,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
     return DECODER.decode(b);
   }
 
-  @Deprecated public java.lang.String tokenNetworkAddress;
+  @Deprecated public java.lang.String key;
 
   /**
    * Default constructor.  Note that this does not initialize fields
@@ -62,17 +62,17 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
 
   /**
    * All-args constructor.
-   * @param tokenNetworkAddress The new value for tokenNetworkAddress
+   * @param key The new value for key
    */
-  public Key(java.lang.String tokenNetworkAddress) {
-    this.tokenNetworkAddress = tokenNetworkAddress;
+  public Key(java.lang.String key) {
+    this.key = key;
   }
 
   public org.apache.avro.Schema getSchema() { return SCHEMA$; }
   // Used by DatumWriter.  Applications should not call.
   public java.lang.Object get(int field$) {
     switch (field$) {
-    case 0: return tokenNetworkAddress;
+    case 0: return key;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
@@ -81,25 +81,25 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
   @SuppressWarnings(value="unchecked")
   public void put(int field$, java.lang.Object value$) {
     switch (field$) {
-    case 0: tokenNetworkAddress = (java.lang.String)value$; break;
+    case 0: key = (java.lang.String)value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
   }
 
   /**
-   * Gets the value of the 'tokenNetworkAddress' field.
-   * @return The value of the 'tokenNetworkAddress' field.
+   * Gets the value of the 'key' field.
+   * @return The value of the 'key' field.
    */
-  public java.lang.String getTokenNetworkAddress() {
-    return tokenNetworkAddress;
+  public java.lang.String getKey() {
+    return key;
   }
 
   /**
-   * Sets the value of the 'tokenNetworkAddress' field.
+   * Sets the value of the 'key' field.
    * @param value the value to set.
    */
-  public void setTokenNetworkAddress(java.lang.String value) {
-    this.tokenNetworkAddress = value;
+  public void setKey(java.lang.String value) {
+    this.key = value;
   }
 
   /**
@@ -134,7 +134,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
   public static class Builder extends org.apache.avro.specific.SpecificRecordBuilderBase<Key>
     implements org.apache.avro.data.RecordBuilder<Key> {
 
-    private java.lang.String tokenNetworkAddress;
+    private java.lang.String key;
 
     /** Creates a new Builder */
     private Builder() {
@@ -147,8 +147,8 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
      */
     private Builder(io.raidenmap.statecacher.Key.Builder other) {
       super(other);
-      if (isValidValue(fields()[0], other.tokenNetworkAddress)) {
-        this.tokenNetworkAddress = data().deepCopy(fields()[0].schema(), other.tokenNetworkAddress);
+      if (isValidValue(fields()[0], other.key)) {
+        this.key = data().deepCopy(fields()[0].schema(), other.key);
         fieldSetFlags()[0] = true;
       }
     }
@@ -159,47 +159,47 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
      */
     private Builder(io.raidenmap.statecacher.Key other) {
             super(SCHEMA$);
-      if (isValidValue(fields()[0], other.tokenNetworkAddress)) {
-        this.tokenNetworkAddress = data().deepCopy(fields()[0].schema(), other.tokenNetworkAddress);
+      if (isValidValue(fields()[0], other.key)) {
+        this.key = data().deepCopy(fields()[0].schema(), other.key);
         fieldSetFlags()[0] = true;
       }
     }
 
     /**
-      * Gets the value of the 'tokenNetworkAddress' field.
+      * Gets the value of the 'key' field.
       * @return The value.
       */
-    public java.lang.String getTokenNetworkAddress() {
-      return tokenNetworkAddress;
+    public java.lang.String getKey() {
+      return key;
     }
 
     /**
-      * Sets the value of the 'tokenNetworkAddress' field.
-      * @param value The value of 'tokenNetworkAddress'.
+      * Sets the value of the 'key' field.
+      * @param value The value of 'key'.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Key.Builder setTokenNetworkAddress(java.lang.String value) {
+    public io.raidenmap.statecacher.Key.Builder setKey(java.lang.String value) {
       validate(fields()[0], value);
-      this.tokenNetworkAddress = value;
+      this.key = value;
       fieldSetFlags()[0] = true;
       return this;
     }
 
     /**
-      * Checks whether the 'tokenNetworkAddress' field has been set.
-      * @return True if the 'tokenNetworkAddress' field has been set, false otherwise.
+      * Checks whether the 'key' field has been set.
+      * @return True if the 'key' field has been set, false otherwise.
       */
-    public boolean hasTokenNetworkAddress() {
+    public boolean hasKey() {
       return fieldSetFlags()[0];
     }
 
 
     /**
-      * Clears the value of the 'tokenNetworkAddress' field.
+      * Clears the value of the 'key' field.
       * @return This builder.
       */
-    public io.raidenmap.statecacher.Key.Builder clearTokenNetworkAddress() {
-      tokenNetworkAddress = null;
+    public io.raidenmap.statecacher.Key.Builder clearKey() {
+      key = null;
       fieldSetFlags()[0] = false;
       return this;
     }
@@ -209,7 +209,7 @@ public class Key extends org.apache.avro.specific.SpecificRecordBase implements 
     public Key build() {
       try {
         Key record = new Key();
-        record.tokenNetworkAddress = fieldSetFlags()[0] ? this.tokenNetworkAddress : (java.lang.String) defaultValue(fields()[0]);
+        record.key = fieldSetFlags()[0] ? this.key : (java.lang.String) defaultValue(fields()[0]);
         return record;
       } catch (java.lang.Exception e) {
         throw new org.apache.avro.AvroRuntimeException(e);

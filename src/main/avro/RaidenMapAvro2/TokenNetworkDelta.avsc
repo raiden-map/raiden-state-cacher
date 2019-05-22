@@ -40,11 +40,11 @@
         },
         {
             "name": "avgChannelDeposit",
-            "type": "double"
+            "type": "string"
         },
         {
             "name": "totalDeposit",
-            "type": "long"
+            "type": "string"
         },
         {
             "name": "users",
